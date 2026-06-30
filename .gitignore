@@ -6,3 +6,9 @@ build
 
 # Ignore Kotlin plugin data
 .kotlin
+
+# Metadados VSCode / IntelliJ
+.vscode
+.idea
+
+
