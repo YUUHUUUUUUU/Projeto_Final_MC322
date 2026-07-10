@@ -6,6 +6,7 @@ public class User{//abstract?
     private String name;
     private String email;
     private String password;
+    private List<Tag> followed_tags = new ArrayList<Tag>();
     private int id;
     // private List<Extracurricular> favorites = new ArrayList<Extracurricular>();
     // private List<Extracurricular> followed = new ArrayList<Extracurricular>();
@@ -48,30 +49,68 @@ public class User{//abstract?
 
     public void changePassword(String newPassword){
         // Null check
-        if(newPassword == null || newPassword.trim().isEmpty()){
+        if(password == null || password.trim().isEmpty()){
             throw new IllegalArgumentException("Password cannot be empty.");
         }
         // Length check
-        if(newPassword.length() < 8){
+        if(password.length() < 8){
             throw new IllegalArgumentException("Password must be at least 8 characters long.");
         }
         // Uppercase letter check
-        if(!newPassword.matches(".*[A-Z].*")){
+        if(!password.matches(".*[A-Z].*")){
             throw new IllegalArgumentException("Password must contain at least one uppercase letter.");
         }
         // Lowercase letter check
-        if(!newPassword.matches(".*[a-z].*")){
+        if(!password.matches(".*[a-z].*")){
             throw new IllegalArgumentException("Password must contain at least one lowercase letter.");
         }
         // Special character check
-        if(!newPassword.matches(".*[^a-zA-Z0-9].*")){
+        if(!password.matches(".*[^a-zA-Z0-9].*")){
             throw new IllegalArgumentException("Password must contain at least one special symbol.");
         }
         // No spaces check
-        if(newPassword.contains(" ")){
+        if(password.contains(" ")){
             throw new IllegalArgumentException("Password cannot contain spaces.");
         }
         // Assign the password
         this.password = newPassword; 
     }
+
+    public List<Tag> getTags(){
+        return this.followed_tags;
+    }
+
+    // public List<Extracurricular> getFavorites(){
+    //     return this.favorites;
+    // }
+
+    // public List<Extracurricular> getFollowed(){
+    //     return this.followed;
+    // }
+    
+    // public List<News> getNews(){
+    //     return this.latest_news;
+    // }
+
+    // public void addTag(){
+
+    // }
+
+    // public void follow_new_extra(){
+
+    // }
+
+    // public boolean login(){
+    //     //do the login
+    //     logged=true;
+    //     return logged;
+    // }
+
+    // public void checkin(){
+
+    // }
+
+    // public void logout(){
+
+    // }
 }

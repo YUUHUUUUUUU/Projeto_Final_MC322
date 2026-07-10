@@ -27,9 +27,4 @@ public enum Role {
         return alterSite;
     }
 
-    
-
-
-
-
 }
