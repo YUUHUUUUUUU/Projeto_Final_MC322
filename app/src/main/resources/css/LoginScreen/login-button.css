@@ -1,0 +1,31 @@
+.login-button {
+    -fx-background-color: #0071E3;
+    -fx-text-fill: white;
+
+    -fx-font-family: "SF Pro Text";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 3 5 3 5;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0,0,0,0.5),
+        8,
+        0,
+        0,
+        2
+    );
+
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: #0077ED;
+}
+
+.login-button:pressed {
+    -fx-background-color: #0062C3;
+}

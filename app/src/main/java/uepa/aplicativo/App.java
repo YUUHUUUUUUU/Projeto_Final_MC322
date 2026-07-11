@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/TelaLogin.fxml")); 
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen/LoginScreen.fxml")); 
             Parent root = fxmlLoader.load();
             Scene tela = new Scene(root);
 
