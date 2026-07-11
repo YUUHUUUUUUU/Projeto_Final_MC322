@@ -24,6 +24,10 @@ public class User{//abstract?
         return this.name;
     }
 
+    public int getID(){
+        return this.id;
+    }
+
     public void setName(String name){
         // Check for null or empty strings
         if(name == null || name.trim().isEmpty()){

@@ -13,6 +13,10 @@ public class Student extends User{
     private List<Notifiable> following = new ArrayList<Notifiable>();
     private List<Notifiable> tags = new ArrayList<Notifiable>();
 
+    Student(String email,String name){
+        super(email,name);
+    }
+
     public void favorite(Extracurricular e){
         //favorites.add(e); aqui vai ficar com problema mesmo, extracurricular so pode ser 1 dos dois
     }

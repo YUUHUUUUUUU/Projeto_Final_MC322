@@ -73,7 +73,7 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
         int t=studentsFollowing.size();
         int pos=0;
         for (int i=0;i<t;i++){
-            if (studentsFollowing[i].id==s.id){
+            if (studentsFollowing.get(i).getID()==s.getID()){
                 pos=i;
             }
         }
@@ -83,7 +83,7 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
     public boolean isFollowedBy(Student s){
         int t=studentsFollowing.size();
         for (int i=0;i<t;i++){
-            if (s.id==studentsFollowing[i]){
+            if (studentsFollowing.get(i).getID()==s.getID()){
                 return true;
             }
         }
