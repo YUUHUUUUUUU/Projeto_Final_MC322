@@ -1,5 +1,8 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.user;
 import java.util.List;
+
+import constantes.Tag;
+
 import java.util.ArrayList;
 
 public class User{//abstract?

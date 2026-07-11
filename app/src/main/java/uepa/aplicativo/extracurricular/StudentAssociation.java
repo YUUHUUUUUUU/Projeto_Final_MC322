@@ -1,4 +1,5 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.extracurricular;
+
 public class StudentAssociation extends Extracurricular{
     private String institute;
 

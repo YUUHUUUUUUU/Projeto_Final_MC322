@@ -1,4 +1,4 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.user;
 
 import java.io.File;
 import java.security.MessageDigest;

@@ -1,5 +1,12 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.extracurricular;
 import java.util.List;
+
+import constantes.Tag;
+import uepa.aplicativo.interfaces.Favoritable;
+import uepa.aplicativo.interfaces.Notifiable;
+import uepa.aplicativo.user.Staff;
+import uepa.aplicativo.user.Student;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 

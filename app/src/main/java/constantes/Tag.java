@@ -1,5 +1,9 @@
-package uepa.aplicativo.usuarios;
+package constantes;
 import java.util.List;
+
+import uepa.aplicativo.interfaces.Notifiable;
+import uepa.aplicativo.user.Student;
+
 import java.util.ArrayList;
 
 public enum Tag implements Notifiable{

@@ -1,5 +1,9 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.user;
 import java.util.List;
+
+import constantes.Role;
+import uepa.aplicativo.extracurricular.Extracurricular;
+
 import java.util.ArrayList;
 
 public class Staff extends User{

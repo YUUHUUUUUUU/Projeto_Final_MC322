@@ -1,5 +1,11 @@
-package uepa.aplicativo.usuarios;
+package uepa.aplicativo.user;
 import java.util.List;
+
+import constantes.Tag;
+import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.interfaces.Favoritable;
+import uepa.aplicativo.interfaces.Notifiable;
+
 import java.util.ArrayList;
 
 public class Student extends User{
