@@ -1,4 +1,4 @@
-package constantes;
+package uepa.aplicativo.constantes;
 public enum SubTag {
     BASKETBALL("Basquete",true),
     VOLLEYBALL("Vôlei",true),
