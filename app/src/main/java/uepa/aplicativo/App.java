@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -16,7 +17,17 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        System.out.println(getClass().getResource("/fxml/TelaLogin.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(); 
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/TelaLogin.fxml")); 
+            Parent root = fxmlLoader.load();
+            Scene tela = new Scene(root);
+
+            primaryStage.setTitle("Tela de Login");
+            primaryStage.setScene(tela);
+            primaryStage.show();
+        }
+        catch (Exception e) {
+            System.out.println("Erro1");
+        }
     }
 }
