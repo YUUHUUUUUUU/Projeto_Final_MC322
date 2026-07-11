@@ -1,7 +1,7 @@
 package uepa.aplicativo.user;
 import java.util.List;
 
-import constantes.Role;
+import uepa.aplicativo.constantes.*;
 import uepa.aplicativo.extracurricular.Extracurricular;
 
 import java.util.ArrayList;
