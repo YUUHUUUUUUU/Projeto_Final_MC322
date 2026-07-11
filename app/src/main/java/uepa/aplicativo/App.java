@@ -1,4 +1,4 @@
-package org.example;
+package uepa.aplicativo;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

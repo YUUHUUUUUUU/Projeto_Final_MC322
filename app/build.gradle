@@ -23,7 +23,10 @@ javafx {
 
 dependencies {
     // Use JUnit test framework.
-    testImplementation libs.junit
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+
+    // This dependency is used by the application.
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // This dependency is used by the application.
     implementation libs.guava
@@ -38,5 +41,9 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'org.example.App'
+    mainClass = 'uepa.aplicativo.App'
+}
+
+tasks.named('test'){
+    useJUnitPlatform()
 }
