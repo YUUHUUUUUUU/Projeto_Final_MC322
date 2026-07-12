@@ -17,13 +17,14 @@ import uepa.aplicativo.loaders.*;
 
 public class App extends Application {
     public static void main(String[] args) {
-        FontLoader fontLoader = new FontLoader();
-        fontLoader.loadFonts();
         launch(args);
     }
     
     @Override
     public void start(Stage primaryStage) {
+        FontLoader fontLoader = new FontLoader();
+        fontLoader.loadFonts();
+
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen/LoginScreen.fxml")); 
             Parent root = fxmlLoader.load();

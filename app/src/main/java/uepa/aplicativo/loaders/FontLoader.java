@@ -20,7 +20,7 @@ public class FontLoader {
             if(customFont == null) {
                 throw new FileNotFoundException("Font not found: " + path);
             }
-            System.out.println("Loaded font family: " + customFont.getFamily());
+            System.out.println("Loaded font: " + customFont.getName() + " (family: " + customFont.getFamily() + ")");
         }
         catch(FileNotFoundException fileNotFoundException) {
             System.out.println(fileNotFoundException);
@@ -38,5 +38,6 @@ public class FontLoader {
      */
     public void loadFonts(){
         tryLoadingFont("/fonts/SF-Pro-Rounded-Semibold.otf");
+        tryLoadingFont("/fonts/SF-Pro-Display-Regular.otf");
     }
 }
