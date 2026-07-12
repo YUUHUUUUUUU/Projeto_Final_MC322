@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css, @../../css/LoginScreen/headers.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css, @../../css/LoginScreen/headers.css, @../../css/LoginScreen/fields.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
   <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
@@ -64,15 +64,9 @@
       </StackPane>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="105.0" prefWidth="640.0" spacing="10.0">
          <children>
-            <TextField fx:id="emailField" prefHeight="25.0" prefWidth="240.0" promptText="E-mail" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-background-color: white; -fx-border-color: #D2D2D7;">
-               <font>
-                  <Font name="SF Pro Text Regular" size="13.0" />
-               </font>
+            <TextField fx:id="emailField" prefHeight="25.0" prefWidth="240.0" promptText="E-mail" styleClass="fields">
             </TextField>
-            <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="240.0" promptText="Senha" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-background-color: white; -fx-border-color: #D2D2D7;">
-               <font>
-                  <Font name="SF Pro Text Regular" size="13.0" />
-               </font>
+            <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="240.0" promptText="Senha" styleClass="fields">
             </PasswordField>
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#LogIn" styleClass="login-button" text="Entrar" />
          </children>
@@ -80,7 +74,12 @@
       <VBox prefHeight="75.0" prefWidth="640.0" />
       <VBox alignment="TOP_CENTER" prefHeight="74.0" prefWidth="640.0">
          <children>
-            <Label text="Ainda não possuí uma conta UEPA?" />
+            <Label text="Ainda não possuí uma conta UEPA?">
+               <styleClass>
+                  <String fx:value="footer-text"/>
+                  <String fx:value="font-size-13"/>
+               </styleClass>
+            </Label>
             <Hyperlink text="Crie sua conta UEPA" />
          </children>
       </VBox>
