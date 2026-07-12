@@ -26,7 +26,7 @@ public class App extends Application {
         fontLoader.loadFonts();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen/LoginScreen.fxml")); 
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/RegisterScreen/RegisterScreen.fxml")); 
             Parent root = fxmlLoader.load();
             Scene tela = new Scene(root);
             
