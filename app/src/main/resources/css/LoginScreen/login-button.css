@@ -3,7 +3,10 @@
     -fx-text-fill: white;
 
     -fx-font-family: "Manrope SemiBold";
-    -fx-font-size: 14px;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 20px;
+
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
 
     -fx-background-radius: 12;

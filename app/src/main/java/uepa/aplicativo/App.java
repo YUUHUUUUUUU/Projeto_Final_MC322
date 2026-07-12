@@ -29,9 +29,13 @@ public class App extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen/LoginScreen.fxml")); 
             Parent root = fxmlLoader.load();
             Scene tela = new Scene(root);
+            
+            root.requestFocus();
 
+            primaryStage.setMaximized(true);
             primaryStage.setTitle("Tela de Login");
             primaryStage.setScene(tela);
+            primaryStage.setResizable(true);
             primaryStage.show();
         }
         catch (Exception e) {

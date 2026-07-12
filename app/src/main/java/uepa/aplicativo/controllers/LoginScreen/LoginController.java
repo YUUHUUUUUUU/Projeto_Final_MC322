@@ -34,4 +34,9 @@ public class LoginController {
         }
     }
 
+    @FXML
+    void RedirectToRegister(ActionEvent event) {
+
+    }
+
 }

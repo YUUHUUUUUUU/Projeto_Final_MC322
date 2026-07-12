@@ -1,6 +1,13 @@
-.header-text {
+.text-color {
     -fx-text-fill: #1d1d1f;
-    -fx-font-family: "Manrope SemiBold";
+}
+
+.header-1 {
+    -fx-font-family: "Manrope ExtraBold";
+}
+
+.header-2 {
+    -fx-font-family: "Manrope Bold";
 }
 
 .footer-text {
