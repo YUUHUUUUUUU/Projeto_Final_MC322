@@ -1,4 +1,4 @@
-package uepa.aplicativo.constantes;
+package uepa.aplicativo.constants;
 import java.util.List;
 
 import uepa.aplicativo.interfaces.Notifiable;

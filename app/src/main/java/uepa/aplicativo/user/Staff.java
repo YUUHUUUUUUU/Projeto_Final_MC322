@@ -1,7 +1,7 @@
 package uepa.aplicativo.user;
 import java.util.List;
 
-import uepa.aplicativo.constantes.*;
+import uepa.aplicativo.constants.*;
 import uepa.aplicativo.extracurricular.Extracurricular;
 
 import java.util.ArrayList;

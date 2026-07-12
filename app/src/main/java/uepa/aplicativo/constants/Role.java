@@ -1,4 +1,4 @@
-package uepa.aplicativo.constantes;
+package uepa.aplicativo.constants;
 public enum Role {
     ADMIN("Admin",true,true),
     STAFF("Moderator",true,false),
