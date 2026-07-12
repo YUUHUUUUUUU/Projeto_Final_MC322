@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import uepa.aplicativo.user.UserManager;
 
 public class LoginController {
 
@@ -19,10 +20,16 @@ public class LoginController {
 
     @FXML
     void LogIn(ActionEvent event) {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        System.out.println(email);
-        System.out.println(password);
+        try {
+            String email = emailField.getText();
+            String password = passwordField.getText();
+            UserManager userManager = new UserManager();
+
+            userManager.login(email, password);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }
