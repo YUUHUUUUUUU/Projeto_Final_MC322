@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "SF Pro Rounded Semibold";
+    src: url("/../../fonts/SF-Pro-Rounded-Regular.otf");
+}
+
+.header-text {
+    -fx-text-fill: #1d1d1f;
+    -fx-font-family: "SF Pro Rounded Semibold";
+}
+
+.font-size-36 {
+    -fx-font-size: 36px;
+}
+
+.font-size-18 {
+    -fx-font-size: 18px;
+}

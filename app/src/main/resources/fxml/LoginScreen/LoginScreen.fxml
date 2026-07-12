@@ -40,21 +40,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css, @../../css/LoginScreen/headers.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
   <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="478.0" spacing="15.0">
                <children>
-                  <Label text="Bem-vindo a UEPA" textFill="#1d1d1f">
-                     <font>
-                        <Font name="SF Pro Rounded Semibold" size="36.0" />
-                     </font>
+                  <Label text="Bem-vindo a UEPA"
+                         styleClass="header-text font-size-36">
                   </Label>
-                  <Label text="Inicie a sessão para continuar" textFill="#1d1d1f">
-                     <font>
-                        <Font name="SF Pro Rounded Semibold" size="18.0" />
-                     </font>
+                  <Label text="Inicie a sessão para continuar"
+                         styleClass="header-text font-size-18">
                   </Label>
                </children>
             </VBox>

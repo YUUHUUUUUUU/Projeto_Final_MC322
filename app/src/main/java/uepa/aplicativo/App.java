@@ -8,10 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
  
+
+import uepa.aplicativo.loaders.*;
+
+
 public class App extends Application {
     public static void main(String[] args) {
+        FontLoader fontLoader = new FontLoader();
+        fontLoader.loadFonts();
         launch(args);
     }
     
@@ -30,4 +37,6 @@ public class App extends Application {
             System.out.println("Erro1");
         }
     }
+
+    
 }
