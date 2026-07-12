@@ -1,6 +1,11 @@
 .header-text {
     -fx-text-fill: #1d1d1f;
-    -fx-font-family: "SF Pro Rounded";
+    -fx-font-family: "Manrope SemiBold";
+}
+
+.footer-text {
+    -fx-text-fill: #1d1d1f;
+    -fx-font-family: "Manrope Light";
 }
 
 .font-size-36 {
@@ -9,4 +14,8 @@
 
 .font-size-18 {
     -fx-font-size: 18px;
+}
+
+.font-size-13 {
+    -fx-font-size: 13px;
 }

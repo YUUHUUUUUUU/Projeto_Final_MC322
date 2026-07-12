@@ -37,7 +37,13 @@ public class FontLoader {
      * @author Enzo Farina Mullis
      */
     public void loadFonts(){
-        tryLoadingFont("/fonts/SF-Pro-Rounded-Semibold.otf");
-        tryLoadingFont("/fonts/SF-Pro-Display-Regular.otf");
+        
+        tryLoadingFont("/fonts/Manrope-Bold.ttf");
+        tryLoadingFont("/fonts/Manrope-ExtraBold.ttf");
+        tryLoadingFont("/fonts/Manrope-Light.ttf");
+        tryLoadingFont("/fonts/Manrope-ExtraLight.ttf");
+        tryLoadingFont("/fonts/Manrope-Regular.ttf");
+        tryLoadingFont("/fonts/Manrope-Medium.ttf");
+        tryLoadingFont("/fonts/Manrope-SemiBold.ttf");
     }
 }
