@@ -1,7 +1,7 @@
 package uepa.aplicativo.extracurricular;
 import java.util.List;
 
-import constantes.Tag;
+import uepa.aplicativo.constantes.Tag;
 import uepa.aplicativo.interfaces.Favoritable;
 import uepa.aplicativo.interfaces.Notifiable;
 import uepa.aplicativo.user.Staff;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public abstract class Extracurricular implements Notifiable,Favoritable {
     private String name;
+    private int id;
     private List<Student> studentsFollowing = new ArrayList<Student>();
     private List<Tag> tags = new ArrayList<Tag>();
     private boolean openToWork;
@@ -29,6 +30,14 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
     public boolean setName(String n){
         this.name=n;
         return true;
+    }
+
+    void setID(int id){
+        this.id = id;
+    }
+
+    int getID(){
+        return this.id;
     }
 
     public boolean setDescription(String d){

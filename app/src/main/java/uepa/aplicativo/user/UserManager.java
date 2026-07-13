@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -31,16 +32,19 @@ public class UserManager {
         }
     }
 
-    private void validateEmailPrefix(String prefix){
-        if(prefix == null || prefix.isEmpty()){
-            throw new IllegalArgumentException("Email prefix cannot be empty.");
+    private void validateEmail(String email){
+        if(email == null || email.trim().isEmpty()){
+            throw new IllegalArgumentException("Email cannot be empty.");
         }
-        if(!prefix.matches("^[a-zA-Z0-9]+$")){
-            throw new IllegalArgumentException("Email prefix can only contain letters and numbers.");
+        
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        
+        if(!email.matches(emailRegex)){
+            throw new IllegalArgumentException("Invalid email format.");
         }
     }
 
-    private void validatePassword(String password) {
+    private void validatePassword(String password){
         if(password == null || password.isEmpty()){
             throw new IllegalArgumentException("Password cannot be empty.");
         }
@@ -79,22 +83,22 @@ public class UserManager {
             }
             return hexString.toString();
             
-        } catch (Exception e) {
+        }catch (Exception e) {
             throw new RuntimeException("Error processing password encryption.", e);
         }
     }
 
     // Main methods
 
-    public void signIn(String name, String emailPrefix, String plainPassword){
+    public void signIn(String name, String email, String plainPassword){
         // Validation
         validateName(name);
-        validateEmailPrefix(emailPrefix);
+        validateEmail(email);
         validatePassword(plainPassword);
 
         // Format name and email
         String cleanName = name.trim();
-        String fullEmail = emailPrefix + "@dac.unicamp.br";
+        String fullEmail = email.trim();
 
         // Generate hash
         String passwordHash = generateHash(fullEmail, plainPassword);
@@ -134,7 +138,7 @@ public class UserManager {
             emailNode.appendChild(doc.createTextNode(fullEmail));
             userElement.appendChild(emailNode);
 
-            Element nameNode = doc.createElement("Nome");
+            Element nameNode = doc.createElement("Name");
             nameNode.appendChild(doc.createTextNode(cleanName));
             userElement.appendChild(nameNode);
 
@@ -142,17 +146,29 @@ public class UserManager {
             hashNode.appendChild(doc.createTextNode(passwordHash));
             userElement.appendChild(hashNode);
 
+            Element favorites = doc.createElement("Favorites");
+            Element following = doc.createElement("Following");
+            Element tags = doc.createElement("Tags");
+
+            userElement.appendChild(favorites);
+            userElement.appendChild(following);
+            userElement.appendChild(tags);
+
             // Attach the new user to the root
             rootElement.appendChild(userElement);
 
             // Write the updated document back to the file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(xmlFile);
             transformer.transform(source, result);
 
-        } catch (Exception e) {
+        }catch (IllegalArgumentException e){
+            throw e;
+        }catch(Exception e) {
             throw new RuntimeException("Error writing user to XML file.", e);
         }
     }
@@ -189,7 +205,9 @@ public class UserManager {
                     break; 
                 }
             }
-        }catch(Exception e) {
+        }catch (IllegalArgumentException e){
+            throw e;
+        }catch(Exception e){
             throw new RuntimeException("Error reading from XML file.", e);
         }
 
@@ -205,7 +223,7 @@ public class UserManager {
         }
 
         // Return the authenticated User object (without the password)
-        User loggedInUser = new User(fullEmail, savedName);
+        User loggedInUser = new Student(fullEmail, savedName);
         
         return loggedInUser;
     }
