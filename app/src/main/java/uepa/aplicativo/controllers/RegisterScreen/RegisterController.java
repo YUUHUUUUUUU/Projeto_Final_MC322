@@ -26,6 +26,16 @@ public class RegisterController {
 
     @FXML
     void Register(ActionEvent event) {
+        String completeName = completeNameField.getText();
+        String fullEmail = emailField.getText();
+        String password = passwordField.getText();
+        String confirmedPassword = confirmPasswordField.getText();
+        try{
+            UserManager.signIn(completeName, fullEmail, password, confirmedPassword);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
 }
