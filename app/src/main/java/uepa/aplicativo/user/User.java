@@ -1,6 +1,8 @@
 package uepa.aplicativo.user;
 import java.util.List;
 
+import javax.swing.text.html.HTML.Tag;
+
 import uepa.aplicativo.constants.*;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ public class User{//abstract?
     private String name;
     private String email;
     private String password;
-    private List<Tag> followed_tags = new ArrayList<Tag>();
+    private List<Tag> followedTags = new ArrayList<Tag>();
     private int id;
     // private List<Extracurricular> favorites = new ArrayList<Extracurricular>();
     // private List<Extracurricular> followed = new ArrayList<Extracurricular>();
@@ -84,7 +86,7 @@ public class User{//abstract?
     }
 
     public List<Tag> getTags(){
-        return this.followed_tags;
+        return this.followedTags;
     }
 
     // public List<Extracurricular> getFavorites(){
