@@ -13,6 +13,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import uepa.aplicativo.Exceptions.EmailIllegalCharacterException;
+import uepa.aplicativo.Exceptions.EmailLocalPartCanNotBeEmpty;
+import uepa.aplicativo.Exceptions.EmailLocalPartIsTooLong;
+import uepa.aplicativo.Exceptions.InvalidEmailException;
 import uepa.aplicativo.Exceptions.PasswordsDoNotMatchException;
 
 public class UserManager {
@@ -37,65 +41,85 @@ public class UserManager {
         }
     }
 
-    private static void validateEmailPrefix(String prefix){
-        if(prefix == null || prefix.isEmpty()){
-            throw new IllegalArgumentException("Email prefix cannot be empty.");
+    private static void validateEmailLocalPart(String fullEmail) throws Exception{
+        
+        /* We verify the position of the @, .indexOf() returns -1 if there is not a match for the char */
+        int atIndex = fullEmail.indexOf('@');
+
+        if(atIndex == -1) {
+            throw new InvalidEmailException("Email is missing '@' character");
         }
-        if(!prefix.matches("^[a-zA-Z0-9]+$")){
-            throw new IllegalArgumentException("Email prefix can only contain letters and numbers.");
+        
+        /* We subdivide the subpart */
+        String localPart = fullEmail.substring(0, atIndex);
+
+        if(localPart.isEmpty()) {
+            throw new InvalidEmailException("Email local part can not be empty");
+        }
+        else if(localPart.length() > 64) {
+            throw new InvalidEmailException("Email local part exceeds 64 characters");
+        }
+        else if(!localPart.matches("^[a-zA-Z0-9._%+-]+$")) {
+            throw new InvalidEmailException("Email local part contains illegal character: " + localPart);
         }
     }
 
-    private static void validatePassword(String password) {
-        if(password == null || password.isEmpty()){
-            throw new IllegalArgumentException("Password cannot be empty.");
-        }
-        if(password.matches(".*\\s.*")){
-            throw new IllegalArgumentException("Password cannot contain spaces.");
-        }
-        if(password.length() < 8){
-            throw new IllegalArgumentException("Password must be at least 8 characters long.");
-        }
-        if(!password.matches(".*[A-Z].*")){
-            throw new IllegalArgumentException("Password must contain at least one uppercase letter.");
-        }
-        if(!password.matches(".*[a-z].*")){
-            throw new IllegalArgumentException("Password must contain at least one lowercase letter.");
-        }
-        if(!password.matches(".*[^a-zA-Z0-9].*")){
-            throw new IllegalArgumentException("Password must contain at least one special symbol.");
-        }
+    private static void validateEmail(String fullEmail){
+        validateEmailLocalPart(fullEmail);
     }
 
-    /** 
-     * Represents a simple method that compares the String of two passwords.
-     * 
-     * <p>
-     * This method is used to compare if the password and the confirmation of the password
-     * in the RegisterPage matches.
-     * </p>
-     * 
-     * @param plainPassword plain String password, in other others, not encrypted.
-     * @param plainConfirmedPassword plain String confirmation of the password, in other others, not encrypted.
-     * 
-     * @throws PasswordsDoNotMatchException
-     */
-    private static void comparePasswords(String plainPassword,
-         String plainConfirmedPassword) throws PasswordsDoNotMatchException {
-        if(!plainPassword.equals(plainConfirmedPassword)) {
-            throw new PasswordsDoNotMatchException();
-        }
-    }
 
-    // Criptography
 
-    private static String generateHash(String email, String plainPassword) {
-        try {
-            String textToHash = email + plainPassword;
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest(textToHash.getBytes(StandardCharsets.UTF_8));
-            
-            StringBuilder hexString = new StringBuilder();
+    
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
             for (byte b : hashBytes) {
                 String hex = Integer.toHexString(0xff & b);
                 if (hex.length() == 1) {
@@ -112,12 +136,12 @@ public class UserManager {
 
     // Main methods
 
-    public static void signIn(String name, String emailPrefix,
+    public static void signIn(String name, String fullEmail,
          String plainPassword, String plainConfirmedPassword) throws Exception{
 
         // Validation
         validateName(name);
-        validateEmailPrefix(emailPrefix);
+        validateEmailPrefix(email);
         validatePassword(plainPassword);
         validatePassword(plainConfirmedPassword);
         comparePasswords(plainPassword, plainConfirmedPassword);
@@ -125,7 +149,6 @@ public class UserManager {
 
         // Format name and email
         String cleanName = name.trim();
-        String fullEmail = emailPrefix + "@dac.unicamp.br";
 
         // Generate hash
         String passwordHash = generateHash(fullEmail, plainPassword);
