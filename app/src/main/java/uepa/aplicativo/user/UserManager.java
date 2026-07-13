@@ -13,6 +13,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import uepa.aplicativo.Exceptions.PasswordsDoNotMatchException;
+
 public class UserManager {
     
     /* We don't want to instantiate it, only use its methods */
@@ -65,12 +67,23 @@ public class UserManager {
         }
     }
 
-    private static boolean comparePasswords(String plainPassword, String plainConfirmedPassword) {
-        if(plainPassword == plainConfirmedPassword) {
-            return true;
-        }
-        else {
-            return false;
+    /** 
+     * Represents a simple method that compares the String of two passwords.
+     * 
+     * <p>
+     * This method is used to compare if the password and the confirmation of the password
+     * in the RegisterPage matches.
+     * </p>
+     * 
+     * @param plainPassword plain String password, in other others, not encrypted.
+     * @param plainConfirmedPassword plain String confirmation of the password, in other others, not encrypted.
+     * 
+     * @throws PasswordsDoNotMatchException
+     */
+    private static void comparePasswords(String plainPassword,
+         String plainConfirmedPassword) throws PasswordsDoNotMatchException {
+        if(!plainPassword.equals(plainConfirmedPassword)) {
+            throw new PasswordsDoNotMatchException();
         }
     }
 
@@ -100,7 +113,7 @@ public class UserManager {
     // Main methods
 
     public static void signIn(String name, String emailPrefix,
-         String plainPassword, String plainConfirmedPassword){
+         String plainPassword, String plainConfirmedPassword) throws Exception{
 
         // Validation
         validateName(name);
