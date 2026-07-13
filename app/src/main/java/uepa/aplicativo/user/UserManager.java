@@ -13,11 +13,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import uepa.aplicativo.Exceptions.EmailIllegalCharacterException;
-import uepa.aplicativo.Exceptions.EmailLocalPartCanNotBeEmpty;
-import uepa.aplicativo.Exceptions.EmailLocalPartIsTooLong;
 import uepa.aplicativo.Exceptions.InvalidEmailException;
-import uepa.aplicativo.Exceptions.PasswordsDoNotMatchException;
 import uepa.aplicativo.Exceptions.InvalidPasswordException;
 
 public class UserManager {
