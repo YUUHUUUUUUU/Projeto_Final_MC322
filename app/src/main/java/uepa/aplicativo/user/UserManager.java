@@ -65,6 +65,15 @@ public class UserManager {
         }
     }
 
+    private static boolean comparePasswords(String plainPassword, String plainConfirmedPassword) {
+        if(plainPassword == plainConfirmedPassword) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // Criptography
 
     private static String generateHash(String email, String plainPassword) {
@@ -90,11 +99,16 @@ public class UserManager {
 
     // Main methods
 
-    public static void signIn(String name, String emailPrefix, String plainPassword){
+    public static void signIn(String name, String emailPrefix,
+         String plainPassword, String plainConfirmedPassword){
+
         // Validation
         validateName(name);
         validateEmailPrefix(emailPrefix);
         validatePassword(plainPassword);
+        validatePassword(plainConfirmedPassword);
+        comparePasswords(plainPassword, plainConfirmedPassword);
+        
 
         // Format name and email
         String cleanName = name.trim();
