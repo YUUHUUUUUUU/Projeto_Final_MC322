@@ -29,6 +29,8 @@ public class SceneManager {
      *  javafx.animation.KeyFrame has finished, and other such usages.
      * @param fxmlPath represents the path to the fxml file relative to /app/src/main/resources/
      * @param pageTitle represents the title that will show on the top of the new page
+     * 
+     * @author Enzo Farina Mullis
      */
     public static void switchScene(ActionEvent event, String fxmlPath, String pageTitle) {
         try{
