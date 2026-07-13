@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import javafx.scene.text.Font;
 
 public class FontLoader {
+    /* We don't want to instantiate this Object, only use its methods */
+    private FontLoader() {}
 
     /**
      * Represents the actual method of loading fonts, this method is the
@@ -14,9 +16,9 @@ public class FontLoader {
      * 
      * @author Enzo Farina Mullis
      */
-    private void tryLoadingFont(String path){
+    private static void tryLoadingFont(String path){
         try{
-            Font customFont = Font.loadFont(getClass().getResourceAsStream(path), 12);
+            Font customFont = Font.loadFont(FontLoader.class.getResourceAsStream(path), 12);
             if(customFont == null) {
                 throw new FileNotFoundException("Font not found: " + path);
             }
@@ -36,7 +38,7 @@ public class FontLoader {
      * 
      * @author Enzo Farina Mullis
      */
-    public void loadFonts(){
+    public static void loadFonts(){
         
         tryLoadingFont("/fonts/Manrope-Bold.ttf");
         tryLoadingFont("/fonts/Manrope-ExtraBold.ttf");

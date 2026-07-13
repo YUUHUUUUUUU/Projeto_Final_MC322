@@ -1,5 +1,7 @@
 package uepa.aplicativo;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,11 +24,10 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        FontLoader fontLoader = new FontLoader();
-        fontLoader.loadFonts();
+        FontLoader.loadFonts();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/RegisterScreen/RegisterScreen.fxml")); 
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen/LoginScreen.fxml")); 
             Parent root = fxmlLoader.load();
             Scene tela = new Scene(root);
             
@@ -38,8 +39,9 @@ public class App extends Application {
             primaryStage.setResizable(true);
             primaryStage.show();
         }
-        catch (Exception e) {
-            System.out.println("Erro1");
+        catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
