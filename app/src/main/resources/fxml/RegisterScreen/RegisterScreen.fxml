@@ -122,7 +122,7 @@
                   <Insets bottom="-15.0" />
                </VBox.margin>
             </Button>
-            <Label text="Error">
+            <Label text="" fx:id="errorLabel">
                <styleClass>
                   <String fx:value="error-text-color" />
                   <String fx:value="error-text-font" />

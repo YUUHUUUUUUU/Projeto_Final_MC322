@@ -3,8 +3,10 @@ package uepa.aplicativo.controllers.RegisterScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.user.UserManager;
 
 public class RegisterController {
@@ -17,6 +19,9 @@ public class RegisterController {
 
     @FXML
     private TextField emailField;
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private PasswordField passwordField;
@@ -35,6 +40,7 @@ public class RegisterController {
         }
         catch(Exception e) {
             System.out.println(e);
+            SceneManager.showErrorMessage(errorLabel, e);
         }
     }
 

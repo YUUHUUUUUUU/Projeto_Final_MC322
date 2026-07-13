@@ -3,6 +3,7 @@ package uepa.aplicativo.controllers.LoginScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import uepa.aplicativo.user.UserManager;
@@ -13,6 +14,9 @@ public class LoginController {
 
     @FXML
     private TextField emailField;
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private Button loginButton;
@@ -29,6 +33,7 @@ public class LoginController {
         }
         catch (Exception e) {
             System.out.println(e);
+            SceneManager.showErrorMessage(errorLabel, e);
         }
     }
 

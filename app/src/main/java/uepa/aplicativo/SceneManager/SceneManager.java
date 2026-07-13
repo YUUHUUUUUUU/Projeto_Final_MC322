@@ -2,14 +2,15 @@ package uepa.aplicativo.SceneManager;
 
 import java.io.IOException;
 
-import javax.swing.Action;
-
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import uepa.aplicativo.loaders.FontLoader;
 
 public class SceneManager {
@@ -112,5 +113,18 @@ public class SceneManager {
             System.out.println(e);
             e.printStackTrace();
         }
+    }
+
+    public static void showErrorMessage(Label errorLabel, Exception exception) {
+        String message = exception.getMessage();
+        errorLabel.setVisible(true);
+        errorLabel.setText(message);
+        errorLabel.setOpacity(1);
+
+        FadeTransition fade = new FadeTransition(Duration.millis(5000), errorLabel);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.setOnFinished(e -> {errorLabel.setVisible(false);});
+        fade.play();
     }
 }
