@@ -15,11 +15,15 @@ import org.w3c.dom.NodeList;
 
 public class UserManager {
     
+    /* We don't want to instantiate it, only use its methods */
+    private UserManager() {}
+
+
     private static String XML_FILE = "users.xml";
 
     // Validation Methods
 
-    private void validateName(String name){
+    private static void validateName(String name){
         if(name == null || name.trim().isEmpty()){
             throw new IllegalArgumentException("Name cannot be empty.");
         }
@@ -31,7 +35,7 @@ public class UserManager {
         }
     }
 
-    private void validateEmailPrefix(String prefix){
+    private static void validateEmailPrefix(String prefix){
         if(prefix == null || prefix.isEmpty()){
             throw new IllegalArgumentException("Email prefix cannot be empty.");
         }
@@ -40,7 +44,7 @@ public class UserManager {
         }
     }
 
-    private void validatePassword(String password) {
+    private static void validatePassword(String password) {
         if(password == null || password.isEmpty()){
             throw new IllegalArgumentException("Password cannot be empty.");
         }
@@ -63,7 +67,7 @@ public class UserManager {
 
     // Criptography
 
-    private String generateHash(String email, String plainPassword) {
+    private static String generateHash(String email, String plainPassword) {
         try {
             String textToHash = email + plainPassword;
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -86,7 +90,7 @@ public class UserManager {
 
     // Main methods
 
-    public void signIn(String name, String emailPrefix, String plainPassword){
+    public static void signIn(String name, String emailPrefix, String plainPassword){
         // Validation
         validateName(name);
         validateEmailPrefix(emailPrefix);
@@ -157,7 +161,7 @@ public class UserManager {
         }
     }
 
-    public User login(String fullEmail, String typedPassword) {
+    public static User login(String fullEmail, String typedPassword) {
         String savedHash = null;
         String savedName = null;
         boolean userFound = false;
