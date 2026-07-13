@@ -184,14 +184,25 @@ public class UserManager {
      * @throws PasswordsDoNotMatchException
      */
     private static void comparePasswords(String plainPassword,
-         String plainConfirmedPassword) throws PasswordsDoNotMatchException {
+         String plainConfirmedPassword) throws InvalidPasswordException {
+
         if(!plainPassword.equals(plainConfirmedPassword)) {
-            throw new PasswordsDoNotMatchException();
+            throw new InvalidPasswordException("Passwords does not match");
         }
     }
 
-    private static void validatePassword(String plainPassword, String plainConfirmedPassword) {
-        
+    /**
+     * Represents a method to validate a password during the register of an account.
+     * 
+     * @param plainPassword plain password String
+     * @param plainConfirmedPassword plain password String
+     * @throws InvalidPasswordException
+     */
+    private static void validatePassword(String plainPassword,
+         String plainConfirmedPassword) throws InvalidPasswordException {
+        validatePasswordSyntax(plainPassword);
+        validatePasswordSyntax(plainConfirmedPassword);
+        comparePasswords(plainPassword, plainConfirmedPassword);
     }
 
 
@@ -228,10 +239,7 @@ public class UserManager {
         // Validation
         validateName(name);
         validateEmail(fullEmail);
-        validatePassword(plainPassword);
-        validatePassword(plainConfirmedPassword);
-        comparePasswords(plainPassword, plainConfirmedPassword);
-        
+        validatePassword(plainPassword, plainConfirmedPassword);
 
         // Format name and email
         String cleanName = name.trim();
