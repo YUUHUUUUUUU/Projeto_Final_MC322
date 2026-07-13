@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uepa.aplicativo.loaders.FontLoader;
 
 public class SceneManager {
 
@@ -60,6 +61,48 @@ public class SceneManager {
             stage.setScene(screen);
             stage.setResizable(true);
             stage.show();
+        }
+        catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        catch (ClassCastException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Represents the method that initiates the first Scene
+     * 
+     * <p>
+     * This method is important because we encapsulates the implementation of the
+     * initiation of the first Scene from main.
+     * </p>
+     * 
+     * @param primaryStage the primary stage for this application, onto which the application scene can be set.
+     *  Applications may create other stages, if needed, but they will not be primary stages.
+     * @param fxmlPath represents the path to the fxml file relative to /app/src/main/resources/
+     * @param pageTitle represents the title that will show on the top of the new page
+     *
+     * 
+     * @author Enzo Farina Mullis
+     */
+    public static void initializeFirstScene(Stage primaryStage, String fxmlPath, String pageTitle) {
+        FontLoader.loadFonts();
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath)); 
+            Parent root = fxmlLoader.load();
+            Scene screen = new Scene(root);
+            
+            root.requestFocus();
+
+            primaryStage.setMaximized(true);
+            primaryStage.setTitle(pageTitle);
+            primaryStage.setScene(screen);
+            primaryStage.setResizable(true);
+            primaryStage.show();
         }
         catch (IOException e) {
             System.out.println(e);
