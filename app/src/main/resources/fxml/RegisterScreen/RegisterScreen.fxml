@@ -122,6 +122,19 @@
                   <Insets bottom="-15.0" />
                </VBox.margin>
             </Button>
+            <Label text="Error">
+               <styleClass>
+                  <String fx:value="error-text-color" />
+                  <String fx:value="error-text-font" />
+                  <String fx:value="font-size-13" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
          </children>
          <padding>
             <Insets bottom="20.0" />

@@ -10,6 +10,14 @@
     -fx-font-family: "Manrope Bold";
 }
 
+.error-text-color {
+    -fx-text-fill: #FF3333;
+}
+
+.error-text-font {
+    -fx-font-family: "Manrope Regular";
+}
+
 .footer-text {
     -fx-text-fill: #1d1d1f;
     -fx-font-family: "Manrope Regular";
