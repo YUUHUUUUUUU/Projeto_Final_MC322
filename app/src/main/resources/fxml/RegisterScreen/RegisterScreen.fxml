@@ -97,8 +97,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="emailField1" prefHeight="28.0" prefWidth="300.0" promptText="Nome Completo" styleClass="fields" GridPane.hgrow="ALWAYS" />
-                        <TextField fx:id="emailField3" prefHeight="28.0" prefWidth="300.0" promptText="nome@exemplo.com" styleClass="fields" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                        <TextField fx:id="completeNameField" prefHeight="28.0" prefWidth="300.0" promptText="Nome Completo" styleClass="fields" GridPane.hgrow="ALWAYS" />
+                        <TextField fx:id="emailField" prefHeight="28.0" prefWidth="300.0" promptText="nome@exemplo.com" styleClass="fields" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="10.0" prefHeight="20.0" prefWidth="400.0" GridPane.rowIndex="1">
@@ -111,8 +111,8 @@
                         <RowConstraints maxHeight="79.0" minHeight="0.0" prefHeight="24.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <PasswordField fx:id="passwordField" prefHeight="28.0" prefWidth="300.0" promptText="Confirmar senha" styleClass="fields" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
-                        <PasswordField fx:id="passwordField1" prefHeight="28.0" prefWidth="300.0" promptText="Senha" styleClass="fields" GridPane.hgrow="ALWAYS" />
+                        <PasswordField fx:id="confirmPasswordField" prefHeight="28.0" prefWidth="300.0" promptText="Confirmar senha" styleClass="fields" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <PasswordField fx:id="passwordField" prefHeight="28.0" prefWidth="300.0" promptText="Senha" styleClass="fields" GridPane.hgrow="ALWAYS" />
                      </children>
                   </GridPane>
                </children>

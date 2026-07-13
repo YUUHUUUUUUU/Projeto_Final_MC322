@@ -5,27 +5,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import uepa.aplicativo.user.UserManager;
 
 public class RegisterController {
 
     @FXML
-    private TextField emailField1;
+    private TextField completeNameField;
 
     @FXML
-    private TextField emailField3;
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private TextField emailField;
 
     @FXML
     private PasswordField passwordField;
-
-    @FXML
-    private PasswordField passwordField1;
 
     @FXML
     private Button registerButton;
 
     @FXML
     void Register(ActionEvent event) {
-
     }
 
 }
