@@ -41,7 +41,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css, @../../css/LoginScreen/headers.css, @../../css/LoginScreen/fields.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
+<VBox style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/LoginScreen/login-button.css, @../../css/LoginScreen/headers.css, @../../css/LoginScreen/fields.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.LoginScreen.LoginController">
   <children>
       <VBox>
          <children>

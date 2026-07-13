@@ -54,12 +54,12 @@ public class SceneManager {
              */
             Stage stage = (Stage) currentScene.getWindow();
 
-            /* We made a standart configuration */
+            /* We made a standard configuration */
             root.requestFocus();
-            stage.setMaximized(true);
             stage.setTitle(pageTitle);
             stage.setScene(screen);
             stage.setResizable(true);
+            stage.setMaximized(true);
             stage.show();
         }
         catch (IOException e) {

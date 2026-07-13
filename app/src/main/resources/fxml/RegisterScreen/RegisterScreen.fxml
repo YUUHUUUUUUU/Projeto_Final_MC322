@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/RegisterScreen/register-button.css, @../../css/RegisterScreen/headers.css, @../../css/RegisterScreen/fields.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.RegisterScreen.RegisterController">
+<VBox style="-fx-background-color: #F5F5F7;" stylesheets="@../../css/RegisterScreen/register-button.css, @../../css/RegisterScreen/headers.css, @../../css/RegisterScreen/fields.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.RegisterScreen.RegisterController">
   <children>
       <VBox>
          <children>
