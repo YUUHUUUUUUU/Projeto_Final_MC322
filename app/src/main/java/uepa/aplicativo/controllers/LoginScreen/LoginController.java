@@ -1,13 +1,13 @@
 package uepa.aplicativo.controllers.LoginScreen;
 
-import javax.print.DocFlavor.URL;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import uepa.aplicativo.user.UserManager;
+
+import uepa.aplicativo.SceneManager.SceneManager;
 
 public class LoginController {
 
@@ -36,7 +36,9 @@ public class LoginController {
 
     @FXML
     void RedirectToRegister(ActionEvent event) {
-        
+        String fxmlPath = "/fxml/RegisterScreen/RegisterScreen.fxml";
+        String pageTitle = "Register Screen";
+        SceneManager.switchScene(event, fxmlPath, pageTitle);
     }
 
 }
