@@ -25,9 +25,7 @@ public class LoginController {
         try {
             String email = emailField.getText();
             String password = passwordField.getText();
-            UserManager userManager = new UserManager();
-
-            userManager.login(email, password);
+            UserManager.login(email, password);
         }
         catch (Exception e) {
             System.out.println(e);
