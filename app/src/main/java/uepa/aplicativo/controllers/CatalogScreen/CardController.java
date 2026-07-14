@@ -2,6 +2,7 @@ package uepa.aplicativo.controllers.CatalogScreen;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -26,8 +27,12 @@ public class CardController {
     private Label finalEnrollmentDate;
 
     public void setData(String name, String description,
-         String initialEnrollmenteDate, String finalEnrollmentDate) {
-
+         String initialEnrollmenteDate, String finalEnrollmentDate, Image image) {
+            setName(name);
+            setDescription(description);
+            setInitialEnrollmentDate(initialEnrollmenteDate);
+            setFinalEnrollmentDate(finalEnrollmentDate);
+            setImage(image);
     }
 
     private void setName(String name) {
@@ -42,5 +47,7 @@ public class CardController {
     private void setFinalEnrollmentDate(String finalEnrollmentDate) {
         this.setFinalEnrollmentDate(finalEnrollmentDate);
     }
-    private void setImage() {}
+    private void setImage(Image image) {
+        this.image.setImage(image);
+    }
 }
