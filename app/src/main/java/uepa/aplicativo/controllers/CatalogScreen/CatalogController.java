@@ -56,7 +56,7 @@ public class CatalogController implements Initializable {
             Extracurricular extra2 = new StudentAssociation("Extra2", "Desc2");
 
             extracurricularList.add(extra1);
-            extracurricularList.add(extra1);
+            extracurricularList.add(extra2);
 
             /* we load the card */
             if(!extracurricularList.isEmpty()){

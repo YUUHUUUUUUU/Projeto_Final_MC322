@@ -5,17 +5,31 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 import uepa.aplicativo.controllers.CatalogScreen.CardController;
+import uepa.aplicativo.loaders.loadedData.LoadedCard;
 
 public class CatalogCardLoader {
      
     private CatalogCardLoader() {}
 
-    public static HBox loadCatalogCard() throws Exception{
+    public static LoadedCard loadCatalogCard() throws Exception{
+
+        /* We will need to save the arguments of two parameters
+         * the first one is the HBox of the card,
+         * and the other one is its Controller (CardController).
+         * This will all be saved in LoadedCard, a class created
+         * just to save these arguments.
+         * 
+         * The HBox we will use to add the "card" to the catalog (VBox)
+         * and the Controller to edit the information for each "card".
+         */
+        LoadedCard loadedCard;
         String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath)); 
-            HBox card = fxmlLoader.load();
-            return card;
+            HBox box = fxmlLoader.load();
+            CardController controller = fxmlLoader.getController();
+            loadedCard = new LoadedCard(box, controller);
+            return loadedCard;
         }
         catch (IOException e) {
             System.out.println(e);
@@ -27,11 +41,5 @@ public class CatalogCardLoader {
             e.printStackTrace();
             throw e;
         }
-    }
-
-    public static CardController getController() {
-        String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath));
-        return fxmlLoader.getController();
     }
 }
