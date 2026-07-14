@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public abstract class Extracurricular implements Notifiable,Favoritable {
     private String name;
     private List<Student> studentsFollowing = new ArrayList<Student>();
-    private List<Tag> tags = new ArrayList<Tag>();
+    //private List<Tag> tags = new ArrayList<Tag>();
     private boolean openToWork;
     private String description;
     public Staff moderator;
@@ -56,8 +56,12 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
         return openToWork;
     }
 
-    public List<Tag> getListTags(){
-        return this.tags;
+//    public List<Tag> getListTags(){
+//        return this.tags;
+//    }
+
+    public Image getLogo() {
+        return photoGallery.getLogo();
     }
 
     public boolean open_to_work(){
