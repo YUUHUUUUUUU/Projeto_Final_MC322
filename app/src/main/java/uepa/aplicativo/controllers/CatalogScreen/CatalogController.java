@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import uepa.aplicativo.loaders.CatalogCardLoader;
+import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.extracurricular.StudentAssociation;
 
@@ -63,13 +64,17 @@ public class CatalogController implements Initializable {
                 for(Extracurricular extra : extracurricularList) {
 
                     /* Load a single default card */
-                    HBox card = CatalogCardLoader.loadCatalogCard();
+                    LoadedCard loadedCard = CatalogCardLoader.loadCatalogCard();
 
                     /* Get the card controller */
-                    CardController controller = CatalogCardLoader.getController();
+                    CardController controller = loadedCard.getController();
+                    HBox card = loadedCard.getRoot();
 
                     if(controller == null) {
                         throw new Exception("Controller can not be null");
+                    }
+                    if (card == null) {
+                        throw new Exception("Card can not be null");
                     }
                     /* Fill the card with the extracurricular data */
                     String name = extra.getName();
