@@ -32,10 +32,10 @@ public class CardController {
     private Label finalEnrollmentDate;
 
     public void setData(String name, String description,
-         String initialEnrollmenteDate, String finalEnrollmentDate, Image image) {
+         String initialEnrollmentDate, String finalEnrollmentDate, Image image) {
             setName(name);
             setDescription(description);
-            setInitialEnrollmentDate(initialEnrollmenteDate);
+            setInitialEnrollmentDate(initialEnrollmentDate);
             setFinalEnrollmentDate(finalEnrollmentDate);
             setImage(image);
     }
@@ -50,7 +50,7 @@ public class CardController {
         this.initialEnrollmentDate.setText(initialEnrollmentDate);
     }
     private void setFinalEnrollmentDate(String finalEnrollmentDate) {
-        this.setFinalEnrollmentDate(finalEnrollmentDate);
+        this.finalEnrollmentDate.setText(finalEnrollmentDate);
     }
     private void setImage(Image image) {
         this.image.setImage(image);
