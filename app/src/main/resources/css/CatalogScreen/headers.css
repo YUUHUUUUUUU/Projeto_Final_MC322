@@ -1,0 +1,44 @@
+.text-color {
+    -fx-text-fill: #1d1d1f;
+}
+
+.white-text-color {
+    -fx-text-fill: white;
+}
+
+.dead-white-text-color {
+    -fx-text-fill: #D2D2D7;
+}
+
+.header-1 {
+    -fx-font-family: "Manrope ExtraBold";
+}
+
+.header-2 {
+    -fx-font-family: "Manrope Bold";
+}
+
+.error-text-color {
+    -fx-text-fill: #FF3333;
+}
+
+.error-text-font {
+    -fx-font-family: "Manrope Regular";
+}
+
+.footer-text {
+    -fx-text-fill: #1d1d1f;
+    -fx-font-family: "Manrope Regular";
+}
+
+.font-size-36 {
+    -fx-font-size: 36px;
+}
+
+.font-size-18 {
+    -fx-font-size: 18px;
+}
+
+.font-size-13 {
+    -fx-font-size: 13px;
+}
