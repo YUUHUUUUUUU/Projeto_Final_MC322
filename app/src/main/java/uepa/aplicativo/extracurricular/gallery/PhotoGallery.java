@@ -8,11 +8,19 @@ import javafx.scene.image.Image;
 import uepa.aplicativo.loaders.ImageLoader;
 
 public class PhotoGallery {
-    public Image logo;
-    public List<Image> photos;
+    private Image logo;
+    private List<Image> photoBook;
 
     public PhotoGallery () {
         List<Image> photos = new ArrayList<>();
+    }
+
+    public Image getLogo() {
+        return logo;
+    }
+
+    public List<Image> getPhotoBook() {
+        ruturn photoBook;
     }
 
     public void setLogo(String logoPath) throws IllegalArgumentException{
@@ -26,10 +34,11 @@ public class PhotoGallery {
 
     public void addPhoto(String photoPath) {
         try {
-            photos.add(ImageLoader.LoadImage(photoPath));
+            photoBook.add(ImageLoader.LoadImage(photoPath));
         }
         catch (Exception e) {
             System.out.println(e);
         }
     }
+
 }
