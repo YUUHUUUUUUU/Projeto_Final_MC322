@@ -100,9 +100,9 @@
             <Insets top="10.0" />
          </VBox.margin>
          <center>
-            <ScrollPane prefHeight="294.0" prefWidth="1232.0" styleClass="black-background" BorderPane.alignment="CENTER">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="294.0" prefWidth="1232.0" styleClass="black-background" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefHeight="398.0" prefWidth="1229.0" styleClass="black-background">
+                  <VBox prefHeight="472.0" prefWidth="1229.0" styleClass="black-background">
                      <children>
                         <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
                            <children>
@@ -111,7 +111,7 @@
                                     <Image url="@../../logo/UEPA.png" />
                                  </image>
                                  <HBox.margin>
-                                    <Insets left="10.0" top="10.0" />
+                                    <Insets left="5.0" top="10.0" />
                                  </HBox.margin></ImageView>
                               <Pane prefHeight="140.0" prefWidth="945.0">
                                  <children>
