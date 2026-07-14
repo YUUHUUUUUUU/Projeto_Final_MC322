@@ -20,21 +20,6 @@ public class CatalogController implements Initializable {
     private VBox catalog;
 
     @FXML
-    private ImageView cardImage;
-
-    @FXML
-    private Label cardName;
-
-    @FXML
-    private Label cardDescription;
-
-    @FXML
-    private Label cardInitialEnrollmentDate;
-
-    @FXML
-    private Label cardFinalEnrollmentDate;
-
-    @FXML
     public void initialize(URL location, ResourceBundle resources) {
         List<HBox> card = cardInitialize();
         catalog.getChildren().clear();
@@ -67,11 +52,5 @@ public class CatalogController implements Initializable {
 
 
     }
-
-    private void cardSetName() {}
-    private void cardSetDescription() {}
-    private void cardSetInitialEnrollmentDate() {}
-    private void cardSetFinalEnrollmentDate() {}
-    private void cardSetImage() {}
 }
 

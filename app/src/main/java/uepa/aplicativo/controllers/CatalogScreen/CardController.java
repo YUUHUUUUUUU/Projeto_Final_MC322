@@ -11,30 +11,36 @@ public class CardController {
     private HBox card;
 
     @FXML
-    private ImageView cardImage;
+    private ImageView image;
 
     @FXML
-    private Label cardName;
+    private Label name;
 
     @FXML
-    private Label cardDescription;
+    private Label description;
 
     @FXML
-    private Label cardInitialEnrollmentDate;
+    private Label initialEnrollmentDate;
 
     @FXML
-    private Label cardFinalEnrollmentDate;
+    private Label finalEnrollmentDate;
 
     public void setData(String name, String description,
          String initialEnrollmenteDate, String finalEnrollmentDate) {
 
     }
 
-    private void setName() {
-
+    private void setName(String name) {
+        this.name.setText(name);
     }
-    private void setDescription() {}
-    private void setInitialEnrollmentDate() {}
-    private void setFinalEnrollmentDate() {}
+    private void setDescription(String description) {
+        this.description.setText(description);
+    }
+    private void setInitialEnrollmentDate(String initialEnrollmentDate) {
+        this.initialEnrollmentDate.setText(initialEnrollmentDate);
+    }
+    private void setFinalEnrollmentDate(String finalEnrollmentDate) {
+        this.setFinalEnrollmentDate(finalEnrollmentDate);
+    }
     private void setImage() {}
 }
