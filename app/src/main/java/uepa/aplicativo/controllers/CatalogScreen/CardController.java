@@ -45,7 +45,7 @@ public class CardController {
     @FXML
     void clickedSeeMore(ActionEvent event) {
         System.out.println("Hello See More Button");
-        System.out.println(pageLink);
+        System.out.println(extracurricularFxmlPath);
     }
 
     private String extracurricularFxmlPath;
