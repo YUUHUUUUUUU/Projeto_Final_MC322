@@ -45,10 +45,8 @@ public class CardController {
     @FXML
     void clickedSeeMore(ActionEvent event) {
         System.out.println("Hello See More Button");
-        System.out.println(extracurricularFxmlPath);
+        System.out.println(extracurricular.getFxmlPath());
     }
-
-    private String extracurricularFxmlPath;
 
     private Extracurricular extracurricular;
 
@@ -85,9 +83,6 @@ public class CardController {
         this.image.setImage(image);
     }
 
-    private void setExtracurricularPageLink(String fxmlPath) {
-        this.extracurricularFxmlPath = fxmlPath;
-    }
 
     /**
      * Represents the setter for the card Extracurricular

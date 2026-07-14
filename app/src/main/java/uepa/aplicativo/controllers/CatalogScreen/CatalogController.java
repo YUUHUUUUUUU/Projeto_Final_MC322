@@ -50,6 +50,7 @@ public class CatalogController implements Initializable {
         List<HBox> catalogItems = new ArrayList<>();
         try {
             /* Try loading the EXTRAS data base */
+            // we will probably use a static method for this!
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
             /* JUST FOR TESTING: we will be adding manually some extras */

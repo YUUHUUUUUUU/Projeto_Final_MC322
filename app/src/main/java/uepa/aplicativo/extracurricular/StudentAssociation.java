@@ -5,6 +5,7 @@ public class StudentAssociation extends Extracurricular{
 
     public StudentAssociation(String name, String description){
         super(name, description);
+        setFxmlPath("studentAssociationFxmlPath");
     }
 
     public String getInstitute(){

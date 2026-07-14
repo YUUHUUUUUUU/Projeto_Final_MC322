@@ -23,6 +23,8 @@ public abstract class Extracurricular{
     private ZonedDateTime finalEnrollmentDate;
     private PhotoGallery photoGallery;
 
+    private String fxmlPath;
+
     public Extracurricular(String name, String description) {
         setName(name);
         setDescription(description);
@@ -67,6 +69,14 @@ public abstract class Extracurricular{
 
     public Image getLogo() {
         return photoGallery.getLogo();
+    }
+
+    public String getFxmlPath() {
+        return fxmlPath;
+    }
+
+    public void setFxmlPath(String fxmlPath) {
+        this.fxmlPath = fxmlPath;
     }
 
     public boolean open_to_work(){
