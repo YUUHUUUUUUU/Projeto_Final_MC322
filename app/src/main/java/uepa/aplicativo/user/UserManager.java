@@ -13,6 +13,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 
 public class UserManager {
     
@@ -131,8 +132,28 @@ public class UserManager {
                 doc.appendChild(rootElement);
             }
 
+            File countFile = new File("count.xml");
+            Document countDoc = builder.parse(countFile);
+            countDoc.getDocumentElement().normalize();
+            
+            Node userCountNode = countDoc.getElementsByTagName("UserCount").item(0);
+            int currentCount = Integer.parseInt(userCountNode.getTextContent());
+            int nextId = currentCount + 1;
+            
+            // Update the count in memory
+            userCountNode.setTextContent(String.valueOf(nextId));
+            
+            // Save the updated count back to count.xml
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            t.transform(new DOMSource(countDoc), new StreamResult(countFile));
+
             // Create the new <User> element
             Element userElement = doc.createElement("User");
+            
+            Element idNode = doc.createElement("Id");
+            idNode.appendChild(doc.createTextNode(String.valueOf(nextId)));
+            userElement.appendChild(idNode);
 
             Element emailNode = doc.createElement("Email");
             emailNode.appendChild(doc.createTextNode(fullEmail));

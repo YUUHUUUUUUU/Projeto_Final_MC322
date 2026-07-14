@@ -23,6 +23,10 @@ public abstract class User{
         return this.email;
     }
 
+    public void setID(int id){
+        this.id = id;
+    }
+
     public int getID(){
         return this.id;
     }
