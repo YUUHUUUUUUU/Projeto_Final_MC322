@@ -101,7 +101,7 @@
             <Insets top="10.0" />
          </VBox.margin>
          <center>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
                <content>
                   <VBox prefHeight="575.0" prefWidth="1229.0" styleClass="black-background">
                      <children>
@@ -174,7 +174,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </AnchorPane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin></ToggleButton>
@@ -190,9 +190,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -246,8 +246,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -264,9 +267,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -320,8 +323,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -338,9 +344,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -394,8 +400,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -412,9 +421,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -468,8 +477,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -486,9 +498,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -542,8 +554,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -560,9 +575,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -616,8 +631,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -634,9 +652,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -690,8 +708,11 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -708,9 +729,9 @@
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Pane prefHeight="131.0" prefWidth="1575.0">
+                              <AnchorPane>
                                  <children>
-                                    <HBox layoutX="7.0" layoutY="14.0" prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                                        <children>
                                           <VBox prefHeight="120.0" prefWidth="1112.0">
                                              <children>
@@ -764,8 +785,88 @@
                                        </children>
                                     </HBox>
                                  </children>
-                              </Pane>
-                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
