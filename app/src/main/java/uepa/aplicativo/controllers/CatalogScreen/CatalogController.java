@@ -83,6 +83,7 @@ public class CatalogController implements Initializable {
                     String finalEnrollmentDate = "DD/MM/AAAA HH:MM";   // need to add getters
                     Image image = extra.getLogo();
                     controller.setData(name, description, initialEnrollmentDate, finalEnrollmentDate, image);
+                    //controller.setExtracurricularPageLink()
 
                     /* add the card to the list */
                     catalogItems.add(card);

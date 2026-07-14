@@ -48,7 +48,7 @@ public class CardController {
         System.out.println(pageLink);
     }
 
-    private String pageLink;
+    private String extracurricularFxmlPath;
 
     public void setData(String name, String description,
          String initialEnrollmentDate, String finalEnrollmentDate, Image image) {
@@ -57,7 +57,6 @@ public class CardController {
             setInitialEnrollmentDate(initialEnrollmentDate);
             setFinalEnrollmentDate(finalEnrollmentDate);
             setImage(image);
-            pageLink = "LINK_PAGINA";
     }
 
     private void setName(String name) {
@@ -74,6 +73,10 @@ public class CardController {
     }
     private void setImage(Image image) {
         this.image.setImage(image);
+    }
+
+    public void setExtracurricularPageLink(String fxmlPath) {
+        this.extracurricularFxmlPath = fxmlPath;
     }
 
 }
