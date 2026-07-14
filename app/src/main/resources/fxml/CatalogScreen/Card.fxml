@@ -23,7 +23,7 @@
             <children>
             <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
                 <children>
-                    <VBox prefHeight="120.0" prefWidth="1112.0">
+                    <VBox prefHeight="120.0" prefWidth="971.0">
                         <children>
                         <Label text="Nome" fx:id="name">
                             <styleClass>
@@ -51,7 +51,32 @@
                         <Insets />
                         </HBox.margin>
                     </VBox>
-                    <VBox prefHeight="120.0" prefWidth="454.0">
+                    <VBox prefHeight="120.0" prefWidth="364.0">
+                        <children>
+                        <Label fx:id="intitute" text="Instituto">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-18" />
+                            </styleClass>
+                        </Label>
+                        <Label fx:id="type" text="Tipo">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-13" />
+                            </styleClass>
+                        </Label>
+                        </children>
+                        <padding>
+                        <Insets left="10.0" top="10.0" />
+                        </padding>
+                        <styleClass>
+                        <String fx:value="white-background" />
+                        <String fx:value="background-radius-12" />
+                        </styleClass>
+                    </VBox>
+                    <VBox prefHeight="120.0" prefWidth="216.0">
                         <styleClass>
                         <String fx:value="white-background" />
                         <String fx:value="background-radius-12" />

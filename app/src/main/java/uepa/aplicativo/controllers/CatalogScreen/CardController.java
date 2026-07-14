@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,12 @@ public class CardController {
 
     @FXML
     private Label finalEnrollmentDate;
+
+    @FXML
+    private Label type;
+
+    @FXML
+    private Label institute;
 
     public void setData(String name, String description,
          String initialEnrollmentDate, String finalEnrollmentDate, Image image) {

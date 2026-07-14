@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="1080.0" prefWidth="1920.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CatalogController">
+  <children>
+      <Pane prefHeight="14.0" prefWidth="1280.0" />
+    <MenuBar prefWidth="1280.0" VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../logo/UEPA.png" />
+                     </image></ImageView>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label prefHeight="68.0" prefWidth="362.0" text="Bem Vindo a UEPA">
+                     <styleClass>
+                        <String fx:value="header-1" />
+                        <String fx:value="white-text-color" />
+                     </styleClass>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></Label>
+               </graphic>
+            </Menu>
+         </menus>
+         <styleClass>
+            <String fx:value="header-1" />
+            <String fx:value="font-size-36" />
+            <String fx:value="black-background" />
+            <String fx:value="background-radius-12" />
+         </styleClass>
+    </MenuBar>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button layoutX="1816.0" layoutY="19.0" mnemonicParsing="false" prefHeight="40.0" styleClass="font-size-18" text="Data" />
+            <Button mnemonicParsing="false" prefHeight="40.0" styleClass="font-size-18" text="Tipo">
+               <HBox.margin>
+                  <Insets right="60.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <BorderPane prefHeight="984.0" prefWidth="1920.0">
+         <top>
+            <Pane prefHeight="22.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="22.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="402.0" prefWidth="24.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="402.0" prefWidth="24.0" BorderPane.alignment="CENTER" />
+         </right>
+         <styleClass>
+            <String fx:value="background-radius-12" />
+            <String fx:value="black-background" />
+         </styleClass>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <center>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="catalog" prefHeight="575.0" prefWidth="1229.0" styleClass="black-background">
+                     <children>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin></ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="971.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="364.0">
+                                             <children>
+                                                <Label fx:id="intitute" text="Instituto">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label fx:id="type" text="Tipo">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="216.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton fx:id="seeMoreButton" minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin></ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="1112.0">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="120.0" prefWidth="454.0">
+                                             <styleClass>
+                                                <String fx:value="white-background" />
+                                                <String fx:value="background-radius-12" />
+                                             </styleClass>
+                                             <children>
+                                                <Label text="Inscrições">
+                                                   <styleClass>
+                                                      <String fx:value="header-1" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Abertura:" />
+                                                <Label text="ABERTURA" />
+                                                <Label text="Fechamento:" />
+                                                <Label text="FECHAMENTO" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <ToggleButton minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+               <styleClass>
+                  <String fx:value="scroll-bar" />
+                  <String fx:value="thumb" />
+                  <String fx:value="track" />
+                  <String fx:value="increment-button" />
+                  <String fx:value="increment-arrow" />
+                  <String fx:value="decrement-arrow" />
+                  <String fx:value="decrement-button" />
+                  <String fx:value="black-background" />
+               </styleClass>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+  </children>
+</VBox>
