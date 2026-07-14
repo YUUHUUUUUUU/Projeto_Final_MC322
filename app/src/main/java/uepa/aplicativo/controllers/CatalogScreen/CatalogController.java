@@ -22,10 +22,24 @@ public class CatalogController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        List<HBox> card = cardInitialize();
-        catalog.getChildren().clear();
-        catalog.getChildren().add(card);
-        System.out.println("Hello Catalog!");
+        try {
+            /* We load the list of cards */
+            List<HBox> catalogItems = loadCatalog();
+
+            /* We clear and add each item to the catalog */
+            catalog.getChildren().clear();
+
+            for(HBox card : catalogItems) {
+                catalog.getChildren().add(card);
+            }
+            System.out.println("Hello Catalog!");
+        }
+        catch(Exception e) {
+            System.out.println("Failed to load the Catalog");
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
+        
     }
 
     private List<HBox> loadCatalog() throws Exception{
@@ -53,6 +67,13 @@ public class CatalogController implements Initializable {
                     String finalEnrollmentDate = "DD/MM/AAAA HH:MM";   // need to add getters
                     Image image = extra.getLogo();
                     controller.setData(name, description, initialEnrollmentDate, finalEnrollmentDate, image);
+
+                    /* add the card to the list */
+                    catalogItems.add(card);
+                }
+
+                if(catalogItems.isEmpty()){
+                    throw new Exception("Catalog is empty");
                 }
             }
         }
@@ -60,6 +81,11 @@ public class CatalogController implements Initializable {
             throw new Exception("Failed to load cards", e);
         }
 
+        if(catalogItems.isEmpty()){
+            throw new Exception("Catalog is empty");
+        }
+
+        return catalogItems;
 
     }
 
