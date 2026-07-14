@@ -9,7 +9,7 @@ public class CatalogCardLoader {
      
     private CatalogCardLoader() {}
 
-    public static HBox loadCatalogCard() {
+    public static HBox loadCatalogCard() throws Exception{
         String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath)); 
@@ -19,12 +19,12 @@ public class CatalogCardLoader {
         catch (IOException e) {
             System.out.println(e);
             e.printStackTrace();
-            return null;
+            throw e;
         }
         catch (ClassCastException e) {
             System.out.println(e);
             e.printStackTrace();
-            return null;
+            throw e;
         }
     }
 }
