@@ -46,7 +46,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="1080.0" prefWidth="1920.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="1080.0" prefWidth="1920.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
   <children>
       <Pane prefHeight="14.0" prefWidth="1280.0" />
     <MenuBar prefWidth="1280.0" VBox.vgrow="NEVER">
@@ -100,7 +100,7 @@
             <Insets top="10.0" />
          </VBox.margin>
          <center>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="294.0" prefWidth="1232.0" styleClass="black-background" BorderPane.alignment="CENTER">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
                <content>
                   <VBox prefHeight="575.0" prefWidth="1229.0" styleClass="black-background">
                      <children>
@@ -771,6 +771,10 @@
                      </children>
                   </VBox>
                </content>
+               <styleClass>
+                  <String fx:value="scroll-bar" />
+                  <String fx:value="black-background" />
+               </styleClass>
             </ScrollPane>
          </center>
       </BorderPane>
