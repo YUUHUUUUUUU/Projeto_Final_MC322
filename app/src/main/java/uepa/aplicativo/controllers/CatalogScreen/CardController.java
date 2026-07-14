@@ -1,5 +1,6 @@
 package uepa.aplicativo.controllers.CatalogScreen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -7,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.loaders.CatalogCardLoader;
 
 public class CardController {
     
