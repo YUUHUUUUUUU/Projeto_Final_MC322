@@ -1,5 +1,7 @@
 package uepa.aplicativo.controllers.CatalogScreen;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -49,5 +51,31 @@ public class CardController {
     }
     private void setImage(Image image) {
         this.image.setImage(image);
+    }
+
+    private List<HBox> cardInitialize() throws Exception{
+
+        /* We create our empty catalog list */
+        List<HBox> catalogItems = new ArrayList<>();
+        try {
+            /* Try loading the EXTRAS data base */
+            List<Extracurricular> extracurricularList = new ArrayList<>();
+
+            /* we load the card */
+            for(Extracurricular exta : extracurricularList) {
+
+                /* Load a single default card */
+                HBox card = CatalogCardLoader.loadCatalogCard();
+
+                /* Fill the card */
+            }
+
+
+        }
+        catch(Exception e) {
+            throw new Exception("Failed to load cards", e);
+        }
+
+
     }
 }
