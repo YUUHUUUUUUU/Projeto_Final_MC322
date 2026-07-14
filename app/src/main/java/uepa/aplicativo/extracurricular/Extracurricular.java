@@ -4,15 +4,13 @@ import java.util.List;
 import javafx.scene.image.Image;
 import uepa.aplicativo.constants.*;
 import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
-import uepa.aplicativo.interfaces.Favoritable;
-import uepa.aplicativo.interfaces.Notifiable;
 import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.Student;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
-public abstract class Extracurricular implements Notifiable,Favoritable {
+public abstract class Extracurricular{
     private String name;
     private List<Student> studentsFollowing = new ArrayList<Student>();
     //private List<Tag> tags = new ArrayList<Tag>();
@@ -24,6 +22,13 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
     private ZonedDateTime initialEnrollmentDate;
     private ZonedDateTime finalEnrollmentDate;
     private PhotoGallery photoGallery;
+
+    public Extracurricular(String name, String description) {
+        setName(name);
+        setDescription(description);
+
+        photoGallery = new PhotoGallery("/logo/UEPA.png");
+    }
 
     public String getName(){
         return this.name;

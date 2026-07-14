@@ -29,9 +29,9 @@ public class Student extends User{
         
     }
 
-    public void addExtra(Extracurricular e){
-        following.add(e);
-    }
+    //public void addExtra(Extracurricular e){
+    //    following.add(e);
+    //}
 
     public void logout(){
 

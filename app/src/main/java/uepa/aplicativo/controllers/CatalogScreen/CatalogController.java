@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.extracurricular.StudentAssociation;
 
 public class CatalogController implements Initializable {
 
@@ -50,6 +51,13 @@ public class CatalogController implements Initializable {
             /* Try loading the EXTRAS data base */
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
+            /* JUST FOR TESTING: we will be adding manually some extras */
+            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1");
+            Extracurricular extra2 = new StudentAssociation("Extra2", "Desc2");
+
+            extracurricularList.add(extra1);
+            extracurricularList.add(extra1);
+
             /* we load the card */
             if(!extracurricularList.isEmpty()){
                 for(Extracurricular extra : extracurricularList) {
@@ -60,6 +68,9 @@ public class CatalogController implements Initializable {
                     /* Get the card controller */
                     CardController controller = CatalogCardLoader.getController();
 
+                    if(controller == null) {
+                        throw new Exception("Controller can not be null");
+                    }
                     /* Fill the card with the extracurricular data */
                     String name = extra.getName();
                     String description = extra.getDescription();
@@ -70,10 +81,6 @@ public class CatalogController implements Initializable {
 
                     /* add the card to the list */
                     catalogItems.add(card);
-                }
-
-                if(catalogItems.isEmpty()){
-                    throw new Exception("Catalog is empty");
                 }
             }
         }
