@@ -84,6 +84,8 @@ public class CatalogController implements Initializable {
                     Image image = extra.getLogo();
                     controller.setData(name, description, initialEnrollmentDate, finalEnrollmentDate, image);
                     //controller.setExtracurricularPageLink()
+                    controller.setExtracurricular(extra);
+                    controller.printExtra();
 
                     /* add the card to the list */
                     catalogItems.add(card);

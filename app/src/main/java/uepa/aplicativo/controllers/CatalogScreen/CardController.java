@@ -50,6 +50,8 @@ public class CardController {
 
     private String extracurricularFxmlPath;
 
+    private Extracurricular extracurricular;
+
     public void setData(String name, String description,
          String initialEnrollmentDate, String finalEnrollmentDate, Image image) {
             setName(name);
@@ -77,6 +79,14 @@ public class CardController {
 
     public void setExtracurricularPageLink(String fxmlPath) {
         this.extracurricularFxmlPath = fxmlPath;
+    }
+
+    public void setExtracurricular(Extracurricular extra) {
+        extracurricular = extra;
+    }
+
+    public void printExtra(){
+        System.out.println("Extracurricular successfully loaded: " + extracurricular.getName());
     }
 
 }
