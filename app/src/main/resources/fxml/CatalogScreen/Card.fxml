@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.lang.String?>
 
-<HBox prefHeight="140.0" prefWidth="1229.0" fx:id="card" spacing="10.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<HBox prefHeight="140.0" prefWidth="1229.0" fx:id="card" spacing="10.0" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CardController" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="185.0" fx:id="image" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
             <image>
