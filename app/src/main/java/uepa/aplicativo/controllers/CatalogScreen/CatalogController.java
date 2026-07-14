@@ -27,5 +27,34 @@ public class CatalogController implements Initializable {
         System.out.println("Hello Catalog!");
     }
 
+    private List<HBox> loadCatalog() throws Exception{
+
+        /* We create our empty catalog list */
+        List<HBox> catalogItems = new ArrayList<>();
+        try {
+            /* Try loading the EXTRAS data base */
+            List<Extracurricular> extracurricularList = new ArrayList<>();
+
+            /* we load the card */
+            if(!extracurricularList.isEmpty())
+                for(Extracurricular exta : extracurricularList) {
+
+                    /* Load a single default card */
+                    HBox card = CatalogCardLoader.loadCatalogCard();
+                    CardController cardController =
+                    /* Fill the card */
+                    
+                }
+            }
+
+
+        }
+        catch(Exception e) {
+            throw new Exception("Failed to load cards", e);
+        }
+
+
+    }
+
 }
 
