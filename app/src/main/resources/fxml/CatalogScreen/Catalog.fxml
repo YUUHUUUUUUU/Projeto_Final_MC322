@@ -102,18 +102,50 @@
          <center>
             <ScrollPane prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="1229.0">
+                  <VBox prefHeight="200.0" prefWidth="1229.0" styleClass="black-background">
                      <children>
-                        <HBox prefHeight="144.0" prefWidth="1229.0">
+                        <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="144.0" prefWidth="962.0">
+                              <ImageView fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../logo/UEPA.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin></ImageView>
+                              <Pane prefHeight="192.0" prefWidth="962.0">
                                  <children>
-                                    <Label text="Nome" />
-                                    <Label layoutX="10.0" layoutY="10.0" text="Descrição" />
+                                    <HBox layoutY="10.0">
+                                       <children>
+                                          <VBox prefHeight="120.0" prefWidth="960.0" styleClass="white-background">
+                                             <children>
+                                                <Label text="Nome">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-18" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label text="Descrição">
+                                                   <styleClass>
+                                                      <String fx:value="text-color" />
+                                                      <String fx:value="header-2" />
+                                                      <String fx:value="font-size-13" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
                                  </children>
-                              </VBox>
-                              <ToggleButton mnemonicParsing="false" prefHeight="145.0" prefWidth="149.0" text="ToggleButton" />
+                              </Pane>
+                              <ToggleButton mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" text="ToggleButton">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin></ToggleButton>
                            </children>
                         </HBox>
                      </children>
