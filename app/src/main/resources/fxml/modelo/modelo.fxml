@@ -210,7 +210,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </AnchorPane>
-                              <ToggleButton fx:id="seeMoreButton" minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+                              <ToggleButton fx:id="seeMoreButton" minHeight="120.0" minWidth="120.0" mnemonicParsing="false" onAction="#seeMoreClicked" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin></ToggleButton>

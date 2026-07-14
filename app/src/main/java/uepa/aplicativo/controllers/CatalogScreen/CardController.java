@@ -3,6 +3,7 @@ package uepa.aplicativo.controllers.CatalogScreen;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -38,6 +39,17 @@ public class CardController {
     @FXML
     private Label institute;
 
+    @FXML
+    private Button seeMoreButton;
+
+    @FXML
+    void clickedSeeMore(ActionEvent event) {
+        System.out.println("Hello See More Button");
+        System.out.println(pageLink);
+    }
+
+    private String pageLink;
+
     public void setData(String name, String description,
          String initialEnrollmentDate, String finalEnrollmentDate, Image image) {
             setName(name);
@@ -45,6 +57,7 @@ public class CardController {
             setInitialEnrollmentDate(initialEnrollmentDate);
             setFinalEnrollmentDate(finalEnrollmentDate);
             setImage(image);
+            pageLink = "LINK_PAGINA";
     }
 
     private void setName(String name) {

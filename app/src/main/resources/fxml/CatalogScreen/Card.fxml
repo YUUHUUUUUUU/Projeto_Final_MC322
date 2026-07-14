@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import java.lang.String?>
 
-<HBox prefHeight="140.0" prefWidth="1229.0" fx:id="card" spacing="10.0" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CardController" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="card" prefHeight="140.0" prefWidth="1229.0" spacing="10.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CardController">
     <children>
-        <ImageView fitHeight="185.0" fx:id="image" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="image" fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
             <image>
             <Image url="@../../logo/UEPA.png" />
             </image>
@@ -25,14 +25,14 @@
                 <children>
                     <VBox prefHeight="120.0" prefWidth="971.0">
                         <children>
-                        <Label text="Nome" fx:id="name">
+                        <Label fx:id="name" text="Nome">
                             <styleClass>
                                 <String fx:value="text-color" />
                                 <String fx:value="header-2" />
                                 <String fx:value="font-size-18" />
                             </styleClass>
                         </Label>
-                        <Label text="Descrição" fx:id="description">
+                        <Label fx:id="description" text="Descrição">
                             <styleClass>
                                 <String fx:value="text-color" />
                                 <String fx:value="header-2" />
@@ -88,10 +88,10 @@
                                 <String fx:value="font-size-18" />
                             </styleClass>
                         </Label>
-                        <Label text="Abertura:"/>
-                        <Label text="ABERTURA" fx:id="initialEnrollmentDate"/>
+                        <Label text="Abertura:" />
+                        <Label fx:id="initialEnrollmentDate" text="ABERTURA" />
                         <Label text="Fechamento:" />
-                        <Label text="FECHAMENTO" fx:id="finalEnrollmentDate"/>
+                        <Label fx:id="finalEnrollmentDate" text="FECHAMENTO" />
                         </children>
                         <padding>
                         <Insets left="10.0" top="10.0" />
@@ -104,7 +104,7 @@
             <Insets top="10.0" />
             </HBox.margin>
         </AnchorPane>
-        <Button minHeight="120.0" minWidth="120.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
+        <Button fx:id="seeMoreButton" minHeight="120.0" minWidth="120.0" mnemonicParsing="false" onAction="#clickedSeeMore" prefHeight="120.0" prefWidth="120.0" styleClass="background-radius-12" text="ToggleButton">
             <HBox.margin>
             <Insets top="10.0" />
             </HBox.margin></Button>
