@@ -11,7 +11,8 @@ public class PhotoGallery {
     private Image logo;
     private List<Image> photoBook;
 
-    public PhotoGallery () {
+    public PhotoGallery (String logoPath) {
+        setLogo(logoPath);
         List<Image> photos = new ArrayList<>();
     }
 
