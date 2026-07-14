@@ -20,7 +20,7 @@ public class PhotoGallery {
     }
 
     public List<Image> getPhotoBook() {
-        ruturn photoBook;
+        return photoBook;
     }
 
     public void setLogo(String logoPath) throws IllegalArgumentException{
