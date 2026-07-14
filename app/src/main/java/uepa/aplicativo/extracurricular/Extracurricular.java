@@ -1,7 +1,9 @@
 package uepa.aplicativo.extracurricular;
 import java.util.List;
 
+import javafx.scene.image.Image;
 import uepa.aplicativo.constants.*;
+import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
 import uepa.aplicativo.interfaces.Favoritable;
 import uepa.aplicativo.interfaces.Notifiable;
 import uepa.aplicativo.user.Staff;
@@ -21,6 +23,7 @@ public abstract class Extracurricular implements Notifiable,Favoritable {
     private ZonedDateTime timezone;
     private ZonedDateTime initialEnrollmentDate;
     private ZonedDateTime finalEnrollmentDate;
+    private PhotoGallery photoGallery;
 
     public String getName(){
         return this.name;
