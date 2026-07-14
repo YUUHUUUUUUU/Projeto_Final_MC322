@@ -52,8 +52,16 @@ public class CardController {
 
     private Extracurricular extracurricular;
 
-    public void setData(String name, String description,
-         String initialEnrollmentDate, String finalEnrollmentDate, Image image) {
+    /**
+     * Represents the method that applies the extracurricular data
+     * to the Card
+     */
+    private void applyData() {
+            String name = extracurricular.getName();
+            String description = extracurricular.getDescription();
+            String initialEnrollmentDate = "DD/MM/AAAA HH:MM";
+            String finalEnrollmentDate = "DD/MM//AAAA HH:MM";
+            Image image = extracurricular.getLogo();
             setName(name);
             setDescription(description);
             setInitialEnrollmentDate(initialEnrollmentDate);
@@ -77,16 +85,36 @@ public class CardController {
         this.image.setImage(image);
     }
 
-    public void setExtracurricularPageLink(String fxmlPath) {
+    private void setExtracurricularPageLink(String fxmlPath) {
         this.extracurricularFxmlPath = fxmlPath;
     }
 
-    public void setExtracurricular(Extracurricular extra) {
+    /**
+     * Represents the setter for the card Extracurricular
+     * 
+     * @param extra a Extracurricular
+     */
+    private void setExtracurricular(Extracurricular extra) {
         extracurricular = extra;
     }
 
     public void printExtra(){
         System.out.println("Extracurricular successfully loaded: " + extracurricular.getName());
+    }
+
+    /**
+     * Represents the fully encapsulation of the methods that loads the
+     * extracurricular data into the card
+     * 
+     * <p>
+     * This is important, because we hide the real implementation of
+     * the CatalogController, so the CatalogController just needs to
+     * call the method and not handle with the implementation
+     */
+    public void loadExtracurricular(Extracurricular extra) {
+        setExtracurricular(extra);
+        applyData();
+        printExtra();
     }
 
 }

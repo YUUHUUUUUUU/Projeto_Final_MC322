@@ -76,16 +76,8 @@ public class CatalogController implements Initializable {
                     if (card == null) {
                         throw new Exception("Card can not be null");
                     }
-                    /* Fill the card with the extracurricular data */
-                    String name = extra.getName();
-                    String description = extra.getDescription();
-                    String initialEnrollmentDate = "DD/MM/AAAA HH:MM"; // need to add getters
-                    String finalEnrollmentDate = "DD/MM/AAAA HH:MM";   // need to add getters
-                    Image image = extra.getLogo();
-                    controller.setData(name, description, initialEnrollmentDate, finalEnrollmentDate, image);
-                    //controller.setExtracurricularPageLink()
-                    controller.setExtracurricular(extra);
-                    controller.printExtra();
+                    /* Load the extracurricular into the card */
+                    controller.loadExtracurricular(extra);
 
                     /* add the card to the list */
                     catalogItems.add(card);
