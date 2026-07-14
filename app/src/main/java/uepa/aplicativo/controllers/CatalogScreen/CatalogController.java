@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import uepa.aplicativo.loaders.CatalogCardLoader;
 
 public class CatalogController implements Initializable {
 
@@ -14,6 +16,9 @@ public class CatalogController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        HBox card = CatalogCardLoader.loadCatalogCard();
+        catalog.getChildren().clear();
+        catalog.getChildren().add(card);
         System.out.println("Hello Catalog!");
     }
 

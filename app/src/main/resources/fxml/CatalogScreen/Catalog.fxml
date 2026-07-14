@@ -103,7 +103,7 @@
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="294.0" prefWidth="1232.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefHeight="575.0" prefWidth="1229.0" styleClass="black-background">
+                  <VBox prefHeight="575.0" fx:id="catalog" prefWidth="1229.0" styleClass="black-background">
                      <children>
                         <HBox prefHeight="140.0" prefWidth="1229.0" spacing="10.0">
                            <children>

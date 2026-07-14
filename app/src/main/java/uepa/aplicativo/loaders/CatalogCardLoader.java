@@ -10,7 +10,7 @@ public class CatalogCardLoader {
     private CatalogCardLoader() {}
 
     public static HBox loadCatalogCard() {
-        String fxmlPath = "/fxml/Card.fxml";
+        String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath)); 
             HBox card = fxmlLoader.load();
