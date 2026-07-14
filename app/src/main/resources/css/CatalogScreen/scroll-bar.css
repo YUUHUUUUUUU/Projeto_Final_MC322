@@ -11,15 +11,15 @@
 }
 
 .scroll-pane .scroll-bar .track {
-    -fx-background-color: #232e33;
+    -fx-background-color: #1d1d1d;
 }
 
 .scroll-pane .scroll-bar .thumb {
-    -fx-background-color: #6baf8d;
+    -fx-background-color: #fa762d;
 }
 
 .scroll-pane .scroll-bar .thumb:hover {
-    -fx-background-color: derive(#6baf8d, 20%);
+    -fx-background-color: derive(#fa762d, 20%);
 }
 
 .scroll-pane .scroll-bar .increment-button,

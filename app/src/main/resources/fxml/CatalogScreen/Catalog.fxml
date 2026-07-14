@@ -773,6 +773,12 @@
                </content>
                <styleClass>
                   <String fx:value="scroll-bar" />
+                  <String fx:value="thumb" />
+                  <String fx:value="track" />
+                  <String fx:value="increment-button" />
+                  <String fx:value="increment-arrow" />
+                  <String fx:value="decrement-arrow" />
+                  <String fx:value="decrement-button" />
                   <String fx:value="black-background" />
                </styleClass>
             </ScrollPane>
