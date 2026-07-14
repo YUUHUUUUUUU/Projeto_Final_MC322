@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
+import uepa.aplicativo.controllers.CatalogScreen.CardController;
 
 public class CatalogCardLoader {
      
@@ -26,5 +27,11 @@ public class CatalogCardLoader {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    public static CardController getController() {
+        String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath));
+        return fxmlLoader.getController();
     }
 }

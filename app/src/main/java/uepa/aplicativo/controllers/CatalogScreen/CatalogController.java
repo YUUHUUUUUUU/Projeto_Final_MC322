@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,18 +37,24 @@ public class CatalogController implements Initializable {
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
             /* we load the card */
-            if(!extracurricularList.isEmpty())
-                for(Extracurricular exta : extracurricularList) {
+            if(!extracurricularList.isEmpty()){
+                for(Extracurricular extra : extracurricularList) {
 
                     /* Load a single default card */
                     HBox card = CatalogCardLoader.loadCatalogCard();
-                    CardController cardController =
-                    /* Fill the card */
-                    
+
+                    /* Get the card controller */
+                    CardController controller = CatalogCardLoader.getController();
+
+                    /* Fill the card with the extracurricular data */
+                    String name = extra.getName();
+                    String description = extra.getDescription();
+                    String initialEnrollmentDate = "DD/MM/AAAA HH:MM"; // need to add getters
+                    String finalEnrollmentDate = "DD/MM/AAAA HH:MM";   // need to add getters
+                    Image image = extra.getLogo();
+                    controller.setData(name, description, initialEnrollmentDate, finalEnrollmentDate, image);
                 }
             }
-
-
         }
         catch(Exception e) {
             throw new Exception("Failed to load cards", e);
