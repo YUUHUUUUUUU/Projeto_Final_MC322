@@ -49,3 +49,7 @@
     -fx-background-insets: 0;
     -fx-background-radius: 8;
 }
+
+.button {
+    -fx-cursor: hand;
+}
