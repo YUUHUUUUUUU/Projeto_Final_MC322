@@ -13,6 +13,17 @@ public class CatalogCardLoader {
 
     public static LoadedCard loadCatalogCard() throws Exception{
 
+        String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
+        return loadCard(fxmlPath);
+    }
+
+    public static LoadedCard loadStaffCard() throws Exception {
+        String fxmlPath = "/fxml/CatalogScreen/StaffCard.fxml";
+        return loadCard(fxmlPath);
+    }
+
+    public static LoadedCard loadCard(String fxmlPath) throws Exception{
+
         /* We will need to save the arguments of two parameters
          * the first one is the HBox of the card,
          * and the other one is its Controller (CardController).
@@ -23,7 +34,6 @@ public class CatalogCardLoader {
          * and the Controller to edit the information for each "card".
          */
         LoadedCard loadedCard;
-        String fxmlPath = "/fxml/CatalogScreen/Card.fxml";
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(CatalogCardLoader.class.getResource(fxmlPath)); 
             HBox box = fxmlLoader.load();
