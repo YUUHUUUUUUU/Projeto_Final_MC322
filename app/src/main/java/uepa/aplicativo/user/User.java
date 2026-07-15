@@ -2,24 +2,23 @@ package uepa.aplicativo.user;
 import java.util.List;
 
 import javax.swing.text.html.HTML.Tag;
-
+import javax.management.relation.Role;
 import uepa.aplicativo.constants.*;
 
 import java.util.ArrayList;
 
-public class User{//abstract?
+public class User{
     private String name;
     private String email;
     private String password;
     private List<Tag> followedTags = new ArrayList<Tag>();
+    private Role role;
     private int id;
-    // private List<Extracurricular> favorites = new ArrayList<Extracurricular>();
-    // private List<Extracurricular> followed = new ArrayList<Extracurricular>();
-    // private List<News> latest_news = new ArrayList<News>();
-
-    User(String email, String name){
+    
+    User(String email, String name, Role role){
         this.email = email;
         this.name = name;
+        this.role = role;
     }
 
     public String getName(){
@@ -28,6 +27,9 @@ public class User{//abstract?
 
     public int getID(){
         return this.id;
+    }
+    public Role getRole(){
+        return this.role;
     }
 
     public void setName(String name){
