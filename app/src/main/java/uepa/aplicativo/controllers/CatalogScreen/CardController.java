@@ -44,9 +44,6 @@ public class CardController {
     private Button seeMoreButton;
 
     @FXML
-    private Label intitute;
-
-    @FXML
     void clickedSeeMore(ActionEvent event) {
         System.out.println("Hello See More Button");
         System.out.println(extracurricular.getFxmlPath());

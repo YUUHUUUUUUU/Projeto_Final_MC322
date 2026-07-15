@@ -52,7 +52,7 @@
                     </VBox>
                     <VBox prefHeight="120.0" prefWidth="571.0">
                         <children>
-                        <Label fx:id="intitute" text="Instituto">
+                        <Label fx:id="institute" text="Instituto">
                             <styleClass>
                                 <String fx:value="text-color" />
                                 <String fx:value="header-2" />
