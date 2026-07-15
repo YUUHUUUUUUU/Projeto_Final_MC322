@@ -1,4 +1,4 @@
-package uepa.aplicativo;
+package uepa.aplicativo.user;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -14,7 +14,6 @@ public class searchEngine {
     return nomeObjeto != null && nomeObjeto.equalsIgnoreCase(formattedName);
     })
     .findFirst();
-
   }
 
 }
