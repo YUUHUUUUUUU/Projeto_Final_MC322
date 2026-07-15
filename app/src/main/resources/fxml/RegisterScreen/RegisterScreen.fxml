@@ -48,7 +48,7 @@
   <children>
       <VBox>
          <children>
-            <VBox alignment="CENTER" prefHeight="85.0" prefWidth="640.0">
+            <VBox alignment="CENTER" prefHeight="85.0">
                <children>
                   <Label text="Crie sua conta UEPA ">
                      <styleClass>
