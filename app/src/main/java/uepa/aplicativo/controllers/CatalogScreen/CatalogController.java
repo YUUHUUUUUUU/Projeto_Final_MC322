@@ -51,6 +51,7 @@ public class CatalogController implements Initializable {
         try {
             /* Try loading the EXTRAS data base */
             // we will probably use a static method for this!
+            // maybe on initialize
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
             /* JUST FOR TESTING: we will be adding manually some extras */

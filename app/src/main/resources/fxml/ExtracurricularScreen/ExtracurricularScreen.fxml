@@ -140,7 +140,7 @@
                                           </Label>
                                           <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="black-background">
                                              <content>
-                                                <VBox fx:id="vboxStaff" prefHeight="207.0" prefWidth="1864.0" styleClass="black-background">
+                                                <VBox fx:id="staffCatalog" prefHeight="207.0" prefWidth="1864.0" styleClass="black-background">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>

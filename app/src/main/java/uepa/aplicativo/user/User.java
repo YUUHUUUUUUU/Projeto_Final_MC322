@@ -3,7 +3,9 @@ import java.util.List;
 
 import javax.swing.text.html.HTML.Tag;
 
+import javafx.scene.image.Image;
 import uepa.aplicativo.constants.*;
+import uepa.aplicativo.loaders.ImageLoader;
 
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ public class User{//abstract?
     private String password;
     private List<Tag> followedTags = new ArrayList<Tag>();
     private int id;
+    private Image photo;
     // private List<Extracurricular> favorites = new ArrayList<Extracurricular>();
     // private List<Extracurricular> followed = new ArrayList<Extracurricular>();
     // private List<News> latest_news = new ArrayList<News>();
@@ -20,6 +23,19 @@ public class User{//abstract?
     User(String email, String name){
         this.email = email;
         this.name = name;
+    }
+
+    public Image getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto() {
+        try {
+            photo = ImageLoader.LoadImage("/logo/UEPA.png");
+        } 
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public String getName(){
