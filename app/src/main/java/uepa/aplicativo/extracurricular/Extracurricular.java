@@ -105,11 +105,51 @@ public abstract class Extracurricular {
         return false;
     }
 
-    public void notityListners(Message m) {
+    public Staff getModerator() {
+        return this.moderator;
+    }
+    public void setModerator(Staff moderator) {
+        this.moderator = moderator;
+        this.hasModerator = (moderator != null); 
+    }
+    public boolean isHasModerator() {
+        return this.hasModerator;
+    }
+
+    public ZonedDateTime getTimezone() {
+        return this.timezone;
+    }
+
+    public void notifyListeners(Message m) {
         for (int i = 0; i < listners.size(); i++) {
             listners.get(i).receiveMessage(m);
         }
     }
+    public void setTimezone(ZonedDateTime timezone) {
+        this.timezone = timezone;
+    }
+    /*public ZonedDateTime getInitial() {
+        return this.initialEnrollmentDate;
+    }
+    public void setInitialEnrollmentDate(ZonedDateTime initialEnrollmentDate) {
+        this.initialEnrollmentDate = initialEnrollmentDate;
+    }
+
+    public ZonedDateTime getFinal() {
+        return this.finalEnrollmentDate;
+    }
+
+    public void setFinalEnrollmentDate(ZonedDateTime finalEnrollmentDate) {
+        this.finalEnrollmentDate = finalEnrollmentDate;
+    }*/
+    public PhotoGallery getPhotoGallery() {
+        return this.photoGallery;
+    }
+
+    public void setPhotoGallery(PhotoGallery photoGallery) {
+        this.photoGallery = photoGallery;
+    }
+
     
   
 }
