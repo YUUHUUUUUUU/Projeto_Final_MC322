@@ -1,18 +1,17 @@
 package uepa.aplicativo.extracurricular;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.image.Image;
-import uepa.aplicativo.constants.*;
 import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
+import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
-import uepa.aplicativo.user.Student;
+import uepa.aplicativo.user.User;
 
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-
-public abstract class Extracurricular{
+public abstract class Extracurricular {
     private String name;
-    private List<Student> studentsFollowing = new ArrayList<Student>();
+    private ArrayList<User> listners;
     //private List<Tag> tags = new ArrayList<Tag>();
     private boolean openToWork;
     private String description;
@@ -26,6 +25,7 @@ public abstract class Extracurricular{
     public Extracurricular(String name, String description) {
         setName(name);
         setDescription(description);
+        this.listners = new ArrayList<>();
 
         photoGallery = new PhotoGallery("/logo/UEPA.png");
     }
@@ -76,29 +76,40 @@ public abstract class Extracurricular{
     public String getDescription(){
         return this.description;
     }
-
-    public void addtoNotify(Student s){
-        studentsFollowing.add(s);
+    public List<User> getUsersFollowing(){
+        return listners;
     }
 
-    public void removefromNotify(Student s){
-        int t=studentsFollowing.size();
+    public void addtoNotify(User s){
+        listners.add(s);
+    }
+
+    public void removefromNotify(User s){
+        int t=listners.size();
         int pos=0;
         for (int i=0;i<t;i++){
-            if (studentsFollowing.get(i).getID()==s.getID()){
+            if (listners.get(i).getID()==s.getID()){
                 pos=i;
             }
         }
-        studentsFollowing.remove(pos);
+        listners.remove(pos);
     }
 
-    public boolean isFollowedBy(Student s){
-        int t=studentsFollowing.size();
+    public boolean isFollowedBy(User s){
+        int t= listners.size();
         for (int i=0;i<t;i++){
-            if (studentsFollowing.get(i).getID()==s.getID()){
+            if (listners.get(i).getID()==s.getID()){
                 return true;
             }
         }
         return false;
     }
+
+    public void notityListners(Message m) {
+        for (int i = 0; i < listners.size(); i++) {
+            listners.get(i).receiveMessage(m);
+        }
+    }
+    
+  
 }

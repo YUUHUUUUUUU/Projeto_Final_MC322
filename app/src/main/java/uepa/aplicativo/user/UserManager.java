@@ -22,15 +22,8 @@ import uepa.aplicativo.Exceptions.InvalidEmailException;
 import uepa.aplicativo.Exceptions.InvalidPasswordException;
 
 public class UserManager {
-    ArrayList<User> StaffUsers;
-    ArrayList<User> AdminUsers;
-    private UserManager() {
-        this.StaffUsers = new ArrayList<User>();
-        this.AdminUsers = new ArrayList<User>();
-
-    }
-
-
+    
+    private UserManager() {}
     private static String XML_FILE = "users.xml";
 
     // Validation Methods

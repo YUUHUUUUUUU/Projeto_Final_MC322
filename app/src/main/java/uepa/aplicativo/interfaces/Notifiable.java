@@ -1,9 +1,7 @@
 package uepa.aplicativo.interfaces;
 
-import uepa.aplicativo.user.Student;
+import uepa.aplicativo.message.Message;
 
 public interface Notifiable {
-    void addtoNotify(Student s);
-    void removefromNotify(Student s);
-    boolean isFollowedBy(Student s);
+    void receiveMessage(Message m);
 }

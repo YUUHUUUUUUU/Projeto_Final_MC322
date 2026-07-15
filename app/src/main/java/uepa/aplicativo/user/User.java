@@ -1,35 +1,35 @@
 package uepa.aplicativo.user;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.text.html.HTML.Tag;
-import javax.management.relation.Role;
-import uepa.aplicativo.constants.*;
 
-import java.util.ArrayList;
+import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.interfaces.Notifiable;
+import uepa.aplicativo.message.Message;
 
-public class User{
+public class User implements Notifiable{
     private String name;
     private String email;
     private String password;
-    private List<Tag> followedTags = new ArrayList<Tag>();
-    private Role role;
+    private List<Tag> followedTags;
+    private List<Extracurricular> favorites;
+    private List<Extracurricular> followedExtras;
+    private List<Message> mailBox;
     private int id;
     
-    User(String email, String name, Role role){
+    User(String email, String name){
         this.email = email;
         this.name = name;
-        this.role = role;
+        this.followedTags = new ArrayList<>();
+        this.favorites = new ArrayList<>();
+        this.followedExtras = new ArrayList<>();
+        this.mailBox = new ArrayList<>();
+
     }
 
     public String getName(){
         return this.name;
-    }
-
-    public int getID(){
-        return this.id;
-    }
-    public Role getRole(){
-        return this.role;
     }
 
     public void setName(String name){
@@ -46,6 +46,15 @@ public class User{
         this.name = name.trim();
     }
 
+     public int getID(){
+        return this.id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+
     public String getPassword(){
         return this.password;
     }
@@ -55,7 +64,10 @@ public class User{
     }
 
     public void setEmail(String email){
-        this.email = email;
+       if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty.");
+        }
+        this.email = email.trim();
     }
 
     public void changePassword(String newPassword){
@@ -88,16 +100,82 @@ public class User{
     }
 
     public List<Tag> getTags(){
-        return this.followedTags;
+        return followedTags;
     }
 
-    // public List<Extracurricular> getFavorites(){
-    //     return this.favorites;
-    // }
+     public List<Extracurricular> getFavorites(){
+        return favorites;
+    }
 
-    // public List<Extracurricular> getFollowed(){
-    //     return this.followed;
-    // }
+    public List<Extracurricular> getFollowed(){
+        return followedExtras;
+    }
+    public boolean removeTag(Tag tag) {
+        if (tag == null) {
+            return false;
+        }
+        return this.followedTags.remove(tag);
+    }
+
+    public boolean addTag(Tag tag) {
+        if (tag == null) {
+            return false;
+        }
+        // Evita adicionar a mesma tag repetida
+        if (this.followedTags.contains(tag)) {
+            return false; 
+        }
+        return this.followedTags.add(tag);
+    }
+    public boolean removeFavorite(Extracurricular extra) {
+        if (extra == null) {
+            return false;
+        }
+        return this.favorites.remove(extra);
+    }
+    public boolean addFavorite(Extracurricular extra) {
+        if (extra == null) {
+            return false;
+        }
+        if (this.favorites.contains(extra)) {
+            return false; 
+        }
+        return this.favorites.add(extra);
+    }
+    public boolean removeFollowed(Extracurricular extra) {
+        if (extra == null) {
+            return false;
+        }
+        return this.followedExtras.remove(extra);
+    }
+    public boolean addFollowed(Extracurricular extra) {
+        if (extra == null) {
+            return false;
+        }
+        if (this.followedExtras.contains(extra)) {
+            return false; 
+        }
+        return this.followedExtras.add(extra);
+    }
+
+    public List<Message> getMailBox(){
+        return mailBox;
+    }
+    public boolean removeMailBox(Message m) {
+        if (m == null) {
+            return false;
+        }
+        return this.mailBox.remove(m);
+
+    }
+    @Override
+    public void receiveMessage(Message m) {
+        if (m == null) {
+            return;
+        }
+        mailBox.add(m);
+    }
+    
     
     // public List<News> getNews(){
     //     return this.latest_news;

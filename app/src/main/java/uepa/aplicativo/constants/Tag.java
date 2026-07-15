@@ -35,6 +35,7 @@ public enum Tag implements Notifiable{
     }
 
     public void addtoNotify(Student s){
+        
 
     }
     public void removefromNotify(Student s){
