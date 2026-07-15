@@ -79,6 +79,14 @@ public abstract class Extracurricular{
         this.fxmlPath = fxmlPath;
     }
 
+    public Staff getStaff(){
+        return moderator;
+    }
+
+    public void setStaff(Staff staff) {
+        this.moderator = staff;
+    }
+
     public boolean open_to_work(){
         return this.openToWork;
     }
