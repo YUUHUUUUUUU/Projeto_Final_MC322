@@ -10,7 +10,7 @@ public class Staff extends User{
     private Role role;
     private List<Extracurricular> extras = new ArrayList<Extracurricular>();
 
-    Staff(String email,String name){
+    public Staff(String email,String name){
         super(email,name);
     }
 
