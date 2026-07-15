@@ -1,11 +1,10 @@
 package uepa.aplicativo.interfaces;
 
-import uepa.aplicativo.user.Student;
+import uepa.aplicativo.user.User;
 
 public interface Favoritable {
     
-    void addtoFavorite(Student s);
-    void removefromFavorite(Student s);
-    boolean isFavoriteof(Student s);
-
+    void addToFavorite(User u);
+    void removeFromFavorite(User u);
+    boolean isFavoriteof(User u);
 }

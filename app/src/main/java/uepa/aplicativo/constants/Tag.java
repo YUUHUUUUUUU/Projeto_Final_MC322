@@ -1,12 +1,11 @@
 package uepa.aplicativo.constants;
 import java.util.List;
 
-import uepa.aplicativo.interfaces.Notifiable;
 import uepa.aplicativo.user.Student;
 
 import java.util.ArrayList;
 
-public enum Tag implements Notifiable{
+public enum Tag{
     SPORTS("Esporte",true),
     EXTENSION("Projeto de extensão", true),
     STARTUP("Empresa em formação", true),
@@ -33,18 +32,4 @@ public enum Tag implements Notifiable{
     public void addSubTag(SubTag t){
         subtags.add(t);
     }
-
-    public void addtoNotify(Student s){
-
-    }
-    public void removefromNotify(Student s){
-
-    }
-    public boolean isFollowedBy(Student s){
-        return false;
-    }
-
-    
-
-
 }

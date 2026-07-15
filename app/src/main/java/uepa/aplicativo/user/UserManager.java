@@ -1,27 +1,29 @@
 package uepa.aplicativo.user;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
+import java.util.ArrayList;
 
 import uepa.aplicativo.Exceptions.InvalidEmailException;
 import uepa.aplicativo.Exceptions.InvalidPasswordException;
 
 public class UserManager {
     
-    /* We don't want to instantiate it, only use its methods */
     private UserManager() {}
-
-
     private static String XML_FILE = "users.xml";
 
     // Validation Methods

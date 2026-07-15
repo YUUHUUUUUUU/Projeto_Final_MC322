@@ -1,29 +1,28 @@
 package uepa.aplicativo.user;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTML.Tag;
+import uepa.aplicativo.interfaces.Notificable;
+import uepa.aplicativo.message.Message;
 
 import javafx.scene.image.Image;
 import uepa.aplicativo.constants.*;
 import uepa.aplicativo.loaders.ImageLoader;
 
-import java.util.ArrayList;
-
-public class User{//abstract?
+public class User implements Notificable{
     private String name;
     private String email;
     private String password;
-    private List<Tag> followedTags = new ArrayList<Tag>();
-    private int id;
     private Image photo;
-    // private List<Extracurricular> favorites = new ArrayList<Extracurricular>();
-    // private List<Extracurricular> followed = new ArrayList<Extracurricular>();
-    // private List<News> latest_news = new ArrayList<News>();
 
+    private List<Message> mailBox;
+    private int id;
+    
     User(String email, String name){
         this.email = email;
         this.name = name;
         setPhoto("/logo/UEPA.png");
+        this.mailBox = new ArrayList<>();
     }
 
     public Image getPhoto() {
@@ -43,10 +42,6 @@ public class User{//abstract?
         return this.name;
     }
 
-    public int getID(){
-        return this.id;
-    }
-
     public void setName(String name){
         // Check for null or empty strings
         if(name == null || name.trim().isEmpty()){
@@ -61,6 +56,15 @@ public class User{//abstract?
         this.name = name.trim();
     }
 
+     public int getID(){
+        return this.id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+
     public String getPassword(){
         return this.password;
     }
@@ -70,7 +74,10 @@ public class User{//abstract?
     }
 
     public void setEmail(String email){
-        this.email = email;
+       if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty.");
+        }
+        this.email = email.trim();
     }
 
     public void changePassword(String newPassword){
@@ -102,41 +109,21 @@ public class User{//abstract?
         this.password = newPassword; 
     }
 
-    public List<Tag> getTags(){
-        return this.followedTags;
+    public List<Message> getMailBox(){
+        return mailBox;
     }
+    public boolean removeMailBox(Message m) {
+        if (m == null) {
+            return false;
+        }
+        return this.mailBox.remove(m);
 
-    // public List<Extracurricular> getFavorites(){
-    //     return this.favorites;
-    // }
-
-    // public List<Extracurricular> getFollowed(){
-    //     return this.followed;
-    // }
-    
-    // public List<News> getNews(){
-    //     return this.latest_news;
-    // }
-
-    // public void addTag(){
-
-    // }
-
-    // public void follow_new_extra(){
-
-    // }
-
-    // public boolean login(){
-    //     //do the login
-    //     logged=true;
-    //     return logged;
-    // }
-
-    // public void checkin(){
-
-    // }
-
-    // public void logout(){
-
-    // }
+    }
+    @Override
+    public void receiveMessage(Message m) {
+        if (m == null) {
+            return;
+        }
+        mailBox.add(m);
+    }
 }
