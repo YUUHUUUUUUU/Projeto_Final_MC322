@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.loaders.CatalogCardLoader;
+import uepa.aplicativo.user.Staff;
 
 public class CardController {
     
@@ -43,12 +44,16 @@ public class CardController {
     private Button seeMoreButton;
 
     @FXML
+    private Label intitute;
+
+    @FXML
     void clickedSeeMore(ActionEvent event) {
         System.out.println("Hello See More Button");
         System.out.println(extracurricular.getFxmlPath());
     }
 
     private Extracurricular extracurricular;
+    private Staff staff;
 
     /**
      * Represents the method that applies the extracurricular data
@@ -111,5 +116,25 @@ public class CardController {
         applyData();
         printExtra();
     }
+
+    public void loadStaff(Extracurricular extra) {
+        setStaff(extra.getStaff());
+        applyStaffData();
+    }
+
+    private void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    private void applyStaffData(){
+        String name = extracurricular.getName();
+        String description = extracurricular.getDescription();
+        Image image = extracurricular.getLogo();
+        setName(name);
+        setDescription(description);
+        setImage(image);
+    }
+
+    
 
 }

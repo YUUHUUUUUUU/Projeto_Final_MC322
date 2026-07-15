@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="card" prefHeight="140.0" prefWidth="1229.0" spacing="10.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CardController">
+    <children>
+        <ImageView fx:id="image" fitHeight="185.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            <Image url="@../../logo/UEPA.png" />
+            </image>
+            <HBox.margin>
+            <Insets left="5.0" top="10.0" />
+            </HBox.margin></ImageView>
+        <AnchorPane>
+            <children>
+            <HBox prefHeight="120.0" prefWidth="1568.0" spacing="10.0">
+                <children>
+                    <VBox prefHeight="120.0" prefWidth="1186.0">
+                        <children>
+                        <Label fx:id="name" text="Nome">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-18" />
+                            </styleClass>
+                        </Label>
+                        <Label fx:id="description" text="Descrição">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-13" />
+                            </styleClass>
+                        </Label>
+                        </children>
+                        <padding>
+                        <Insets left="10.0" top="10.0" />
+                        </padding>
+                        <styleClass>
+                        <String fx:value="white-background" />
+                        <String fx:value="background-radius-12" />
+                        </styleClass>
+                        <HBox.margin>
+                        <Insets />
+                        </HBox.margin>
+                    </VBox>
+                    <VBox prefHeight="120.0" prefWidth="571.0">
+                        <children>
+                        <Label fx:id="intitute" text="Instituto">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-18" />
+                            </styleClass>
+                        </Label>
+                        <Label fx:id="$institute$" text="Tipo">
+                            <styleClass>
+                                <String fx:value="text-color" />
+                                <String fx:value="header-2" />
+                                <String fx:value="font-size-13" />
+                            </styleClass>
+                        </Label>
+                        </children>
+                        <padding>
+                        <Insets left="10.0" top="10.0" />
+                        </padding>
+                        <styleClass>
+                        <String fx:value="white-background" />
+                        <String fx:value="background-radius-12" />
+                        </styleClass>
+                    </VBox>
+                </children>
+            </HBox>
+            </children>
+            <HBox.margin>
+            <Insets top="10.0" />
+            </HBox.margin>
+        </AnchorPane>
+    </children>
+</HBox>
