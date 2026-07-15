@@ -17,6 +17,7 @@ public abstract class Extracurricular{
     private boolean openToWork;
     private String description;
     public Staff moderator;
+    private List<Staff> staffList;
     public boolean hasModerator;
     private ZonedDateTime timezone;
     private ZonedDateTime initialEnrollmentDate;
@@ -30,6 +31,7 @@ public abstract class Extracurricular{
         setDescription(description);
 
         photoGallery = new PhotoGallery("/logo/UEPA.png");
+        staffList = new ArrayList<>();
     }
 
     public String getName(){
@@ -81,6 +83,16 @@ public abstract class Extracurricular{
 
     public Staff getStaff(){
         return moderator;
+    }
+
+    public List<Staff> getStaffList() {
+        return this.staffList;
+    }
+
+    public void addStaff(Staff staff) {
+        if(staff != null){
+            this.staffList.add(staff);
+        }
     }
 
     public void setStaff(Staff staff) {

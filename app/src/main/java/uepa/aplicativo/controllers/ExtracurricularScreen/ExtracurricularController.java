@@ -86,28 +86,32 @@ public class ExtracurricularController implements Initializable {
             /* JUST FOR TESTING: we will be adding manually some extras */
             Extracurricular extracurricular = new StudentAssociation("Extra1", "Desc1");
             Staff professorTeste = new Staff("email@email.com", "StaffName");
-            extracurricular.setStaff(professorTeste);
+            extracurricular.addStaff(professorTeste);
+            Staff professorTeste2 = new Staff("email2", "nome2");
+            extracurricular.addStaff(professorTeste2);
+
             /* we load the card */
-            if(extracurricular.getStaff() != null){
+            if(!extracurricular.getStaffList().isEmpty()){
+                for(Staff s : extracurricular.getStaffList()) {
+                    /* Load a single default card */
+                    LoadedCard loadedCard = CatalogCardLoader.loadStaffCard();
 
-                /* Load a single default card */
-                LoadedCard loadedCard = CatalogCardLoader.loadStaffCard();
+                    /* Get the card controller */
+                    CardController controller = loadedCard.getController();
+                    HBox card = loadedCard.getRoot();
 
-                /* Get the card controller */
-                CardController controller = loadedCard.getController();
-                HBox card = loadedCard.getRoot();
+                    if(controller == null) {
+                        throw new Exception("Controller can not be null");
+                    }
+                    if (card == null) {
+                        throw new Exception("Card can not be null");
+                    }
+                    /* Load the extracurricular into the card */
+                    controller.loadStaff(s);
 
-                if(controller == null) {
-                    throw new Exception("Controller can not be null");
+                    /* add the card to the list */
+                    catalogItems.add(card);
                 }
-                if (card == null) {
-                    throw new Exception("Card can not be null");
-                }
-                /* Load the extracurricular into the card */
-                controller.loadStaff(extracurricular);
-
-                /* add the card to the list */
-                catalogItems.add(card);
             }
         }
         catch(Exception e) {

@@ -115,8 +115,8 @@ public class CardController {
         printExtra();
     }
 
-    public void loadStaff(Extracurricular extra) {
-        setStaff(extra.getStaff());
+    public void loadStaff(Staff s) {
+        setStaff(s);
         applyStaffData();
     }
 
