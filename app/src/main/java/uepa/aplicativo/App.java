@@ -15,7 +15,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         IconLoader.tryLoadingIcon(primaryStage);
-        String fxmlString = "/fxml/CatalogScreen/Catalog.fxml";
+        String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
         String pageTitle = "Login Screen";
         SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle);
     }

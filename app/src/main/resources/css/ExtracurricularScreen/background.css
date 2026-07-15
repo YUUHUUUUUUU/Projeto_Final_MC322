@@ -1,0 +1,51 @@
+.black-background {
+    -fx-background-color: #1d1d1d;
+}
+
+.dead-dark-green-brackground {
+    -fx-background-color: #13373c;
+}
+
+.dark-green-background {
+    -fx-background-color: #17382e;
+}
+
+.gray-background {
+    -fx-background-color: #383b3f;
+}
+
+.white-background {
+    -fx-background-color: white;
+}
+
+.yellow-background {
+    -fx-background-color: #f7bb19;
+}
+
+.green-background {
+    -fx-background-color: #62ca30;
+}
+
+.orange-background {
+    -fx-background-color: #fa762d;
+}
+
+.purple-background {
+    -fx-background-color: #963d97;
+}
+
+.background-radius-12 {
+    -fx-background-radius: 12;
+}
+
+/*
+.scroll-pane > .viewport {
+    -fx-background-color: #383b3f;
+}
+*/
+
+.card-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+}
