@@ -10,7 +10,9 @@ import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.User;
 import uepa.aplicativo.constants.*;
-public abstract class Extracurricular {
+import uepa.aplicativo.interfaces.*;
+
+public abstract class Extracurricular implements notify{
     private String name;
     private ArrayList<User> listners;
     private List<Tag> tags = new ArrayList<Tag>();
@@ -139,51 +141,13 @@ public abstract class Extracurricular {
         }
         return false;
     }
-    public List<Tag> getTags() {
-        return this.tags;
-    }
-    public boolean addTag(Tag tag) {
-        if (tag == null) {
-            return false;
-        }
-        if (this.tags.contains(tag)) {
-            return false; // Evita duplicatas
-        }
-        return this.tags.add(tag);
-    }
-    public boolean removeTag(Tag tag) {
-        if (tag == null) {
-            return false;
-        }
-        return this.tags.remove(tag);
-    }
-    public boolean hasTag(Tag tag) {
-        return this.tags.contains(tag);
-    }
-
-    public Staff getModerator() {
-        return this.moderator;
-    }
-    public void setModerator(Staff moderator) {
-        this.moderator = moderator;
-        this.hasModerator = (moderator != null); 
-    }
-    public boolean isHasModerator() {
-        return this.hasModerator;
-    }
-
-    public ZonedDateTime getTimezone() {
-        return this.timezone;
-    }
 
     public void notifyListeners(Message m) {
         for (int i = 0; i < listners.size(); i++) {
             listners.get(i).receiveMessage(m);
         }
     }
-    public void setTimezone(ZonedDateTime timezone) {
-        this.timezone = timezone;
-    }
+    
     /*public ZonedDateTime getInitial() {
         return this.initialEnrollmentDate;
     }

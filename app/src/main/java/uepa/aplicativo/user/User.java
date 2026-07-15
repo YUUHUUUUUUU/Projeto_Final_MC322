@@ -2,8 +2,8 @@ package uepa.aplicativo.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import uepa.aplicativo.interfaces.Notificable;
-import uepa.aplicativo.message.Message;
+import uepa.aplicativo.interfaces.*;
+import uepa.aplicativo.message.*;
 
 import javafx.scene.image.Image;
 import uepa.aplicativo.constants.*;
