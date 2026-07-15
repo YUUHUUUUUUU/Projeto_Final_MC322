@@ -1,5 +1,6 @@
 package uepa.aplicativo.extracurricular;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +9,11 @@ import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.User;
-
+import uepa.aplicativo.constants.*;
 public abstract class Extracurricular {
     private String name;
     private ArrayList<User> listners;
-    //private List<Tag> tags = new ArrayList<Tag>();
+    private List<Tag> tags = new ArrayList<Tag>();
     private boolean openToWork;
     private String description;
     public Staff moderator;
@@ -21,6 +22,10 @@ public abstract class Extracurricular {
     private ZonedDateTime initialEnrollmentDate;
     private ZonedDateTime finalEnrollmentDate;
     private PhotoGallery photoGallery;
+    private boolean threeDaysNotification = false;
+    private boolean sevenDaysNotification = false;
+    private boolean oneDayNotification = false;
+
 
     public Extracurricular(String name, String description) {
         setName(name);
@@ -104,6 +109,27 @@ public abstract class Extracurricular {
         }
         return false;
     }
+    public List<Tag> getTags() {
+        return this.tags;
+    }
+    public boolean addTag(Tag tag) {
+        if (tag == null) {
+            return false;
+        }
+        if (this.tags.contains(tag)) {
+            return false; // Evita duplicatas
+        }
+        return this.tags.add(tag);
+    }
+    public boolean removeTag(Tag tag) {
+        if (tag == null) {
+            return false;
+        }
+        return this.tags.remove(tag);
+    }
+    public boolean hasTag(Tag tag) {
+        return this.tags.contains(tag);
+    }
 
     public Staff getModerator() {
         return this.moderator;
@@ -148,6 +174,49 @@ public abstract class Extracurricular {
 
     public void setPhotoGallery(PhotoGallery photoGallery) {
         this.photoGallery = photoGallery;
+    }
+
+
+    public long  DaysLeft(){
+        if (finalEnrollmentDate == null) {
+            System.out.println("Data final não definida");
+            return 0;
+        }
+        ZonedDateTime now = ZonedDateTime.now(this.finalEnrollmentDate.getZone());
+        long daysLeft = ChronoUnit.DAYS.between(now, this.finalEnrollmentDate);
+        if (daysLeft < 0) {
+            return  0;
+        }
+        return daysLeft;
+    }
+    public void updateStatus() {
+        long daysLeft = DaysLeft();
+        if (daysLeft >= 0) {
+            this.openToWork = true;
+        } else {
+            this.openToWork = false;
+        }
+    }
+    public void automaticReminder() {
+        long daysLeft = DaysLeft();
+        if (daysLeft <= 7 && sevenDaysNotification == false) {
+            Message m7 = new Message("AVISO!","7 dias faltando para o encerramento",this, 
+            this.moderator);
+            this.notifyListeners(m7);
+            this.sevenDaysNotification = true;
+        } 
+        else if (daysLeft <= 3 && threeDaysNotification == false) {
+            Message m3 = new Message("AVISO!","3 dias faltando para o encerramento",this,
+            this.moderator);
+            this.notifyListeners(m3);
+            this.threeDaysNotification = true;
+        }
+        else if (daysLeft <= 1 && oneDayNotification == false) {
+            Message m1 = new Message("AVISO!"," Falta 1 dia para o encerramento",this,
+            this.moderator);
+            this.notifyListeners(m1);
+            this.oneDayNotification = true;            
+        }
     }
 
     

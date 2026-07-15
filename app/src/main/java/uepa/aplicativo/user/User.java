@@ -2,28 +2,20 @@ package uepa.aplicativo.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTML.Tag;
-
-import uepa.aplicativo.extracurricular.Extracurricular;
-import uepa.aplicativo.interfaces.Notifiable;
+import uepa.aplicativo.interfaces.Notificable;
 import uepa.aplicativo.message.Message;
 
-public class User implements Notifiable{
+public class User implements Notificable{
     private String name;
     private String email;
     private String password;
-    private List<Tag> followedTags;
-    private List<Extracurricular> favorites;
-    private List<Extracurricular> followedExtras;
+
     private List<Message> mailBox;
     private int id;
     
     User(String email, String name){
         this.email = email;
         this.name = name;
-        this.followedTags = new ArrayList<>();
-        this.favorites = new ArrayList<>();
-        this.followedExtras = new ArrayList<>();
         this.mailBox = new ArrayList<>();
 
     }
@@ -99,65 +91,6 @@ public class User implements Notifiable{
         this.password = newPassword; 
     }
 
-    public List<Tag> getTags(){
-        return followedTags;
-    }
-
-     public List<Extracurricular> getFavorites(){
-        return favorites;
-    }
-
-    public List<Extracurricular> getFollowed(){
-        return followedExtras;
-    }
-    public boolean removeTag(Tag tag) {
-        if (tag == null) {
-            return false;
-        }
-        return this.followedTags.remove(tag);
-    }
-
-    public boolean addTag(Tag tag) {
-        if (tag == null) {
-            return false;
-        }
-        // Evita adicionar a mesma tag repetida
-        if (this.followedTags.contains(tag)) {
-            return false; 
-        }
-        return this.followedTags.add(tag);
-    }
-    public boolean removeFavorite(Extracurricular extra) {
-        if (extra == null) {
-            return false;
-        }
-        return this.favorites.remove(extra);
-    }
-    public boolean addFavorite(Extracurricular extra) {
-        if (extra == null) {
-            return false;
-        }
-        if (this.favorites.contains(extra)) {
-            return false; 
-        }
-        return this.favorites.add(extra);
-    }
-    public boolean removeFollowed(Extracurricular extra) {
-        if (extra == null) {
-            return false;
-        }
-        return this.followedExtras.remove(extra);
-    }
-    public boolean addFollowed(Extracurricular extra) {
-        if (extra == null) {
-            return false;
-        }
-        if (this.followedExtras.contains(extra)) {
-            return false; 
-        }
-        return this.followedExtras.add(extra);
-    }
-
     public List<Message> getMailBox(){
         return mailBox;
     }
@@ -175,31 +108,4 @@ public class User implements Notifiable{
         }
         mailBox.add(m);
     }
-    
-    
-    // public List<News> getNews(){
-    //     return this.latest_news;
-    // }
-
-    // public void addTag(){
-
-    // }
-
-    // public void follow_new_extra(){
-
-    // }
-
-    // public boolean login(){
-    //     //do the login
-    //     logged=true;
-    //     return logged;
-    // }
-
-    // public void checkin(){
-
-    // }
-
-    // public void logout(){
-
-    // }
 }
