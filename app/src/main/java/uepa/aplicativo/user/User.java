@@ -23,15 +23,16 @@ public class User{//abstract?
     User(String email, String name){
         this.email = email;
         this.name = name;
+        setPhoto("/logo/UEPA.png");
     }
 
     public Image getPhoto() {
         return photo;
     }
 
-    public void setPhoto() {
+    public void setPhoto(String photoPath) {
         try {
-            photo = ImageLoader.LoadImage("/logo/UEPA.png");
+            photo = ImageLoader.LoadImage(photoPath);
         } 
         catch (Exception e) {
             System.out.println(e);
