@@ -38,11 +38,9 @@
     -fx-background-radius: 12;
 }
 
-/*
 .scroll-pane > .viewport {
-    -fx-background-color: #383b3f;
+    -fx-background-color: #1d1d1d;
 }
-*/
 
 .card-pane {
     -fx-background-color: transparent;

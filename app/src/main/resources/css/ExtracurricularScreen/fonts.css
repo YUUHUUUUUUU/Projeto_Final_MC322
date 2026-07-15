@@ -34,7 +34,7 @@
 .regurlar-text {
     -fx-font-family: "Manrope Regular";
     -fx-text-fill: #1d1d1f;
-    -fx-font-size: 13;
+    -fx-font-size: 16;
 }
 
 .exit-button {
@@ -51,4 +51,8 @@
     );
     -fx-cursor: hand;
     -fx-font-size: 16;
+}
+
+.white-text {
+    -fx-text-fill: white;
 }
