@@ -6,7 +6,6 @@ import uepa.aplicativo.interfaces.*;
 import uepa.aplicativo.message.*;
 
 import javafx.scene.image.Image;
-import uepa.aplicativo.constants.*;
 import uepa.aplicativo.loaders.ImageLoader;
 
 public class User implements Notificable{
@@ -64,7 +63,7 @@ public class User implements Notificable{
             throw new IllegalArgumentException("Name cannot exceed 50 characters.");
         }
 
-        this.name = name.trim();
+        this.name = name;
     }
 
      public int getID(){
