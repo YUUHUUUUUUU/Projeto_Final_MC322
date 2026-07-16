@@ -206,6 +206,8 @@ public class xmlReader {
             String extraFxmlPath = null;
             String extraHyperlink = null;
             String extraId = null;
+            String extraBannerPath = null;
+            String extraLogoPath = null;
 
             while(reader.hasNext()) {
 
@@ -257,6 +259,11 @@ public class xmlReader {
                                     case "idstaff" -> staffId = text;
                                 }
                             }
+                            else if(insideListenerList) {
+                                switch (currentTag) {
+                                    case "idlistener" -> listenerId = text;
+                                }
+                            }
 
                             else {
                                 switch (currentTag) {
@@ -267,6 +274,8 @@ public class xmlReader {
                                     case "hyperlink" -> extraHyperlink = text;
                                     case "fxmlpath" -> extraFxmlPath = text;
                                     case "id" -> extraId = text;
+                                    case "bannerpath" -> extraBannerPath = text;
+                                    case "logopath" -> extraLogoPath = text;
                                 }
                             }
                         }
@@ -280,26 +289,36 @@ public class xmlReader {
 
                         if(tag.equals("idstaff")) {
                             currentStaffList.add(staffId);
+                            staffId = null;
                         }
-                        else if(tag.equals("idslisteners")) {
+                        else if(tag.equals("idlistener")) {
                             currentListenerList.add(listenerId);
+                            listenerId = null;
                         }
                         else if(tag.equals("staffids")) {
                             insideStaffList = false;
                         }
-
                         else if(tag.equals("listenersids")) {
                             insideListenerList = false;
                         }
 
                         /* we create the user, add user to the list and points every reference to null */
                         else if(tag.equals("extra")) {
-                            currentExtra = new Extracurricular(extraName, extraDescription, extraIsOpenString, extraInstitute, "/logo/UEPA.png", "/logo/UEPA.png", extraHyperlink, extraFxmlPath, currentStaffList, currentListenerList, extraId);
+                            currentExtra = new Extracurricular(extraName, extraDescription, extraIsOpenString, extraInstitute, extraLogoPath, extraBannerPath, extraHyperlink, extraFxmlPath, currentStaffList, currentListenerList, extraId);
                             extracurricularList.add(currentExtra);
 
                             currentExtra = null;
                             currentStaffList = null;
                             currentListenerList = null;
+                            extraName = null;
+                            extraDescription = null;
+                            extraInstitute = null;
+                            extraIsOpenString = null;
+                            extraFxmlPath = null;
+                            extraHyperlink = null;
+                            extraId = null;
+                            extraBannerPath = null;
+                            extraLogoPath = null;
                         }
                         
                         currentTag = null;

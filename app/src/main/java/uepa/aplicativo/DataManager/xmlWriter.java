@@ -98,16 +98,16 @@ public class xmlWriter {
                 writeElement(writer, "id", e.getIdString());
 
                 writer.writeStartElement("staffids");
-                for(int i[] : e.getStaffsIds()) {
+                for(Integer i : e.getStaffsIds()) {
 
                     /* for every staffId we write a new element "message" */
-                    writeElement(writer, "idstaff", Integer.toString(i[0]));
+                    writeElement(writer, "idstaff", Integer.toString(i));
                 }
                 writer.writeEndElement(); // close staffsids
 
                 writer.writeStartElement("listenersids");
-                for(int i[] : e.getListenersIds()) {
-                    writeElement(writer, "idlistener", Integer.toString(i[0]));
+                for(Integer i : e.getListenersIds()) {
+                    writeElement(writer, "idlistener", Integer.toString(i));
                 }
                 writer.writeEndElement(); // close listernersIds
             

@@ -280,11 +280,11 @@ public class Extracurricular implements notify{
         return listeners;
     }
 
-    public List<int[]> getListenersIds() {
+    public List<Integer> getListenersIds() {
         return listenersId;
     }
 
-    public List<int[]> getStaffsIds() {
+    public List<Integer> getStaffsIds() {
         return staffsId;
     }
 
