@@ -146,7 +146,7 @@ public class xmlReader {
                                 staffList.add(currentStaff);
                             }
                             else if(userRole == Role.STUDENT.toString()) {
-                                currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox)
+                                currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
                                 studentList.add(currentStudent);
                             }
                             currentStaff = null;
