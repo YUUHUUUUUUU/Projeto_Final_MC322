@@ -6,8 +6,6 @@ import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.XMLManager.xmlWriter;
 import uepa.aplicativo.loaders.IconLoader;
 
-import uepa.aplicativo.loaders.IconLoader;
-
 public class App extends Application {
     public static void main(String[] args) {
         launch(args);
