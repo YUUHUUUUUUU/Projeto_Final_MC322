@@ -1,7 +1,7 @@
 package uepa.aplicativo.extracurricular;
 import java.util.List;
 
-import constantes.Tag;
+import uepa.aplicativo.constantes.Tag;
 import uepa.aplicativo.interfaces.Favoritable;
 import uepa.aplicativo.interfaces.Notifiable;
 import uepa.aplicativo.user.Staff;
