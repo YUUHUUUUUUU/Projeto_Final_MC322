@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.user.Staff;
+import uepa.aplicativo.user.Student;
 import uepa.aplicativo.user.User;
 
 public class Data {
 
-    private List<User> userList;
-    private List<Extracurricular> extracurricularList;
+    private List<User> userList = new ArrayList<>();
+    private List<Student> studentList = new ArrayList<>();
+    private List<Staff> staffList = new ArrayList<>();
+    private List<Extracurricular> extracurricularList = new ArrayList<>();
 
-    public Data() {
-        userList = new ArrayList<>();
-        extracurricularList = new ArrayList<>();
+    public Data(List<Student> studentList, List<Staff> staffList) {
+        this.studentList = studentList;
+        this.staffList = staffList;
+        
+        for(Student s : studentList) {
+            userList.add(s);
+        }
+        for(Staff s : staffList) {
+            userList.add(s);
+        }
     }
 
     public List<User> getUserList() {
