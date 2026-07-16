@@ -8,9 +8,11 @@ public class Staff extends User implements notify{
     private Role role;
     private Extracurricular e;
 
-    public Staff(String email, String name, Extracurricular extracurricular){
-        super(email,name);
+
+    public Staff(String email, String name, Extracurricular extracurricular, String photopath){
+        super(email,name,photopath);
     }
+
     @Override
     public void notifyListeners(String title, String text){
         Message m = new Message(title, text, e, this);
@@ -20,6 +22,6 @@ public class Staff extends User implements notify{
     }
 
     public void editExtra(Extracurricular e){
-
+        
     }
 }

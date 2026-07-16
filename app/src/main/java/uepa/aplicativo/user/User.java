@@ -13,15 +13,17 @@ public class User implements Notificable{
     private String name;
     private String email;
     private String password;
+
     private Image photo;
+    private String photopath;
 
     private List<Message> mailBox;
     private int id;
     
-    User(String email, String name){
+    User(String email, String name, String photopath){
         this.email = email;
         this.name = name;
-        setPhoto("/logo/UEPA.png");
+        setPhoto(photopath);
         this.mailBox = new ArrayList<>();
     }
 

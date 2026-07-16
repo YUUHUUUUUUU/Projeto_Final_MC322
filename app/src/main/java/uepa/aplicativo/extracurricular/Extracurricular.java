@@ -13,28 +13,46 @@ import uepa.aplicativo.constants.*;
 import uepa.aplicativo.interfaces.*;
 
 public abstract class Extracurricular implements notify{
+    
+    //gerais:
     private String name;
-    private ArrayList<User> listeners;
     private boolean openToWork;
     private String description;
-    private List<Staff> staffList;
-    private PhotoGallery photoGallery;
-    private boolean threeDaysNotification = false;
-    private boolean sevenDaysNotification = false;
-    private boolean oneDayNotification = false;
     private String institute;
 
+    //listas:
+    private ArrayList<User> listeners;
+    private List<Staff> staffList;
 
+    //fotos:
+    private PhotoGallery photoGallery;
+    private String bannerPath;
+    private String logoPath;
+
+    //xml:
     private String fxmlPath;
 
-    public Extracurricular(String name, String description,
-         String logoPath, String bannerPath, String institute, boolean openToWork,
-          String hyperLink, List<Staff> staffs) {
+    //links:
+    private String hyperlink;
+
+    public Extracurricular(String name, String description, boolean openToWork,  String institute,
+         String logoPath, String bannerPath,
+          String hyperLink, String fxmlPath) {
+        
         setName(name);
         setDescription(description);
-        this.listeners = new ArrayList<>();
+        setOpenToWork(openToWork);
+        setInstitute(institute);
+        
+        setHyperLink(hyperlink);
 
-        photoGallery = new PhotoGallery("/logo/UEPA.png");
+        setBannerPath(bannerPath);
+        setLogoPath(logoPath);
+
+        setFxmlPath(fxmlPath);
+    
+        listeners = new ArrayList<>();
+        photoGallery = new PhotoGallery(logoPath);
         staffList = new ArrayList<>();
     }
 
@@ -56,21 +74,62 @@ public abstract class Extracurricular implements notify{
         return true;
     }
 
+    public boolean getOpenToWork(){
+        return openToWork;
+    }
+
     public boolean setOpenToWork(boolean b){
         this.openToWork=b;
         return b;
     }
 
-    public boolean getOpenToWork(){
-        return openToWork;
+    public String getInstitute(){
+        return institute;
+    }
+
+    public void setInstitute(String institute){
+        if (institute==null){
+            System.err.println("Erro!");
+        } else {
+            boolean b=true;
+            for(int i=0;i<institute.length();i++){
+                char c=institute.charAt(i);
+                int t=Character.getNumericValue(c);
+                if ((t>=65 && t<=90) || (t>=97 && t<=122)){
+                    continue;
+                } else {
+                    b=false;
+                    break;
+                }
+            }
+            if (b){
+                this.institute=institute;
+            }
+        }
+    }
+
+    public String getHyperLink(){
+        return hyperlink;
+    }
+
+    public void setHyperLink(String hyperlink){
+        this.hyperlink=hyperlink;
     }
 
     public Image getLogo() {
         return photoGallery.getLogo();
     }
 
+    public void setLogoPath(String logoPath){
+        this.logoPath=logoPath;
+    }
+
     public Image getBanner() {
         return null;
+    }
+
+    public void setBannerPath(String bannerPath){
+        this.bannerPath=bannerPath;
     }
 
     public String getFxmlPath() {
