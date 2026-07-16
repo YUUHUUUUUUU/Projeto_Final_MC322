@@ -70,6 +70,9 @@ public abstract class Extracurricular implements notify{
     }
 
     public boolean setDescription(String d){
+        if (d.length()>1000){
+            
+        }
         this.description=d;
         return true;
     }
