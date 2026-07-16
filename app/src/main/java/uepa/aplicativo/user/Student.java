@@ -2,8 +2,8 @@ package uepa.aplicativo.user;
 import uepa.aplicativo.extracurricular.Extracurricular;
 
 public class Student extends User{
-    Student(String email,String name){
-        super(email,name);
+    Student(String email,String name, String photoPath){
+        super(email, name, photoPath);
     }
 
     public void favorite(Extracurricular e){

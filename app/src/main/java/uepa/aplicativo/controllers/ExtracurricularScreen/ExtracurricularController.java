@@ -84,12 +84,13 @@ public class ExtracurricularController implements Initializable {
             // extracurricular = 
 
             /* JUST FOR TESTING: we will be adding manually some extras */
-            Extracurricular extracurricular = new StudentAssociation("Extra1", "Desc1");
-            Staff professorTeste = new Staff("email@email.com", "StaffName");
-            extracurricular.addStaff(professorTeste);
-            Staff professorTeste2 = new Staff("email2", "nome2");
-            extracurricular.addStaff(professorTeste2);
+            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com");
+            Staff professorTeste = new Staff("email", "name", extra1, "/logo/UEPA.png");
+            extra1.addStaff(professorTeste);
+            Staff professorTeste2 = new Staff("email2", "nome2", extra1, "/logo/UEPA.png");
+            extra1.addStaff(professorTeste2);
 
+            this.extracurricular = extra1;
             /* we load the card */
             if(!extracurricular.getStaffList().isEmpty()){
                 for(Staff s : extracurricular.getStaffList()) {

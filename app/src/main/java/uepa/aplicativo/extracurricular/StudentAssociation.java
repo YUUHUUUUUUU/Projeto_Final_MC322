@@ -1,18 +1,12 @@
 package uepa.aplicativo.extracurricular;
 
 public class StudentAssociation extends Extracurricular{
-    private String institute;
 
-    public StudentAssociation(String name, String description){
-        super(name, description);
-        setFxmlPath("studentAssociationFxmlPath");
+    public StudentAssociation(String name, String description, boolean openToWork,  String institute,
+         String logoPath, String bannerPath,
+          String hyperLink){
+
+        String fxmlPath = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
+        super(name, description, openToWork, institute, logoPath, bannerPath, hyperLink, fxmlPath);
     }
-
-    public String getInstitute(){
-        return this.institute;
-    }
-
-
-    
-
 }
