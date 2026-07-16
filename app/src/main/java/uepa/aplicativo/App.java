@@ -23,23 +23,29 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         /* Teste de escrita e leitura */
-        Data data = new Data();
         List<Message> mailBox = new ArrayList<>();
         Message m = new Message("tituloMensagem", "uma mensagem pequena", "criador");
         mailBox.add(m);
-        Staff user = new Staff("nome", "email", "password", "/logo/UEPA.png", mailBox);
-        data.addUser(user);
+        Staff staff1 = new Staff("nomeStaff", "email", "password", "/logo/UEPA.png", mailBox);
+        Student student1 = new Student("nomeStudent", "email", "password", "/logo/UEPA.png", mailBox);
+        List<Staff> staffList = new ArrayList<>();
+        List<Student> studentList = new ArrayList<>();
+        staffList.add(staff1);
+        studentList.add(student1);
+        Data data = new Data(studentList, staffList);
         xmlWriter.writeUsers("/src/main/resources/xml/saida.xml", data);
-        List<User> listUser = xmlReader.readUsers("/src/main/resources/xml/saida.xml");
+        Data savedData = xmlReader.readUsers("/src/main/resources/xml/saida.xml");
         System.out.println("A lista é: ");
-        if(listUser == null) {
+        if(savedData.getUserList() == null) {
             System.out.println("lista é nula");
         }
-        for(User u : listUser) {
+        System.out.println("tam: " + savedData.getUserList().size());
+        for(User u : savedData.getUserList()) {
             System.out.println(u.getName());
             System.out.println(u.getEmail());
             System.out.println(u.getPassword());
             System.out.println(u.getPhotoPath());
+            System.out.println("my id is" + u.getId());
 
             System.out.println("Mailbox:");
             List<Message> uMB = u.getMailBox();

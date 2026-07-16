@@ -12,7 +12,7 @@ import uepa.aplicativo.user.User;
 import uepa.aplicativo.constants.*;
 import uepa.aplicativo.interfaces.*;
 
-public abstract class Extracurricular implements notify{
+public class Extracurricular implements notify{
     
     private String name;
     private String description;
@@ -27,8 +27,8 @@ public abstract class Extracurricular implements notify{
     private ArrayList<User> listeners = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
 
-    private List<int[]> listenersId = new ArrayList<>();
-    private List<int[]> staffsId = new ArrayList<>();
+    private List<Integer> listenersId = new ArrayList<>();
+    private List<Integer> staffsId = new ArrayList<>();
 
     private PhotoGallery photoGallery;
     private String bannerPath;
@@ -55,7 +55,8 @@ public abstract class Extracurricular implements notify{
      */
     public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath, List<int[]> staffsIds, List<int[]> listenersIds) {
+          String hyperLink, String fxmlPath, 
+          List<String> staffsIds, List<String> listenersIds) {
         
         id = nextId++;
 
@@ -74,8 +75,8 @@ public abstract class Extracurricular implements notify{
     
         photoGallery = new PhotoGallery(logoPath);
         
-        this.listenersId = listenersIds;
-        this.staffsId = staffsIds;
+        setListenerList(listenersIds);
+        setStaffList(staffsIds);
     }
 
     /**
@@ -105,7 +106,7 @@ public abstract class Extracurricular implements notify{
     public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
           String hyperLink, String fxmlPath, 
-          List<int[]> staffsIds, List<int[]> listenersIds, String idString) {
+          List<String> staffsIds, List<String> listenersIds, String idString) {
 
         /* converts the idString back to int */
         this.id = Integer.parseInt(idString);
@@ -127,9 +128,8 @@ public abstract class Extracurricular implements notify{
     
         photoGallery = new PhotoGallery(logoPath);
         
-        this.listenersId = listenersIds;
-        this.staffsId = staffsIds;
- 
+        setListenerList(listenersIds);
+        setStaffList(staffsIds);
     }
 
     /**
@@ -139,6 +139,18 @@ public abstract class Extracurricular implements notify{
     public void updateNextId(int existingId) {
         if(existingId >= nextId) {
             nextId = existingId + 1;
+        }
+    }
+
+    public void setStaffList(List<String> staffIds) {
+        for(String s : staffIds) {
+            this.staffsId.add(Integer.parseInt(s));
+        }
+    }
+
+    public void setListenerList(List<String> listenerIds){
+        for(String s : listenerIds) {
+            this.listenersId.add(Integer.parseInt(s));
         }
     }
 

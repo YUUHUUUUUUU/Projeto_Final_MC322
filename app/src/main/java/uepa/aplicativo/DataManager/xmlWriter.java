@@ -105,7 +105,7 @@ public class xmlWriter {
                 }
                 writer.writeEndElement(); // close staffsids
 
-                writer.writeStartElement("listenersId");
+                writer.writeStartElement("listenersids");
                 for(int i[] : e.getListenersIds()) {
                     writeElement(writer, "idlistener", Integer.toString(i[0]));
                 }

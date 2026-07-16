@@ -38,6 +38,10 @@ public class Data {
         return extracurricularList;
     }
 
+    public void setExtracurricularList(List<Extracurricular> extracurricularList) {
+        this.extracurricularList = extracurricularList;
+    }
+
     public void addUser(User user) {
         if(user != null){
             userList.add(user);
