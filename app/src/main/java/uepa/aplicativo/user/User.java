@@ -20,13 +20,56 @@ public class User implements Notificable{
     private String photoPath;
 
     private List<Message> mailBox;
+
+    private static int nextId = 0;
+    private final int id;
     
-    User(String email, String name, String photoPath){
+    public User(String email, String name, String photoPath){
+
+        this.id = nextId++;
+
+
         this.email = email;
         this.name = name;
         this.photoPath = photoPath;
         setPhoto(photoPath);
         this.mailBox = new ArrayList<>();
+    }
+
+    /**
+     * Represents the constructor to reconstruct the User from XML
+     * 
+     * <p>
+     * This Overflow is important because we need to guarantee that
+     * every new register will come with a new id based on those saved on
+     * the XML file
+     * </p>
+     * 
+     * @param email
+     * @param name
+     * @param photoPath
+     * @param id
+     */
+    public User(String email, String name, String photoPath, int id) {
+
+        this.id = nextId++;
+        updateNextId(id);
+
+        this.email = email;
+        this.name = name;
+        this.photoPath = photoPath;
+        setPhoto(photoPath);
+        this.mailBox = new ArrayList<>();
+    }
+
+    /**
+     * Represents the method to update the next id after loading the user data
+     * @param existingId
+     */
+    public void updateNextId(int existingId) {
+        if(existingId >= nextId) {
+            nextId = existingId + 1;
+        }
     }
 
     public Image getPhoto() {
