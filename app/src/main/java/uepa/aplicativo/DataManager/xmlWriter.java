@@ -45,6 +45,7 @@ public class xmlWriter {
                 writeElement(writer, "password", u.getPassword());
                 writeElement(writer, "photoPath", u.getPhotoPath());
                 writeElement(writer, "role", u.getRole().toString());
+                writeElement(writer, "id", u.getIdString());
 
                 writer.writeStartElement("mailbox");
                 for(Message m : u.getMailBox()) {

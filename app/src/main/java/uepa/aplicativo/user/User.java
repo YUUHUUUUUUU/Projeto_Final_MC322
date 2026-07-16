@@ -90,6 +90,14 @@ public class User implements Notificable{
         }
     }
 
+    public String getIdString() {
+        return Integer.toString(id);
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
     public Role getRole() {
         return role;
     }
