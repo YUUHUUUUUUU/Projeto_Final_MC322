@@ -3,6 +3,7 @@ package uepa.aplicativo;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import uepa.aplicativo.SceneManager.SceneManager;
+import uepa.aplicativo.XMLManager.xmlWriter;
 import uepa.aplicativo.loaders.IconLoader;
 
 import uepa.aplicativo.loaders.IconLoader;
@@ -14,6 +15,7 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        xmlWriter.writeUsers("/src/main/resources/xml/saida.xml");
         IconLoader.tryLoadingIcon(primaryStage);
         //String fxmlString = "/fxml/CatalogScreen/Catalog.fxml";
         String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
