@@ -27,7 +27,7 @@ public class PopupController {
             popupStage.setTitle(title);
         }
         catch (Exception e) {
-                
+            
         }
     }
 }
