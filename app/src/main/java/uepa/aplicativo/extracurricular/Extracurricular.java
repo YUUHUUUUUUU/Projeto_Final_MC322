@@ -190,7 +190,7 @@ public abstract class Extracurricular implements notify{
     @Override
     public void notifyListeners(String title, String text) {
 
-        Message m = new Message(title, text, this, null);
+        Message m = new Message(title, text, getName());
         for (int i = 0; i < listeners.size(); i++) {
             listeners.get(i).receiveMessage(m);
         }

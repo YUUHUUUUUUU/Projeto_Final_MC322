@@ -15,7 +15,7 @@ public class Staff extends User implements notify{
 
     @Override
     public void notifyListeners(String title, String text){
-        Message m = new Message(title, text, e, this);
+        Message m = new Message(title, text, getName());
         for (int i = 0; i < e.getUsersListeners().size(); i++) {
             e.getUsersListeners().get(i).receiveMessage(m);
         }
