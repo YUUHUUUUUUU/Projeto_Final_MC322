@@ -66,10 +66,10 @@ public class User implements Notificable{
      */
     public User(String name, String email,
          String password, String photoPath,
-          List<Message> mailBox, int id) {
+          List<Message> mailBox, String idString) {
         
-        /* updates the id */
-        this.id = nextId++;
+        /* converts the idString back to int */
+        this.id = Integer.parseInt(idString);
         updateNextId(id);
 
         this.email = email;
