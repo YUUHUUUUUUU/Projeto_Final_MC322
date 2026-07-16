@@ -14,6 +14,11 @@ public class Staff extends User implements notify{
         role = Role.STAFF;
     }
 
+    public Staff(String email, String name, String password, String photoPath, List<Message> mailBox, String idString){
+        super(email, name, password, photoPath, mailBox, idString);
+        role = Role.STAFF;
+    }
+
     @Override
     public void notifyListeners(String title, String text){
         Message m = new Message(title, text, getName());
