@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
+import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.User;
 
 public class xmlWriter {
@@ -33,13 +34,31 @@ public class xmlWriter {
             XMLStreamWriter writer = startWriter(xmlPath);
             List<User> userList = data.getUserList();
 
+            writer.writeStartElement("userlist");
             for(User u : userList) {
-                writer.writeStartElement("userList");
-                writer.writeStartElement("User");
-                writer.writeAttribute("name", u.getName());
-                writer.writeAttribute("email", u.getEmail());
-                writer.writeAttribute("photoPath", u.getPhotoPath());
+
+                writer.writeStartElement("user");
+
+                /* attributes of user */
+                writeElement(writer, "name", u.getName());
+                writeElement(writer, "email", u.getEmail());
+                writeElement(writer, "password", u.getPassword());
+                writeElement(writer, "photoPath", u.getPhotoPath());
+
+                writer.writeStartElement("mailbox");
+                for(Message m : u.getMailBox()) {
+                    writeElement(writer, "title", m.getTitle());
+                    writeElement(writer, "text", m.getText());
+                    writeElement(writer, "creatorname", m.getCreatorName());
+                }
+
+                /* close "mailbox" and "user" elements */
+                writer.writeEndElement();
+                writer.writeEndElement();
             }
+
+            /* close the "userlist" element */
+            writer.writeEndElement();
 
             closeWriter(writer);
         }
@@ -47,6 +66,22 @@ public class xmlWriter {
             System.out.println("Failed to write XML File for User");
             e.printStackTrace();
         }
+
+    }
+
+
+    private static void writeElement(XMLStreamWriter writer, String tag, String value) throws Exception{
+
+        writer.writeStartElement(tag);
+
+        if(value == null){
+            writer.writeCharacters("");
+        }
+        else {
+            writer.writeCharacters(value);
+        }
+
+        writer.writeEndElement();
 
     }
 }

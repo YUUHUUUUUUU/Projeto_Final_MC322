@@ -1,8 +1,5 @@
 package uepa.aplicativo.message;
-import java.time.LocalDateTime;
 
-import uepa.aplicativo.extracurricular.Extracurricular;
-import uepa.aplicativo.user.Staff;
 public class Message {
     private String title;
     private String text;

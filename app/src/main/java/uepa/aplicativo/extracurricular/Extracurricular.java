@@ -166,27 +166,6 @@ public abstract class Extracurricular implements notify{
         listeners.add(s);
     }
 
-    public void removefromNotify(User s){
-        int t=listeners.size();
-        int pos=0;
-        for (int i=0;i<t;i++){
-            if (listeners.get(i).getID()==s.getID()){
-                pos=i;
-            }
-        }
-        listeners.remove(pos);
-    }
-
-    public boolean isFollowedBy(User s){
-        int t= listeners.size();
-        for (int i=0;i<t;i++){
-            if (listeners.get(i).getID()==s.getID()){
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void notifyListeners(String title, String text) {
 

@@ -2,6 +2,7 @@ package uepa.aplicativo.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import uepa.aplicativo.constants.Role;
 import uepa.aplicativo.interfaces.*;
 import uepa.aplicativo.message.*;
 
@@ -9,6 +10,8 @@ import javafx.scene.image.Image;
 import uepa.aplicativo.loaders.ImageLoader;
 
 public class User implements Notificable{
+
+    Role role;
     private String name;
     private String email;
     private String password;
@@ -17,7 +20,6 @@ public class User implements Notificable{
     private String photoPath;
 
     private List<Message> mailBox;
-    private int id;
     
     User(String email, String name, String photoPath){
         this.email = email;
@@ -65,15 +67,6 @@ public class User implements Notificable{
 
         this.name = name;
     }
-
-     public int getID(){
-        return this.id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    
 
     public String getPassword(){
         return this.password;
