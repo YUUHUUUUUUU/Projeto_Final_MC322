@@ -21,12 +21,12 @@ public class User implements Notificable{
 
     private List<Message> mailBox;
 
-    private static int nextId = 0;
-    private final int id;
+    ;;private static int nextId = 0;
+    //private final int id;
     
     public User(String email, String name, String photoPath){
 
-        this.id = nextId++;
+        //this.id = nextId++;
 
 
         this.email = email;
@@ -52,7 +52,7 @@ public class User implements Notificable{
      */
     public User(String email, String name, String photoPath, int id) {
 
-        this.id = nextId++;
+        //this.id = nextId++;
         updateNextId(id);
 
         this.email = email;
@@ -61,6 +61,11 @@ public class User implements Notificable{
         setPhoto(photoPath);
         this.mailBox = new ArrayList<>();
     }
+
+    public User() {
+
+    }
+
 
     /**
      * Represents the method to update the next id after loading the user data
