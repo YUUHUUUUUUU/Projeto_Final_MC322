@@ -39,7 +39,6 @@ public class xmlWriter {
                 writer.writeAttribute("name", u.getName());
                 writer.writeAttribute("email", u.getEmail());
                 writer.writeAttribute("photoPath", u.getPhotoPath());
-                writer.writeStartElement("mailBox", xmlPath);
             }
 
             closeWriter(writer);
