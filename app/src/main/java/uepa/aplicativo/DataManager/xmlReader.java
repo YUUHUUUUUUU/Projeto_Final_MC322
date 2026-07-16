@@ -28,11 +28,13 @@ public class xmlReader {
     }
 
     public List<User> readUsers(String xmlPath) {
+
+        List<User> userList = new ArrayList<>();
+
         try{
             XMLStreamReader reader = startReader(xmlPath);
 
             String currentTag = null;
-            User currentUser = null;
 
             boolean insideMailBox = false;
             List<Message> currentMailBox = null;
@@ -40,7 +42,7 @@ public class xmlReader {
             String messageText = null;
             String messageCreator = null;
 
-
+            User currentUser = null;
             String userName = null;
             String userEmail = null;
             String userPassword = null;
@@ -62,10 +64,16 @@ public class xmlReader {
                  */
 
                 switch (event) {
+
+                    /*
+                     * In this part we will just need to create a new MailBox for each user that
+                     * we are reading
+                     */
                     case XMLStreamConstants.START_ELEMENT:
                         currentTag = reader.getLocalName();
                         if(currentTag.equals("user")) {
-                            currentUser = new User();
+
+                            /* for each user we need to create a mailbox */
                             currentMailBox = new ArrayList<>();
                         }
                         else if(currentTag.equals("mailbox")){
@@ -100,12 +108,41 @@ public class xmlReader {
                             }
                         }
                         break;
+                    
+                    /*
+                     * In this part we instantiate the elements
+                     */
+                    case XMLStreamConstants.END_ELEMENT:
+                        String tag = reader.getLocalName();
+
+                        /* the last attribute of the mail box message, this implies that we can create
+                         * the full message
+                        */
+                        if(tag.equals("creatorname")) {
+                            Message message = new Message(messageTitle, messageText, messageCreator);
+                            currentMailBox.add(message);
+                        }
+
+                        /* the end of the mail box,
+                         * so we can set that we are out of the mail box
+                         */
+                        else if(tag.equals("mailbox")) {
+                            insideMailBox = false;
+                        }
+
+                        /* we create the user, add user to the list and points every reference to null */
+                        else if(tag.equals("user")) {
+                            currentUser = new User(userEmail, userName, userPassword, userPhotoPath, currentMailBox);
+                            userList.add(currentUser);
+                            currentUser = null;
+                            currentMailBox = null;
+                        }
+                        
+                        currentTag = null;
+                        break;
                 }
 
             }
-
-
-
 
             closeReader(reader);
         }
@@ -114,6 +151,6 @@ public class xmlReader {
             e.printStackTrace();
         }
 
-
+        return userList;
     }
 }

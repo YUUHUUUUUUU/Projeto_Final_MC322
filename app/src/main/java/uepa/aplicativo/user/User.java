@@ -24,12 +24,14 @@ public class User implements Notificable{
     ;;private static int nextId = 0;
     //private final int id;
     
-    public User(String email, String name, String photoPath){
+    public User(String name, String email, String password,
+         String photoPath, List<Message> mailBox){
 
         //this.id = nextId++;
 
 
         this.email = email;
+        this.password = password;
         this.name = name;
         this.photoPath = photoPath;
         setPhoto(photoPath);
