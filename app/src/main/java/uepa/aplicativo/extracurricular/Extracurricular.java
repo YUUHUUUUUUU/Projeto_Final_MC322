@@ -15,9 +15,14 @@ import uepa.aplicativo.interfaces.*;
 public abstract class Extracurricular implements notify{
     
     private String name;
-    private boolean openToWork;
     private String description;
     private String institute;
+    private String isOpenString;
+    private String fxmlPath;
+    private String hyperlink;
+
+
+    private boolean openToWork;
 
     private ArrayList<User> listeners = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
@@ -29,9 +34,6 @@ public abstract class Extracurricular implements notify{
     private String bannerPath;
     private String logoPath;
 
-    private String fxmlPath;
-
-    private String hyperlink;
 
     private static int nextId = 0;
     private final int id;
@@ -51,7 +53,7 @@ public abstract class Extracurricular implements notify{
      * @param staffsIds
      * @param listenersIds
      */
-    public Extracurricular(String name, String description, String isOpen,  String institute,
+    public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
           String hyperLink, String fxmlPath, List<int[]> staffsIds, List<int[]> listenersIds) {
         
@@ -59,7 +61,8 @@ public abstract class Extracurricular implements notify{
 
         setName(name);
         setDescription(description);
-        setOpenToWork(isOpen);
+        this.isOpenString = isOpenString;
+        setOpenToWork(isOpenString);
         setInstitute(institute);
         
         setHyperLink(hyperlink);
@@ -99,7 +102,7 @@ public abstract class Extracurricular implements notify{
      * @param listenersIds
      * @param idString
      */
-    public Extracurricular(String name, String description, String isOpen,  String institute,
+    public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
           String hyperLink, String fxmlPath, 
           List<int[]> staffsIds, List<int[]> listenersIds, String idString) {
@@ -108,19 +111,25 @@ public abstract class Extracurricular implements notify{
         this.id = Integer.parseInt(idString);
         updateNextId(id);
 
-
+        
         setName(name);
         setDescription(description);
-        setOpenToWork(isOpen);
+        this.isOpenString = isOpenString;
+        setOpenToWork(isOpenString);
         setInstitute(institute);
+        
         setHyperLink(hyperlink);
+
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
-        setFxmlPath(fxmlPath);
-        photoGallery = new PhotoGallery(logoPath);
 
+        setFxmlPath(fxmlPath);
+    
+        photoGallery = new PhotoGallery(logoPath);
+        
         this.listenersId = listenersIds;
         this.staffsId = staffsIds;
+ 
     }
 
     /**
@@ -131,6 +140,10 @@ public abstract class Extracurricular implements notify{
         if(existingId >= nextId) {
             nextId = existingId + 1;
         }
+    }
+
+    public String getIsOpenString(){
+        return this.isOpenString;
     }
 
     public String getIdString() {

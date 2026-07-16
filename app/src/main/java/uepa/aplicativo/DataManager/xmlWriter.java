@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
+import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.User;
 
@@ -75,6 +76,53 @@ public class xmlWriter {
             e.printStackTrace();
         }
 
+    }
+
+    public static void writeExtracurriculars(String xmlPath, Data data) {
+        try{
+            XMLStreamWriter writer = startWriter(xmlPath);
+            List<Extracurricular> extracurricularList = data.getExtracurricularList();
+
+            writer.writeStartElement("extracurricularlist");
+            for(Extracurricular e : extracurricularList) {
+
+                writer.writeStartElement("extracurricular");
+
+                /* attributes of extra */
+                writeElement(writer, "name", e.getName());
+                writeElement(writer, "description", e.getDescription());
+                writeElement(writer, "institute", e.getInstitute());
+                writeElement(writer, "isopenstring", e.getIsOpenString());
+                writeElement(writer, "fxmlpath", e.getFxmlPath());
+                writeElement(writer, "hyperlink", e.getHyperLink());
+                writeElement(writer, "id", e.getIdString());
+
+                writer.writeStartElement("staffids");
+                for(int i[] : e.getStaffsIds()) {
+
+                    /* for every staffId we write a new element "message" */
+                    writeElement(writer, "idstaff", Integer.toString(i[0]));
+                }
+                writer.writeEndElement(); // close staffsids
+
+                writer.writeStartElement("listenersId");
+                for(int i[] : e.getListenersIds()) {
+                    writeElement(writer, "idlistener", Integer.toString(i[0]));
+                }
+                writer.writeEndElement(); // close listernersIds
+            
+                writer.writeEndElement(); // close the Staff
+            }
+
+            /* close the "extracurricularlist" element */
+            writer.writeEndElement();
+
+            closeWriter(writer);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to write XML File for User");
+            e.printStackTrace();
+        }
     }
 
 
