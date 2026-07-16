@@ -128,6 +128,7 @@ public abstract class Extracurricular implements notify{
         return false;
     }
 
+    @Override
     public void notifyListeners(String title, String text) {
 
         Message m = new Message(title, text, this, null);

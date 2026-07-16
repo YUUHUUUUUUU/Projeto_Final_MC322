@@ -8,13 +8,14 @@ public class Staff extends User implements notify{
     private Role role;
     private Extracurricular e;
 
-    public Staff(String email,String name){
+    public Staff(String email, String name, Extracurricular extracurricular){
         super(email,name);
     }
     @Override
-    public void notifyListeners(Message m){
-        for (int i = 0; i < e.getUsersFollowing().size(); i++) {
-            e.getUsersFollowing().get(i).receiveMessage(m);
+    public void notifyListeners(String title, String text){
+        Message m = new Message(title, text, e, this);
+        for (int i = 0; i < e.getUsersListeners().size(); i++) {
+            e.getUsersListeners().get(i).receiveMessage(m);
         }
     }
 

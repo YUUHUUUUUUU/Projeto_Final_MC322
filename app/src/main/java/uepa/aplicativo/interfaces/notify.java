@@ -1,5 +1,5 @@
 package uepa.aplicativo.interfaces;
 
 public interface notify {
-    void notifyListeners();
+    void notifyListeners(String title, String text);
 }
