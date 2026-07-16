@@ -13,10 +13,10 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        xmlWriter.writeUsers("/src/main/resources/xml/saida.xml");
+        //xmlWriter.writeUsers("/src/main/resources/xml/saida.xml");
         IconLoader.tryLoadingIcon(primaryStage);
         //String fxmlString = "/fxml/CatalogScreen/Catalog.fxml";
-        String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
+        String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";
         String pageTitle = "Login Screen";
         SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle);
     }

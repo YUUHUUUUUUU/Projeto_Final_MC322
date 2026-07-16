@@ -5,12 +5,13 @@ import uepa.aplicativo.interfaces.notify;
 import uepa.aplicativo.message.Message;
 
 public class Staff extends User implements notify{
-    private Role role;
     private Extracurricular e;
 
 
-    public Staff(String email, String name, Extracurricular extracurricular, String photoPath){
-        super(email, name, photoPath);
+    public Staff(String email, String name, Extracurricular extracurricular, String photopath){
+        super(email,name,photopath);
+        e=extracurricular;
+        setRole(Role.STAFF);
     }
 
     @Override
@@ -21,7 +22,31 @@ public class Staff extends User implements notify{
         }
     }
 
-    public void editExtra(Extracurricular e){
-        
-    }
+    // public void editExtraName(String newName){
+    //     e.setName(newName);
+    // }
+
+    // public void editExtraDesc(String newDesc){
+    //     e.setDescription(newDesc);
+    // }
+
+    // public void editExtraOpen(boolean newOpen){
+    //     e.setOpenToWork(newOpen);
+    // }
+
+    // public void editExtraLink(String newHyper){
+    //     e.setHyperLink(newHyper);
+    // }
+
+    // public void editExtraInstitute(String newInst){
+    //     e.setInstitute(newInst);
+    // }
+
+    // public void editExtraBanner(String newPath){
+    //     e.setBannerPath(newPath);
+    // }
+
+    // public void editExtraLogo(String newPath){
+    //     e.setLogoPath(newPath);
+    // }
 }

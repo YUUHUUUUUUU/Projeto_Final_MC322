@@ -10,6 +10,8 @@ import uepa.aplicativo.constants.*;
 import uepa.aplicativo.loaders.ImageLoader;
 
 public class User implements Notificable{
+
+    private Role role;
     private String name;
     private String email;
     private String password;
@@ -70,11 +72,18 @@ public class User implements Notificable{
      public int getID(){
         return this.id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    
+    public Role getRole(){
+        return role;
+    }
+
+    public void setRole(Role role){
+        this.role=role;
+    }
 
     public String getPassword(){
         return this.password;
@@ -123,13 +132,14 @@ public class User implements Notificable{
     public List<Message> getMailBox(){
         return mailBox;
     }
+
     public boolean removeMailBox(Message m) {
         if (m == null) {
             return false;
         }
         return this.mailBox.remove(m);
-
     }
+
     @Override
     public void receiveMessage(Message m) {
         if (m == null) {
