@@ -27,7 +27,7 @@ public class xmlReader {
         reader.close();
     }
 
-    public List<User> readUsers(String xmlPath) {
+    public static List<User> readUsers(String xmlPath) {
 
         List<User> userList = new ArrayList<>();
 
@@ -98,8 +98,8 @@ public class xmlReader {
                                 }
                             }
 
-                            else if(currentUser != null) {
-                                switch (text) {
+                            else {
+                                switch (currentTag) {
                                     case "name" -> userName = text;
                                     case "email" -> userEmail = text;
                                     case "password" -> userPassword = text;
@@ -132,7 +132,7 @@ public class xmlReader {
 
                         /* we create the user, add user to the list and points every reference to null */
                         else if(tag.equals("user")) {
-                            currentUser = new User(userEmail, userName, userPassword, userPhotoPath, currentMailBox);
+                            currentUser = new User(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
                             userList.add(currentUser);
                             currentUser = null;
                             currentMailBox = null;
