@@ -21,13 +21,23 @@ public class User implements Notificable{
 
     private List<Message> mailBox;
 
-    ;;private static int nextId = 0;
-    //private final int id;
+    private static int nextId = 0;
+    private final int id;
     
+    /**
+     * Represents the constructor the should be called when a new user is created.
+     * This construct doesn't read a id. Because a new User doesn't have an id yet.
+     * 
+     * @param name
+     * @param email
+     * @param password
+     * @param photoPath
+     * @param mailBox
+     */
     public User(String name, String email, String password,
          String photoPath, List<Message> mailBox){
 
-        //this.id = nextId++;
+        this.id = nextId++;
 
 
         this.email = email;
@@ -35,11 +45,13 @@ public class User implements Notificable{
         this.name = name;
         this.photoPath = photoPath;
         setPhoto(photoPath);
-        this.mailBox = new ArrayList<>();
+        this.mailBox = mailBox;
     }
 
     /**
-     * Represents the constructor to reconstruct the User from XML
+     * Represents the constructor to reconstruct the User from XML.
+     * This construct gets an id, to update the available ids for the registers.
+     * This should be called only during the start of the application.
      * 
      * <p>
      * This Overflow is important because we need to guarantee that
@@ -52,22 +64,21 @@ public class User implements Notificable{
      * @param photoPath
      * @param id
      */
-    public User(String email, String name, String photoPath, int id) {
-
-        //this.id = nextId++;
+    public User(String name, String email,
+         String password, String photoPath,
+          List<Message> mailBox, int id) {
+        
+        /* updates the id */
+        this.id = nextId++;
         updateNextId(id);
 
         this.email = email;
         this.name = name;
+        this.password = password;
         this.photoPath = photoPath;
+        this.mailBox = mailBox;
         setPhoto(photoPath);
-        this.mailBox = new ArrayList<>();
     }
-
-    public User() {
-
-    }
-
 
     /**
      * Represents the method to update the next id after loading the user data
