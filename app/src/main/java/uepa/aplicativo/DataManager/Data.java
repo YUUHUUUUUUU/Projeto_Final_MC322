@@ -27,6 +27,9 @@ public class Data {
         }
     }
 
+    public List<Student> getStudentList() {
+        return studentList;
+    }
     public List<User> getUserList() {
         return userList;
     }

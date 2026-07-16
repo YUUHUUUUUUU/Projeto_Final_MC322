@@ -141,11 +141,11 @@ public class xmlReader {
                         /* we create the user, add user to the list and points every reference to null */
                         else if(tag.equals("user")) {
                             /* verify which role this user belongs */
-                            if(userRole == Role.STAFF.toString()) {
+                            if(userRole.equals(Role.STAFF.toString())) {
                                 currentStaff = new Staff(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
                                 staffList.add(currentStaff);
                             }
-                            else if(userRole == Role.STUDENT.toString()) {
+                            else if(userRole.equals(Role.STUDENT.toString())) {
                                 currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
                                 studentList.add(currentStudent);
                             }
