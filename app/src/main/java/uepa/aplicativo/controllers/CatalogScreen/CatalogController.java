@@ -16,7 +16,6 @@ import javafx.scene.layout.VBox;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.extracurricular.Extracurricular;
-import uepa.aplicativo.extracurricular.StudentAssociation;
 
 public class CatalogController implements Initializable {
 
@@ -61,12 +60,6 @@ public class CatalogController implements Initializable {
             // maybe on initialize
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
-            /* JUST FOR TESTING: we will be adding manually some extras */
-            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com");
-            Extracurricular extra2 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com");
-
-            extracurricularList.add(extra1);
-            extracurricularList.add(extra2);
 
             /* we load the card */
             if(!extracurricularList.isEmpty()){

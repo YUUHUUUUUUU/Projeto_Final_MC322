@@ -53,4 +53,15 @@ public class Data {
             extracurricularList.add(extra);
         }
     }
+
+    public static void writeData(Data data) {
+        xmlWriter.writeUsers("/src/main/resources/xml/user.xml", data);
+        xmlWriter.writeExtracurriculars("/src/main/resources/xml/extra.xml", data);
+    }
+
+    public static Data loadData() {
+        Data data = xmlReader.readUsers("/src/main/resources/xml/user.xml");
+        xmlReader.readExtracurriculars("/src/main/resources/xml/extras.xml", data);
+        return data;
+    }
 }

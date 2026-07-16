@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import uepa.aplicativo.extracurricular.Extracurricular;
-import uepa.aplicativo.extracurricular.StudentAssociation;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.user.Staff;
 
