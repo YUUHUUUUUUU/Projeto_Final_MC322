@@ -14,34 +14,37 @@ import uepa.aplicativo.interfaces.*;
 
 public abstract class Extracurricular implements notify{
     
-    //gerais:
     private String name;
     private boolean openToWork;
     private String description;
     private String institute;
 
-    //listas:
-    private ArrayList<User> listeners;
-    private List<Staff> staffList;
+    private ArrayList<User> listeners = new ArrayList<>();
+    private List<Staff> staffList = new ArrayList<>();
 
-    //fotos:
+    private List<int[]> listenersId = new ArrayList<>();
+    private List<int[]> staffsId = new ArrayList<>();
+
     private PhotoGallery photoGallery;
     private String bannerPath;
     private String logoPath;
 
-    //xml:
     private String fxmlPath;
 
-    //links:
     private String hyperlink;
 
-    public Extracurricular(String name, String description, boolean openToWork,  String institute,
+    private static int nextId = 0;
+    private final int id;
+
+    public Extracurricular(String name, String description, String isOpen,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath) {
+          String hyperLink, String fxmlPath, List<int[]> staffsIds, List<int[]> listenersIds) {
         
+        id = nextId++;
+
         setName(name);
         setDescription(description);
-        setOpenToWork(openToWork);
+        setOpenToWork(isOpen);
         setInstitute(institute);
         
         setHyperLink(hyperlink);
@@ -51,9 +54,52 @@ public abstract class Extracurricular implements notify{
 
         setFxmlPath(fxmlPath);
     
-        listeners = new ArrayList<>();
         photoGallery = new PhotoGallery(logoPath);
-        staffList = new ArrayList<>();
+        
+        this.listenersId = listenersIds;
+        this.staffsId = staffsIds;
+    }
+
+    public Extracurricular(String name, String description, String isOpen,  String institute,
+         String logoPath, String bannerPath,
+          String hyperLink, String fxmlPath, 
+          List<int[]> staffsIds, List<int[]> listenersIds, String idString) {
+
+        /* converts the idString back to int */
+        this.id = Integer.parseInt(idString);
+        updateNextId(id);
+
+
+        setName(name);
+        setDescription(description);
+        setOpenToWork(isOpen);
+        setInstitute(institute);
+        setHyperLink(hyperlink);
+        setBannerPath(bannerPath);
+        setLogoPath(logoPath);
+        setFxmlPath(fxmlPath);
+        photoGallery = new PhotoGallery(logoPath);
+
+        this.listenersId = listenersIds;
+        this.staffsId = staffsIds;
+    }
+
+    /**
+     * Represents the method to update the next id after loading the user data
+     * @param existingId
+     */
+    public void updateNextId(int existingId) {
+        if(existingId >= nextId) {
+            nextId = existingId + 1;
+        }
+    }
+
+    public String getIdString() {
+        return Integer.toString(id);
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getName(){
@@ -78,9 +124,13 @@ public abstract class Extracurricular implements notify{
         return openToWork;
     }
 
-    public boolean setOpenToWork(boolean b){
-        this.openToWork=b;
-        return b;
+    public void setOpenToWork(String open){
+        if(open.equals("true")){
+            this.openToWork=true;
+        }
+        else if(open.equals("false")){
+            this.openToWork=false;
+        }
     }
 
     public String getInstitute(){
@@ -124,12 +174,16 @@ public abstract class Extracurricular implements notify{
         this.logoPath=logoPath;
     }
 
-    public Image getBanner() {
-        return null;
+    public String getLogoPath() {
+        return logoPath;
     }
 
     public void setBannerPath(String bannerPath){
         this.bannerPath=bannerPath;
+    }
+
+    public String getBannerPath() {
+        return bannerPath;
     }
 
     public String getFxmlPath() {
@@ -160,6 +214,14 @@ public abstract class Extracurricular implements notify{
 
     public List<User> getUsersListeners(){
         return listeners;
+    }
+
+    public List<int[]> getListenersIds() {
+        return listenersId;
+    }
+
+    public List<int[]> getStaffsIds() {
+        return staffsId;
     }
 
     public void addtoNotify(User s){
