@@ -54,6 +54,7 @@ public class xmlReader {
             String userPassword = null;
             String userPhotoPath = null;
             String userRole = null;
+            String userId = null;
 
             while(reader.hasNext()) {
 
@@ -112,6 +113,7 @@ public class xmlReader {
                                     case "password" -> userPassword = text;
                                     case "photoPath" -> userPhotoPath = text;
                                     case "role" -> userRole = text;
+                                    case "id" -> userId = text;
                                 }
                             }
                         }
@@ -142,11 +144,16 @@ public class xmlReader {
                         else if(tag.equals("user")) {
                             /* verify which role this user belongs */
                             if(userRole.equals(Role.STAFF.toString())) {
-                                currentStaff = new Staff(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
+
+                                /* See that we are using the second constructor for both Staff and Student
+                                 * this one is used only for loading them from xml, because it receives their id in StringForm
+                                 * and the id already exists in the xml file (i.e. we are not creating a new ids when loading the data)
+                                 */
+                                currentStaff = new Staff(userName, userEmail, userPassword, userPhotoPath, currentMailBox, userId);
                                 staffList.add(currentStaff);
                             }
                             else if(userRole.equals(Role.STUDENT.toString())) {
-                                currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
+                                currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox, userId);
                                 studentList.add(currentStudent);
                             }
                             currentStaff = null;
