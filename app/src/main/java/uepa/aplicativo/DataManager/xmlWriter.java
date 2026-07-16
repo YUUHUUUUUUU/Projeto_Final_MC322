@@ -47,9 +47,15 @@ public class xmlWriter {
 
                 writer.writeStartElement("mailbox");
                 for(Message m : u.getMailBox()) {
+
+                    /* for every message we write a new element "message" */
+                    writer.writeStartElement("message");
+
                     writeElement(writer, "title", m.getTitle());
                     writeElement(writer, "text", m.getText());
                     writeElement(writer, "creatorname", m.getCreatorName());
+
+                    writer.writeEndElement();
                 }
 
                 /* close "mailbox" and "user" elements */
