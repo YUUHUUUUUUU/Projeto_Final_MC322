@@ -1,9 +1,12 @@
-package uepa.aplicativo.XMLManager;
+package uepa.aplicativo.DataManager;
 
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
+
+import uepa.aplicativo.user.User;
 
 public class xmlWriter {
     
@@ -25,10 +28,20 @@ public class xmlWriter {
 
     }
 
-    public static void writeUsers(String xmlPath) {
+    public static void writeUsers(String xmlPath, Data data) {
         try{
             XMLStreamWriter writer = startWriter(xmlPath);
-            
+            List<User> userList = data.getUserList();
+
+            for(User u : userList) {
+                writer.writeStartElement("userList");
+                writer.writeStartElement("User");
+                writer.writeAttribute("name", u.getName());
+                writer.writeAttribute("email", u.getEmail());
+                writer.writeAttribute("photoPath", u.getPhotoPath());
+                writer.writeStartElement("mailBox", xmlPath);
+            }
+
             closeWriter(writer);
         }
         catch (Exception e) {

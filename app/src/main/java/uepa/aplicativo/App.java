@@ -2,8 +2,8 @@ package uepa.aplicativo;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import uepa.aplicativo.DataManager.xmlWriter;
 import uepa.aplicativo.SceneManager.SceneManager;
-import uepa.aplicativo.XMLManager.xmlWriter;
 import uepa.aplicativo.loaders.IconLoader;
 
 public class App extends Application {
