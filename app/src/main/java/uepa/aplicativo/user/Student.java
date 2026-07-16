@@ -6,7 +6,7 @@ import uepa.aplicativo.message.Message;
 import uepa.aplicativo.constants.Role;
 
 public class Student extends User{
-    Student(String email,String name, String password, String photoPath, List<Message> mailBox){
+    public Student(String email,String name, String password, String photoPath, List<Message> mailBox){
         super(email, name, password, photoPath, mailBox);
         role = Role.STUDENT;
     }

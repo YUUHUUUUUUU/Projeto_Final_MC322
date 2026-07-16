@@ -11,6 +11,8 @@ import uepa.aplicativo.DataManager.xmlWriter;
 import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.loaders.IconLoader;
 import uepa.aplicativo.message.Message;
+import uepa.aplicativo.user.Staff;
+import uepa.aplicativo.user.Student;
 import uepa.aplicativo.user.User;
 
 public class App extends Application {
@@ -25,7 +27,7 @@ public class App extends Application {
         List<Message> mailBox = new ArrayList<>();
         Message m = new Message("tituloMensagem", "uma mensagem pequena", "criador");
         mailBox.add(m);
-        User user = new User("nome", "email", "password", "/logo/UEPA.png", mailBox);
+        Staff user = new Staff("nome", "email", "password", "/logo/UEPA.png", mailBox);
         data.addUser(user);
         xmlWriter.writeUsers("/src/main/resources/xml/saida.xml", data);
         List<User> listUser = xmlReader.readUsers("/src/main/resources/xml/saida.xml");
