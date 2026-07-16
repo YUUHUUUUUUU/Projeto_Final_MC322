@@ -8,7 +8,10 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
+import uepa.aplicativo.constants.Role;
 import uepa.aplicativo.message.Message;
+import uepa.aplicativo.user.Staff;
+import uepa.aplicativo.user.Student;
 import uepa.aplicativo.user.User;
 
 public class xmlReader {
@@ -27,9 +30,11 @@ public class xmlReader {
         reader.close();
     }
 
-    public static List<User> readUsers(String xmlPath) {
+    public static Data readUsers(String xmlPath) {
 
         List<User> userList = new ArrayList<>();
+        List<Staff> staffList = new ArrayList<>();
+        List<Student> studentList = new ArrayList<>();
 
         try{
             XMLStreamReader reader = startReader(xmlPath);
@@ -42,7 +47,8 @@ public class xmlReader {
             String messageText = null;
             String messageCreator = null;
 
-            User currentUser = null;
+            Staff currentStaff = null;
+            Student currentStudent = null;
             String userName = null;
             String userEmail = null;
             String userPassword = null;
@@ -134,9 +140,17 @@ public class xmlReader {
 
                         /* we create the user, add user to the list and points every reference to null */
                         else if(tag.equals("user")) {
-                            currentUser = new User(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
-                            userList.add(currentUser);
-                            currentUser = null;
+                            /* verify which role this user belongs */
+                            if(userRole == Role.STAFF.toString()) {
+                                currentStaff = new Staff(userName, userEmail, userPassword, userPhotoPath, currentMailBox);
+                                staffList.add(currentStaff);
+                            }
+                            else if(userRole == Role.STUDENT.toString()) {
+                                currentStudent = new Student(userName, userEmail, userPassword, userPhotoPath, currentMailBox)
+                                studentList.add(currentStudent);
+                            }
+                            currentStaff = null;
+                            currentStudent = null;
                             currentMailBox = null;
                         }
                         
@@ -153,6 +167,7 @@ public class xmlReader {
             e.printStackTrace();
         }
 
-        return userList;
+        Data data = new Data(studentList, staffList);
+        return data;
     }
 }
