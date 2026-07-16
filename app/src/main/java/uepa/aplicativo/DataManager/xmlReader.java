@@ -47,6 +47,7 @@ public class xmlReader {
             String userEmail = null;
             String userPassword = null;
             String userPhotoPath = null;
+            String userRole = null;
 
             while(reader.hasNext()) {
 
@@ -104,6 +105,7 @@ public class xmlReader {
                                     case "email" -> userEmail = text;
                                     case "password" -> userPassword = text;
                                     case "photoPath" -> userPhotoPath = text;
+                                    case "role" -> userRole = text;
                                 }
                             }
                         }
