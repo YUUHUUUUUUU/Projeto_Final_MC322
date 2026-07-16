@@ -7,7 +7,7 @@ import javax.xml.stream.XMLStreamReader;
 
 public class xmlReader {
 
-    public static XMLStreamReader startReader(String xmlPath) throws Exception{
+    private static XMLStreamReader startReader(String xmlPath) throws Exception{
         String absolutePath = System.getProperty("user.dir") + xmlPath;
         System.out.println(absolutePath);
         XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -17,4 +17,7 @@ public class xmlReader {
         return reader;
     }
     
+    private static void closeReader(XMLStreamReader reader) throws Exception{
+        reader.close();
+    }
 }
