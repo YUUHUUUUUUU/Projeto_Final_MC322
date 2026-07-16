@@ -36,6 +36,21 @@ public abstract class Extracurricular implements notify{
     private static int nextId = 0;
     private final int id;
 
+    /**
+     * Represents the constructor the should be called when a new Extra is created.
+     * This construct doesn't read a id. Because a new Extra doesn't have an id yet.
+     *
+     * @param name
+     * @param description
+     * @param isOpen
+     * @param institute
+     * @param logoPath
+     * @param bannerPath
+     * @param hyperLink
+     * @param fxmlPath
+     * @param staffsIds
+     * @param listenersIds
+     */
     public Extracurricular(String name, String description, String isOpen,  String institute,
          String logoPath, String bannerPath,
           String hyperLink, String fxmlPath, List<int[]> staffsIds, List<int[]> listenersIds) {
@@ -60,6 +75,30 @@ public abstract class Extracurricular implements notify{
         this.staffsId = staffsIds;
     }
 
+    /**
+     * Represents the constructor to reconstruct the Extracurricular from XML.
+     * This construct gets an id, to update the available ids for the registers.
+     * This should be called only during the start of the application.
+     * 
+     * <p>
+     * This Overflow is important because we need to guarantee that
+     * every new register will come with a new id based on those saved on
+     * the XML file
+     * </p>
+     * 
+     * 
+     * @param name
+     * @param description
+     * @param isOpen
+     * @param institute
+     * @param logoPath
+     * @param bannerPath
+     * @param hyperLink
+     * @param fxmlPath
+     * @param staffsIds
+     * @param listenersIds
+     * @param idString
+     */
     public Extracurricular(String name, String description, String isOpen,  String institute,
          String logoPath, String bannerPath,
           String hyperLink, String fxmlPath, 
