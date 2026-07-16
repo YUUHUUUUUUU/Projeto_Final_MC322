@@ -9,8 +9,8 @@ public class Staff extends User implements notify{
     private Extracurricular e;
 
 
-    public Staff(String email, String name, Extracurricular extracurricular, String photopath){
-        super(email,name,photopath);
+    public Staff(String email, String name, Extracurricular extracurricular, String photoPath){
+        super(email, name, photoPath);
     }
 
     @Override
