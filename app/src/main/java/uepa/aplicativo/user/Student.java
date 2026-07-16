@@ -1,9 +1,14 @@
 package uepa.aplicativo.user;
+import java.util.List;
+
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.message.Message;
+import uepa.aplicativo.constants.Role;
 
 public class Student extends User{
-    Student(String email,String name, String photoPath){
-        super(email, name, photoPath);
+    Student(String email,String name, String password, String photoPath, List<Message> mailBox){
+        super(email, name, password, photoPath, mailBox);
+        role = Role.STUDENT;
     }
 
     public void favorite(Extracurricular e){

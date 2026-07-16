@@ -90,6 +90,10 @@ public class User implements Notificable{
         }
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     public Image getPhoto() {
         return photo;
     }
