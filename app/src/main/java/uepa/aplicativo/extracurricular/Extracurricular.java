@@ -14,28 +14,25 @@ import uepa.aplicativo.interfaces.*;
 
 public abstract class Extracurricular implements notify{
     private String name;
-    private ArrayList<User> listners;
-    private List<Tag> tags = new ArrayList<Tag>();
+    private ArrayList<User> listeners;
     private boolean openToWork;
     private String description;
-    public Staff moderator;
     private List<Staff> staffList;
-    public boolean hasModerator;
-    private ZonedDateTime timezone;
-    private ZonedDateTime initialEnrollmentDate;
-    private ZonedDateTime finalEnrollmentDate;
     private PhotoGallery photoGallery;
     private boolean threeDaysNotification = false;
     private boolean sevenDaysNotification = false;
     private boolean oneDayNotification = false;
+    private String institute;
 
 
     private String fxmlPath;
 
-    public Extracurricular(String name, String description) {
+    public Extracurricular(String name, String description,
+         String logoPath, String bannerPath, String institute, boolean openToWork,
+          String hyperLink, List<Staff> staffs) {
         setName(name);
         setDescription(description);
-        this.listners = new ArrayList<>();
+        this.listeners = new ArrayList<>();
 
         photoGallery = new PhotoGallery("/logo/UEPA.png");
         staffList = new ArrayList<>();
@@ -50,34 +47,30 @@ public abstract class Extracurricular implements notify{
         return true;
     }
 
+    public String getDescription(){
+        return this.description;
+    }
+
     public boolean setDescription(String d){
         this.description=d;
         return true;
     }
 
-    public boolean setEnrollment(boolean b){
+    public boolean setOpenToWork(boolean b){
         this.openToWork=b;
         return b;
     }
 
-    public ZonedDateTime getInitial(){
-        return this.initialEnrollmentDate;
-    }
-
-    public ZonedDateTime getFinal(){
-        return this.finalEnrollmentDate;
-    }
-
-    public boolean checkEnrollment(){
+    public boolean getOpenToWork(){
         return openToWork;
     }
 
-//    public List<Tag> getListTags(){
-//        return this.tags;
-//    }
-
     public Image getLogo() {
         return photoGallery.getLogo();
+    }
+
+    public Image getBanner() {
+        return null;
     }
 
     public String getFxmlPath() {
@@ -88,80 +81,10 @@ public abstract class Extracurricular implements notify{
         this.fxmlPath = fxmlPath;
     }
 
-    public Staff getStaff(){
-        return moderator;
-    }
-
     public List<Staff> getStaffList() {
         return this.staffList;
     }
 
-    public void addStaff(Staff staff) {
-        if(staff != null){
-            this.staffList.add(staff);
-        }
-    }
-
-    public void setStaff(Staff staff) {
-        this.moderator = staff;
-    }
-
-    public boolean open_to_work(){
-        return this.openToWork;
-    }
-
-    public String getDescription(){
-        return this.description;
-    }
-    public List<User> getUsersFollowing(){
-        return listners;
-    }
-
-    public void addtoNotify(User s){
-        listners.add(s);
-    }
-
-    public void removefromNotify(User s){
-        int t=listners.size();
-        int pos=0;
-        for (int i=0;i<t;i++){
-            if (listners.get(i).getID()==s.getID()){
-                pos=i;
-            }
-        }
-        listners.remove(pos);
-    }
-
-    public boolean isFollowedBy(User s){
-        int t= listners.size();
-        for (int i=0;i<t;i++){
-            if (listners.get(i).getID()==s.getID()){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void notifyListeners(Message m) {
-        for (int i = 0; i < listners.size(); i++) {
-            listners.get(i).receiveMessage(m);
-        }
-    }
-    
-    /*public ZonedDateTime getInitial() {
-        return this.initialEnrollmentDate;
-    }
-    public void setInitialEnrollmentDate(ZonedDateTime initialEnrollmentDate) {
-        this.initialEnrollmentDate = initialEnrollmentDate;
-    }
-
-    public ZonedDateTime getFinal() {
-        return this.finalEnrollmentDate;
-    }
-
-    public void setFinalEnrollmentDate(ZonedDateTime finalEnrollmentDate) {
-        this.finalEnrollmentDate = finalEnrollmentDate;
-    }*/
     public PhotoGallery getPhotoGallery() {
         return this.photoGallery;
     }
@@ -170,49 +93,46 @@ public abstract class Extracurricular implements notify{
         this.photoGallery = photoGallery;
     }
 
-
-    public long  DaysLeft(){
-        if (finalEnrollmentDate == null) {
-            System.out.println("Data final não definida");
-            return 0;
-        }
-        ZonedDateTime now = ZonedDateTime.now(this.finalEnrollmentDate.getZone());
-        long daysLeft = ChronoUnit.DAYS.between(now, this.finalEnrollmentDate);
-        if (daysLeft < 0) {
-            return  0;
-        }
-        return daysLeft;
-    }
-    public void updateStatus() {
-        long daysLeft = DaysLeft();
-        if (daysLeft >= 0) {
-            this.openToWork = true;
-        } else {
-            this.openToWork = false;
-        }
-    }
-    public void automaticReminder() {
-        long daysLeft = DaysLeft();
-        if (daysLeft <= 7 && sevenDaysNotification == false) {
-            Message m7 = new Message("AVISO!","7 dias faltando para o encerramento",this, 
-            this.moderator);
-            this.notifyListeners(m7);
-            this.sevenDaysNotification = true;
-        } 
-        else if (daysLeft <= 3 && threeDaysNotification == false) {
-            Message m3 = new Message("AVISO!","3 dias faltando para o encerramento",this,
-            this.moderator);
-            this.notifyListeners(m3);
-            this.threeDaysNotification = true;
-        }
-        else if (daysLeft <= 1 && oneDayNotification == false) {
-            Message m1 = new Message("AVISO!"," Falta 1 dia para o encerramento",this,
-            this.moderator);
-            this.notifyListeners(m1);
-            this.oneDayNotification = true;            
+    public void addStaff(Staff staff) {
+        if(staff != null){
+            this.staffList.add(staff);
         }
     }
 
-    
-  
+    public List<User> getUsersListeners(){
+        return listeners;
+    }
+
+    public void addtoNotify(User s){
+        listeners.add(s);
+    }
+
+    public void removefromNotify(User s){
+        int t=listeners.size();
+        int pos=0;
+        for (int i=0;i<t;i++){
+            if (listeners.get(i).getID()==s.getID()){
+                pos=i;
+            }
+        }
+        listeners.remove(pos);
+    }
+
+    public boolean isFollowedBy(User s){
+        int t= listeners.size();
+        for (int i=0;i<t;i++){
+            if (listeners.get(i).getID()==s.getID()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void notifyListeners(String title, String text) {
+
+        Message m = new Message(title, text, this, null);
+        for (int i = 0; i < listeners.size(); i++) {
+            listeners.get(i).receiveMessage(m);
+        }
+    }
 }
