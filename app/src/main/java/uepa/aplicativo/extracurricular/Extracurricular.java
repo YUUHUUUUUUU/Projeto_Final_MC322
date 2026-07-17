@@ -5,8 +5,9 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import uepa.aplicativo.user.Staff;
+import uepa.aplicativo.user.User;
 import uepa.aplicativo.interfaces.notify;
-import uepa.aplicativo.interfaces.Notificable;
+import uepa.aplicativo.message.Message;
 
 public class Extracurricular implements notify{
     
@@ -18,20 +19,13 @@ public class Extracurricular implements notify{
     private String fxmlPath;
     private String hyperlink;
 
-    private boolean openToWork;
-
-    // recontruir a partir dos ids
-    // pega a lista total de usuarios 
-    // le o primeiro id da lista de staffs e procura o staff na lista
-    private ArrayList<User> listeners = new ArrayList<>();
+    private List<User> listeners = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
 
 
-    //Chega da leitura do xml
     private List<Integer> listenersId = new ArrayList<>();
     private List<Integer> staffsId = new ArrayList<>();
 
-    private PhotoGallery photoGallery;
     private String bannerPath;
     private String logoPath;
 
@@ -54,25 +48,22 @@ public class Extracurricular implements notify{
      * @param staffsIds
      * @param listenersIds
      */
-    public Extracurricular(String name, String description, String isOpenString,  String institute,
+    public Extracurricular(String name, String description, boolean openToWork,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath, 
-          List<String> staffsIds, List<String> listenersIds) {
+          String hyperlink, String fxmlPath) {
         
         id = nextId++;
 
-    private String bannerPath;
-    private String logoPath;
-    private String hyperLink;
+        setName(name);
+        setDescription(description);
+        setOpenToWork(openToWork);
         setInstitute(institute);
+        setHyperLink(hyperlink);
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
+
         setFxmlPath(fxmlPath);
-    
-        photoGallery = new PhotoGallery(logoPath);
-        
-        setListenerList(listenersIds);
-        setStaffList(staffsIds);
+
     }
 
     /**
@@ -101,7 +92,7 @@ public class Extracurricular implements notify{
      */
     public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath, 
+          String hyperlink, String fxmlPath, 
           List<String> staffsIds, List<String> listenersIds, String idString) {
 
         /* converts the idString back to int */
@@ -111,19 +102,13 @@ public class Extracurricular implements notify{
         
         setName(name);
         setDescription(description);
-        this.isOpenString = isOpenString;
         setOpenToWork(isOpenString);
         setInstitute(institute);
-        
         setHyperLink(hyperlink);
-
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
-
         setFxmlPath(fxmlPath);
-    
-        photoGallery = new PhotoGallery(logoPath);
-        
+
         setListenerList(listenersIds);
         setStaffList(staffsIds);
     }
@@ -175,20 +160,16 @@ public class Extracurricular implements notify{
         return this.description;
     }
 
-    public boolean setDescription(String d){
-        this.description=d;
-        return true;
-    }
-
     public boolean getOpenToWork(){
         return openToWork;
     }
 
-    public void setOpenToWork(String open){
-        if(open.equals("true")){
+    public void setOpenToWork(String isOpenString){
+        this.isOpenString = isOpenString;
+        if(isOpenString.equals("true")){
             this.openToWork=true;
         }
-        else if(open.equals("false")){
+        else if(isOpenString.equals("false")){
             this.openToWork=false;
         }
     }
@@ -197,35 +178,11 @@ public class Extracurricular implements notify{
         return institute;
     }
 
-    public void setInstitute(String institute){
-        if (institute==null){
-            System.err.println("Erro!");
-        } else {
-            boolean b=true;
-            for(int i=0;i<institute.length();i++){
-                char c=institute.charAt(i);
-                int t=Character.getNumericValue(c);
-                if ((t>=65 && t<=90) || (t>=97 && t<=122)){
-                    continue;
-                } else {
-                    b=false;
-                    break;
-                }
-            }
-            if (b){
-                this.institute=institute;
-            }
-        if (name.length() > 100) {
-            throw new IllegalArgumentException("O nome não pode exceder 100 caracteres.");
-        }
-        this.name = name;
-    }
-
     public void setDescription(String description) {
         if (description == null || description.trim().isEmpty()) {
             throw new IllegalArgumentException("A descrição não pode estar vazia.");
         }
-        if (description.length() > 1000) {
+        if (description.length() > 300) {
             throw new IllegalArgumentException("Descrição muito longa (máximo de 1000 caracteres).");
         }
         this.description = description;
@@ -233,6 +190,12 @@ public class Extracurricular implements notify{
 
     public void setOpenToWork(boolean openToWork) {
         this.openToWork = openToWork;
+        if(this.openToWork) {
+            this.isOpenString = "true";
+        }
+        else {
+            this.isOpenString = "false";
+        }
     }
 
     public void setInstitute(String institute) {
@@ -249,12 +212,6 @@ public class Extracurricular implements notify{
         this.bannerPath = bannerPath;
     }
 
-        return logoPath;
-    }
-
-    public void setBannerPath(String bannerPath){
-        this.bannerPath=bannerPath;
-    }
 
     public String getBannerPath() {
         return bannerPath;
@@ -272,17 +229,11 @@ public class Extracurricular implements notify{
         return this.staffList;
     }
 
-    public PhotoGallery getPhotoGallery() {
-        return this.photoGallery;
-    }
-
-    public void setPhotoGallery(PhotoGallery photoGallery) {
-        this.photoGallery = photoGallery;
-
     public void addStaff(Staff staff) {
         if (staff == null) {
             throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
+    }
 
     public List<User> getUsersListeners(){
         return listeners;
@@ -309,52 +260,32 @@ public class Extracurricular implements notify{
         }
     }
 
-    public void addListener(Notificable listener) {
+    public void addListener(User listener) {
         if (listener == null) {
             throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
         }
-        if (this.usersListeners.contains(listener)) {
+        if (this.listeners.contains(listener)) {
             throw new IllegalArgumentException("Este usuário já está recebendo notificações.");
         }
-        this.usersListeners.add(listener);
+        this.listeners.add(listener);
     }
 
-    public void removeListener(Notificable listener) {
+    public void removeListener(User listener) {
         if (listener == null) {
             throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
         }
-        if (!this.usersListeners.contains(listener)) {
+        if (!this.listeners.contains(listener)) {
             throw new IllegalArgumentException("O ouvinte não foi encontrado na lista de notificações.");
         }
-        this.usersListeners.remove(listener);
-    }
-
-    public String getFxmlPath(){
-        return fxmlPath;
+        this.listeners.remove(listener);
     }
 
     public void setfxmlPath(String fxml){
         this.fxmlPath=fxml;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public boolean isOpenToWork() {
         return openToWork;
-    }
-
-    public String getInstitute() {
-        return institute;
-    }
-
-    public String getBannerPath() {
-        return bannerPath;
     }
 
     public String getLogoPath() {
@@ -362,15 +293,13 @@ public class Extracurricular implements notify{
     }
 
     public String getHyperLink() {
-        return hyperLink;
+        return this.hyperlink;
     }
 
-    public List<Staff> getStaffList() {
-        return staffList;
-    }
-
-    public List<Notificable> getUsersListeners() {
-        return usersListeners;
+    public void setLogoPath(String logoPath) {
+        if(logoPath != null) {
+            this.logoPath = logoPath;
+        }
     }
 
     public Image getLogo() {
@@ -379,5 +308,11 @@ public class Extracurricular implements notify{
 
     public Image getBanner() {
         return new Image(getClass().getResourceAsStream(this.bannerPath));
+    }
+
+    public void setHyperLink(String link) {
+        if(link != null) {
+            this.hyperlink = link;
+        }
     }
 }
