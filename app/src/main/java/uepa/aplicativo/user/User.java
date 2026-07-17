@@ -11,11 +11,7 @@ import uepa.aplicativo.loaders.ImageLoader;
 
 public class User implements Notificable{
 
-<<<<<<< HEAD
     Role role;
-=======
-    private Role role;
->>>>>>> origin/unit-tests
     private String name;
     private String email;
     private String password;
