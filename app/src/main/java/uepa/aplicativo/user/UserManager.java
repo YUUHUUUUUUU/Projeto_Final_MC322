@@ -197,7 +197,7 @@ public class UserManager {
         data.addUser(student);
     }
 
-    public User login(String typedFullEmail, String typedPassword, Data data) throws Exception{
+    public static User login(String typedFullEmail, String typedPassword, Data data) throws Exception{
         for(User u : data.getUserList()) {
             if(compareLoginEmails(typedFullEmail, u.getEmail()) &&
                 compareLoginPasswords(typedPassword, u.getPassword())) {
@@ -207,7 +207,7 @@ public class UserManager {
         throw new Exception("Email or password wrong");
     }
 
-    public boolean compareLoginEmails(String email1, String email2) throws Exception{
+    private static boolean compareLoginEmails(String email1, String email2) throws Exception{
         if(email1 != null && email2 != null) {
             if(email1.equals(email2)) {
                 return true;
@@ -217,7 +217,7 @@ public class UserManager {
         return false;
     }
 
-    public boolean compareLoginPasswords(String password1, String password2) throws Exception{
+    private static boolean compareLoginPasswords(String password1, String password2) throws Exception{
         if(password1 != null && password2 == null) {
             if(password1.equals(password2)) {
                 return true;
