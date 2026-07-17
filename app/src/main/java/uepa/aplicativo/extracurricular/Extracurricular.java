@@ -309,7 +309,7 @@ public class Extracurricular implements notify{
     }
 
     public Image getLogo() {
-    return new Image(getClass().getResourceAsStream(this.logoPath));
+        return new Image(getClass().getResourceAsStream(this.logoPath));
     }
 
     public Image getBanner() {
