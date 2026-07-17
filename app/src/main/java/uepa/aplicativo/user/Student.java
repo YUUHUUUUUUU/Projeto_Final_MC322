@@ -6,13 +6,13 @@ import uepa.aplicativo.message.Message;
 import uepa.aplicativo.constants.Role;
 
 public class Student extends User{
-    public Student(String email,String name, String password, String photoPath, List<Message> mailBox){
-        super(email, name, password, photoPath, mailBox);
+    public Student(String email,String name, String password, String photoPath){
+        super(name, email, password, photoPath);
         role = Role.STUDENT;
     }
 
     public Student(String email,String name, String password, String photoPath, List<Message> mailBox, String idString){
-        super(email, name, password, photoPath, mailBox, idString);
+        super(name, email, password, photoPath, mailBox, idString);
         role = Role.STUDENT;
     }
 

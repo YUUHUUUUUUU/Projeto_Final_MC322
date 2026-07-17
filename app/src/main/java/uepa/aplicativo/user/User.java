@@ -35,8 +35,7 @@ public class User implements Notificable{
      * @param mailBox
      */
     // criar novos
-    public User(String name, String email, String password,
-         String photoPath, List<Message> mailBox){
+    public User(String name, String email, String password, String photoPath){
 
         this.id = nextId++; // gera id novo
 
@@ -46,7 +45,7 @@ public class User implements Notificable{
         this.name = name;
         this.photoPath = photoPath;
         setPhoto(photoPath);
-        this.mailBox = mailBox;
+        this.mailBox = new ArrayList<>();
     }
 
     /**

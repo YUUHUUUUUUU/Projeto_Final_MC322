@@ -42,10 +42,13 @@ public class Data {
         this.extracurricularList = extracurricularList;
     }
 
-    public void addUser(User user) {
+    public Data addUser(User user) {
         if(user != null){
             userList.add(user);
+            writeData(this);
         }
+
+        return loadData();
     }
 
     public void addExtracurricular(Extracurricular extra) {
