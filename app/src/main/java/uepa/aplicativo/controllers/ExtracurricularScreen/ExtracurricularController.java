@@ -20,7 +20,7 @@ import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 
-public class ExtracurricularController implements Initializable {
+public class ExtracurricularController implements Initializable,Editable {
 
     @FXML
     private Button goBackButton;
@@ -117,6 +117,41 @@ public class ExtracurricularController implements Initializable {
 
         return catalogItems;
 
+    }
+
+    @Override
+    public void editExtraName(String newName){
+        extracurricular.setName(newName);
+    }
+
+    @Override
+    public void editExtraDesc(String newDesc){
+        extracurricular.setDescription(newDesc);
+    }
+
+    @Override
+    public void editExtraOpen(boolean newOpen){
+        extracurricular.setOpenToWork(newOpen);
+    }
+
+    @Override
+    public void editExtraLink(String newHyper){
+        extracurricular.setHyperLink(newHyper);
+    }
+
+    @Override
+    public void editExtraInstitute(String newInst){
+        extracurricular.setInstitute(newInst);
+    }
+
+    @Override
+    public void editExtraBanner(String newPath){
+        extracurricular.setBannerPath(newPath);
+    }
+
+    @Override
+    public void editExtraLogo(String newPath){
+        extracurricular.setLogoPath(newPath);
     }
 }
 

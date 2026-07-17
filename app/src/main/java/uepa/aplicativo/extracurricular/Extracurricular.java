@@ -1,26 +1,22 @@
 package uepa.aplicativo.extracurricular;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.image.Image;
-import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
-import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
-import uepa.aplicativo.user.User;
-import uepa.aplicativo.constants.*;
-import uepa.aplicativo.interfaces.*;
+import uepa.aplicativo.interfaces.notify;
+import uepa.aplicativo.interfaces.Notificable;
 
 public class Extracurricular implements notify{
     
     private String name;
     private String description;
+    private boolean openToWork;
     private String institute;
     private String isOpenString;
     private String fxmlPath;
     private String hyperlink;
-
 
     private boolean openToWork;
 
@@ -65,17 +61,12 @@ public class Extracurricular implements notify{
         
         id = nextId++;
 
-        setName(name);
-        setDescription(description);
-        this.isOpenString = isOpenString;
-        setOpenToWork(isOpenString);
+    private String bannerPath;
+    private String logoPath;
+    private String hyperLink;
         setInstitute(institute);
-        
-        setHyperLink(hyperlink);
-
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
-
         setFxmlPath(fxmlPath);
     
         photoGallery = new PhotoGallery(logoPath);
@@ -224,26 +215,40 @@ public class Extracurricular implements notify{
             if (b){
                 this.institute=institute;
             }
+        if (name.length() > 100) {
+            throw new IllegalArgumentException("O nome não pode exceder 100 caracteres.");
         }
+        this.name = name;
     }
 
-    public String getHyperLink(){
-        return hyperlink;
+    public void setDescription(String description) {
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("A descrição não pode estar vazia.");
+        }
+        if (description.length() > 1000) {
+            throw new IllegalArgumentException("Descrição muito longa (máximo de 1000 caracteres).");
+        }
+        this.description = description;
     }
 
-    public void setHyperLink(String hyperlink){
-        this.hyperlink=hyperlink;
+    public void setOpenToWork(boolean openToWork) {
+        this.openToWork = openToWork;
     }
 
-    public Image getLogo() {
-        return photoGallery.getLogo();
+    public void setInstitute(String institute) {
+        if (institute == null || institute.trim().isEmpty()) {
+            throw new IllegalArgumentException("O instituto não pode ser nulo ou vazio.");
+        }
+        this.institute = institute;
     }
 
-    public void setLogoPath(String logoPath){
-        this.logoPath=logoPath;
+    public void setBannerPath(String bannerPath) {
+        if (bannerPath == null || bannerPath.trim().isEmpty()) {
+            throw new IllegalArgumentException("O caminho do banner não pode ser nulo ou vazio.");
+        }
+        this.bannerPath = bannerPath;
     }
 
-    public String getLogoPath() {
         return logoPath;
     }
 
@@ -273,13 +278,11 @@ public class Extracurricular implements notify{
 
     public void setPhotoGallery(PhotoGallery photoGallery) {
         this.photoGallery = photoGallery;
-    }
 
     public void addStaff(Staff staff) {
-        if(staff != null){
-            this.staffList.add(staff);
+        if (staff == null) {
+            throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
-    }
 
     public List<User> getUsersListeners(){
         return listeners;
@@ -304,5 +307,77 @@ public class Extracurricular implements notify{
         for (int i = 0; i < listeners.size(); i++) {
             listeners.get(i).receiveMessage(m);
         }
+    }
+
+    public void addListener(Notificable listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
+        }
+        if (this.usersListeners.contains(listener)) {
+            throw new IllegalArgumentException("Este usuário já está recebendo notificações.");
+        }
+        this.usersListeners.add(listener);
+    }
+
+    public void removeListener(Notificable listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
+        }
+        if (!this.usersListeners.contains(listener)) {
+            throw new IllegalArgumentException("O ouvinte não foi encontrado na lista de notificações.");
+        }
+        this.usersListeners.remove(listener);
+    }
+
+    public String getFxmlPath(){
+        return fxmlPath;
+    }
+
+    public void setfxmlPath(String fxml){
+        this.fxmlPath=fxml;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isOpenToWork() {
+        return openToWork;
+    }
+
+    public String getInstitute() {
+        return institute;
+    }
+
+    public String getBannerPath() {
+        return bannerPath;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public String getHyperLink() {
+        return hyperLink;
+    }
+
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
+
+    public List<Notificable> getUsersListeners() {
+        return usersListeners;
+    }
+
+    public Image getLogo() {
+    return new Image(getClass().getResourceAsStream(this.logoPath));
+    }
+
+    public Image getBanner() {
+        return new Image(getClass().getResourceAsStream(this.bannerPath));
     }
 }

@@ -11,7 +11,11 @@ import uepa.aplicativo.loaders.ImageLoader;
 
 public class User implements Notificable{
 
+<<<<<<< HEAD
     Role role;
+=======
+    private Role role;
+>>>>>>> origin/unit-tests
     private String name;
     private String email;
     private String password;
@@ -105,7 +109,7 @@ public class User implements Notificable{
     }
 
     public Image getPhoto() {
-        return photo;
+        return new Image(getClass().getResourceAsStream(this.photoPath));
     }
 
     public String getPhotoPath() {
@@ -190,13 +194,14 @@ public class User implements Notificable{
     public List<Message> getMailBox(){
         return mailBox;
     }
+
     public boolean removeMailBox(Message m) {
         if (m == null) {
             return false;
         }
         return this.mailBox.remove(m);
-
     }
+
     @Override
     public void receiveMessage(Message m) {
         if (m == null) {
