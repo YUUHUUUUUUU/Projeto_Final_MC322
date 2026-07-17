@@ -1,6 +1,9 @@
 package uepa.aplicativo.controllers.ExtracurricularScreen;
 
-
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +11,21 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import uepa.aplicativo.DataManager.Data;
+import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.controllers.CatalogScreen.CardController;
+import uepa.aplicativo.controllers.CatalogScreen.CatalogController;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 import uepa.aplicativo.loaders.CatalogCardLoader;
@@ -25,22 +36,38 @@ import uepa.aplicativo.user.Staff;
 public class ExtracurricularController implements RecieveData{
 
     @FXML
+    private Label description;
+
+    @FXML
     private Button goBackButton;
 
     @FXML
+    private Label name;
+
+    @FXML
     private Hyperlink hyperlink;
+
+    @FXML
+    private Label type;
 
     @FXML
     private VBox staffCatalog;
 
     @FXML
     void goBack(ActionEvent event) {
-
+        RedirectToCatalog(event);
     }
 
     @FXML
     void openLink(ActionEvent event) {
-        System.out.println("heyyy");
+        try {
+            Runtime.getRuntime().exec(new String[]{
+                "xdg-open",
+                extracurricular.getHyperLink()
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -93,6 +120,9 @@ public class ExtracurricularController implements RecieveData{
     public void receiveData(Data data, Extracurricular extracurricular)  {
         setData(data);
         this.extracurricular = extracurricular;
+        this.description.setText(this.extracurricular.getDescription());
+        this.name.setText(this.extracurricular.getName());
+        this.hyperlink.setText(this.extracurricular.getHyperLink());
         try {
             List<HBox> catalogItems = loadCatalog();
             
@@ -122,7 +152,37 @@ public class ExtracurricularController implements RecieveData{
         this.data = data;
     }
 
+    void RedirectToCatalog(ActionEvent event) {
+        try{
+            String fxmlPath = "/fxml/CatalogScreen/Catalog.fxml";
+            String pageTitle = "Catalog Screen";
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
+            System.out.println("URL carregada: " + fxmlLoader.getLocation());
+            Parent root = fxmlLoader.load();
 
+            CatalogController controller = fxmlLoader.getController();
+
+            controller.receiveData(data);
+
+            Scene screen = new Scene(root);
+
+            Node source = (Node) event.getSource();
+            Scene currentScene = source.getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            root.requestFocus();
+            stage.setTitle(pageTitle);
+            stage.setScene(screen);
+            stage.setResizable(true);
+            stage.setMaximized(true);
+            stage.show();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        
+    }
 
 }
 

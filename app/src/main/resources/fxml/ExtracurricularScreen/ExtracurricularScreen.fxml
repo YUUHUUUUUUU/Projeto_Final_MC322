@@ -77,7 +77,7 @@
                                  <StackPane.margin>
                                     <Insets />
                                  </StackPane.margin></ImageView>
-                              <Label text="Type">
+                              <Label fx:id="type" text="Type">
                                  <StackPane.margin>
                                     <Insets bottom="100.0" left="50.0" />
                                  </StackPane.margin>
@@ -86,7 +86,7 @@
                                     <String fx:value="white-text" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="97.0" prefWidth="865.0" text="NAME OF THE&#10;EXTRACURRICULAR ACTIVITY.">
+                              <Label fx:id="name" prefHeight="97.0" prefWidth="865.0" text="NAME OF THE&#10;EXTRACURRICULAR ACTIVITY.">
                                  <StackPane.margin>
                                     <Insets left="50.0" />
                                  </StackPane.margin>
@@ -112,7 +112,7 @@
                                                 <String fx:value="font-size-24" />
                                              </styleClass>
                                           </Label>
-                                          <Label alignment="TOP_LEFT" layoutX="30.0" layoutY="20.0" prefHeight="149.0" prefWidth="1875.0" text="\$fulldescription$">
+                                          <Label fx:id="description" alignment="TOP_LEFT" layoutX="30.0" layoutY="20.0" prefHeight="149.0" prefWidth="1875.0" text="\$fulldescription$">
                                              <styleClass>
                                                 <String fx:value="white-text" />
                                                 <String fx:value="regurlar-text" />
