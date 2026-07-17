@@ -45,7 +45,7 @@ public class Data {
     public Data addUser(User user) {
         if(user != null){
             userList.add(user);
-            writeData(this);
+            writeUserData(this);
         }
 
         return loadData();
@@ -54,20 +54,23 @@ public class Data {
     public Data addExtracurricular(Extracurricular extra, Data data) {
         if(extra != null) {
             extracurricularList.add(extra);
-            writeData(data);
+            writeExtracurricularData(data);
         }
 
         return loadData();
     }
 
-    public static void writeData(Data data) {
+    public static void writeUserData(Data data) {
         xmlWriter.writeUsers("/src/main/resources/xml/user.xml", data);
+    }
+
+    public static void writeExtracurricularData(Data data) {
         xmlWriter.writeExtracurriculars("/src/main/resources/xml/extra.xml", data);
     }
 
     public static Data loadData() {
         Data data = xmlReader.readUsers("/src/main/resources/xml/user.xml");
-        xmlReader.readExtracurriculars("/src/main/resources/xml/extra.xml", data);
+        data = xmlReader.readExtracurriculars("/src/main/resources/xml/extra.xml", data);
         return data;
     }
 

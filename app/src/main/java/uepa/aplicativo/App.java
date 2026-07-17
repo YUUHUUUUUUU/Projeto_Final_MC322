@@ -25,11 +25,8 @@ public class App extends Application {
     public void start(Stage primaryStage) {
 
         Data data = Data.loadData();
-        Extracurricular extra = new Extracurricular("caco", "um centro acadêmico", false, "ic", "/logo/UEPA.png", "/logo/UEPA.png", "https://caco.com", "/fxml/ExtracurricularScreen/ExtraScreen.fxml");
-        data.addExtracurricular(extra, data);
-        Data.writeData(data);
-
-        System.out.println(data.getExtracurricularList().getFirst().getName());
+        Data.writeUserData(data);
+        Data.writeExtracurricularData(data);
 
         IconLoader.tryLoadingIcon(primaryStage);
         String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";

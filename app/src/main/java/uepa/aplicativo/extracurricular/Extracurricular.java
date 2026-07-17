@@ -233,6 +233,11 @@ public class Extracurricular implements notify{
         if (staff == null) {
             throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
+        else {
+            int id = staff.getId();
+            this.staffList.add(staff);
+            this.staffsId.add(id);
+        }
     }
 
     public List<User> getUsersListeners(){
@@ -264,10 +269,11 @@ public class Extracurricular implements notify{
         if (listener == null) {
             throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
         }
-        if (this.listeners.contains(listener)) {
-            throw new IllegalArgumentException("Este usuário já está recebendo notificações.");
+        else {
+            int id = listener.getId();
+            this.listeners.add(listener);
+            this.listenersId.add(id);
         }
-        this.listeners.add(listener);
     }
 
     public void removeListener(User listener) {
