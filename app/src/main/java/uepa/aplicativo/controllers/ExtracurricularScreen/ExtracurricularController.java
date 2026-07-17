@@ -123,6 +123,7 @@ public class ExtracurricularController implements RecieveData{
         this.description.setText(this.extracurricular.getDescription());
         this.name.setText(this.extracurricular.getName());
         this.hyperlink.setText(this.extracurricular.getHyperLink());
+        this.type.setText(this.extracurricular.getInstitute());
         try {
             List<HBox> catalogItems = loadCatalog();
             
