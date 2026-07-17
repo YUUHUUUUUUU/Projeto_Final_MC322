@@ -46,7 +46,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="1080.0" prefWidth="1920.0" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CatalogController" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="1080.0" prefWidth="1920.0" styleClass="black-background" stylesheets="@../../css/CatalogScreen/background.css, @../../css/CatalogScreen/headers.css, @../../css/CatalogScreen/scroll-bar.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uepa.aplicativo.controllers.CatalogScreen.CatalogController">
   <children>
       <BorderPane>
          <center>
@@ -70,7 +70,7 @@
                      <children>
                         <Button fx:id="mailBoxButton" maxHeight="50.0" maxWidth="65.0" minHeight="50.0" minWidth="65.0" mnemonicParsing="false" onAction="#mailBoxClicked" prefHeight="50.0" prefWidth="65.0" styleClass="black-background">
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                              <ImageView fitHeight="50.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" styleClass="button" visible="false">
                                  <image>
                                     <Image url="@../../icons/mailbox.png" />
                                  </image>
