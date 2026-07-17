@@ -2,10 +2,13 @@ package uepa.aplicativo.controllers.RegisterScreen;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.extracurricular.Extracurricular;
@@ -42,10 +45,31 @@ public class RegisterController implements RecieveData{
         String confirmedPassword = confirmPasswordField.getText();
         try{
             UserManager.signIn(completeName, fullEmail, password, confirmedPassword, data);
+            RedirectToLogin(event);
         }
         catch(Exception e) {
             System.out.println(e);
             SceneManager.showErrorMessage(errorLabel, e);
+        }
+    }
+
+    void RedirectToLogin(ActionEvent event) {
+        try{
+            Scene screen = SceneManager.goBackToLogin();
+
+            Node source = (Node) event.getSource();
+            Scene currentScene = source.getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setTitle("Catalog Screen");
+            stage.setScene(screen);
+            stage.setResizable(true);
+            stage.setMaximized(true);
+            stage.show();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

@@ -39,22 +39,21 @@ public class LoginController implements RecieveData{
 
     @FXML
     void LogIn(ActionEvent event) {
-        RedirectToCatalog(event);
-        //try {
-        //    String email = emailField.getText();
-        //    String password = passwordField.getText();
-        //    User loggedUser = UserManager.login(email, password, data);
-        //    data.setLoggedUser(loggedUser);
+        try {
+            String email = emailField.getText();
+            String password = passwordField.getText();
+            User loggedUser = UserManager.login(email, password, data);
+            data.setLoggedUser(loggedUser);
 
-        //    if(loggedUser.getRole().equals(Role.STUDENT)) {
-        //        RedirectToCatalog(event);
-        //    }
+            if(loggedUser.getRole().equals(Role.STUDENT)) {
+                RedirectToCatalog(event);
+            }
 
-        //}
-        //catch (Exception e) {
-        //    System.out.println(e);
-        //    SceneManager.showErrorMessage(errorLabel, e);
-        //}
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            SceneManager.showErrorMessage(errorLabel, e);
+        }
     }
 
     @FXML
@@ -79,7 +78,7 @@ public class LoginController implements RecieveData{
             stage.setScene(screen);
             stage.setResizable(true);
             stage.setMaximized(true);
-            SceneManager.setGoBackScene(currentScene);
+            SceneManager.setGoBackLogin(currentScene);
             stage.show();
         }
         catch(Exception e) {

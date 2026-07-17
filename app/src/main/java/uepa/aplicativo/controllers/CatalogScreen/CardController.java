@@ -72,6 +72,15 @@ public class CardController implements RecieveData {
             setName(name);
             setDescription(description);
             setImage(image);
+            
+            this.type.setText(extracurricular.getInstitute());
+            System.out.println(extracurricular.getOpenToWork());
+            if(extracurricular.getOpenToWork()) {
+                this.initialEnrollmentDate.setText("Aberta");
+            }
+            else {
+                this.initialEnrollmentDate.setText("Fechada");
+            }
     }
 
     private void setName(String name) {

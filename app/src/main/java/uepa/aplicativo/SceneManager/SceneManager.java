@@ -19,6 +19,7 @@ import uepa.aplicativo.loaders.FontLoader;
 public class SceneManager {
 
     private static Scene previousScene;
+    private static Scene loginScene;
     /* We dont want to instantiate  this class, only use its method */
     private SceneManager() {}
 
@@ -137,6 +138,14 @@ public class SceneManager {
 
     public static void setGoBackScene(Scene scene){
         previousScene = scene;
+    }
+
+    public static void setGoBackLogin(Scene scene) {
+        loginScene = scene;
+    }
+
+    public static Scene goBackToLogin() {
+        return loginScene;
     }
 
     public static Scene getGoBackScene() {

@@ -176,7 +176,6 @@ public class ExtracurricularController implements RecieveData{
             System.out.println(e);
             e.printStackTrace();
         }
-        
     }
 
 }
