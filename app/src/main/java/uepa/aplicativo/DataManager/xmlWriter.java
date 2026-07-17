@@ -86,7 +86,7 @@ public class xmlWriter {
             writer.writeStartElement("extracurricularlist");
             for(Extracurricular e : extracurricularList) {
 
-                writer.writeStartElement("extracurricular");
+                writer.writeStartElement("extra");
 
                 /* attributes of extra */
                 writeElement(writer, "name", e.getName());
@@ -95,6 +95,8 @@ public class xmlWriter {
                 writeElement(writer, "isopenstring", e.getIsOpenString());
                 writeElement(writer, "fxmlpath", e.getFxmlPath());
                 writeElement(writer, "hyperlink", e.getHyperLink());
+                writeElement(writer, "bannerpath", e.getBannerPath());
+                writeElement(writer, "logopath", e.getLogoPath());
                 writeElement(writer, "id", e.getIdString());
 
                 writer.writeStartElement("staffids");

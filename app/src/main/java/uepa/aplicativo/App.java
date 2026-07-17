@@ -23,15 +23,21 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        try{
+            Data data = null;
+            data = Data.loadData(data);
+            Data.writeUserData(data);
+            Data.writeExtracurricularData(data);
 
-        Data data = Data.loadData();
-        Data.writeUserData(data);
-        Data.writeExtracurricularData(data);
+            System.out.println(data.getExtracurricularList().getFirst().getName());
 
-        IconLoader.tryLoadingIcon(primaryStage);
-        String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";
-        //String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
-        String pageTitle = "Login Screen";
-        SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle, data);
+            IconLoader.tryLoadingIcon(primaryStage);
+            String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";
+            //String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
+            String pageTitle = "Login Screen";
+            SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle, data);
+        }
+        catch(Exception e) {
+        }
     }
 }

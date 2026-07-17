@@ -31,7 +31,7 @@ public class xmlReader {
         reader.close();
     }
 
-    public static Data readUsers(String xmlPath) {
+    public static Data readUsers(String xmlPath, Data data) {
 
         List<User> userList = new ArrayList<>();
         List<Staff> staffList = new ArrayList<>();
@@ -174,15 +174,22 @@ public class xmlReader {
             System.out.println("Failed to load Users");
             e.printStackTrace();
         }
+        
+        if(data == null) {
+            data = new Data(studentList, staffList);
+        }
+        else {
+            data.setStudentList(studentList);
+            data.setStaffList(staffList);
+        }
 
-        Data data = new Data(studentList, staffList);
         return data;
     }
 
 
 
     public static Data readExtracurriculars(String xmlPath, Data data) {
-
+        
         List<Extracurricular> extracurricularList = new ArrayList<>();
 
         try{
@@ -192,8 +199,8 @@ public class xmlReader {
 
             boolean insideListenerList = false;
             boolean insideStaffList = false;
-            List<String> currentStaffList = null;
-            List<String> currentListenerList = null;
+            List<String> currentStaffList = new ArrayList<>();
+            List<String> currentListenerList = new ArrayList<>();
 
             String staffId = null;
             String listenerId = null;
@@ -330,10 +337,11 @@ public class xmlReader {
             closeReader(reader);
         }
         catch(Exception e) {
-            System.out.println("Failed to load Users");
+            System.out.println("Failed to load Extras");
+            System.out.println(e);
             e.printStackTrace();
         }
-
+        
         data.setExtracurricularList(extracurricularList);
         return data;
     }

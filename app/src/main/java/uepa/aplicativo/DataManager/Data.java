@@ -27,8 +27,15 @@ public class Data {
         }
     }
 
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
     public List<Student> getStudentList() {
         return studentList;
+    }
+
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
     }
     public List<User> getUserList() {
         return userList;
@@ -48,16 +55,16 @@ public class Data {
             writeUserData(this);
         }
 
-        return loadData();
+        return loadData(this);
     }
 
-    public Data addExtracurricular(Extracurricular extra, Data data) {
+    public Data addExtracurricular(Extracurricular extra) {
         if(extra != null) {
             extracurricularList.add(extra);
-            writeExtracurricularData(data);
+            writeExtracurricularData(this);
         }
 
-        return loadData();
+        return loadData(this);
     }
 
     public static void writeUserData(Data data) {
@@ -68,9 +75,10 @@ public class Data {
         xmlWriter.writeExtracurriculars("/src/main/resources/xml/extra.xml", data);
     }
 
-    public static Data loadData() {
-        Data data = xmlReader.readUsers("/src/main/resources/xml/user.xml");
+    public static Data loadData(Data data) {
+        data = xmlReader.readUsers("/src/main/resources/xml/user.xml", data);
         data = xmlReader.readExtracurriculars("/src/main/resources/xml/extra.xml", data);
+
         return data;
     }
 
