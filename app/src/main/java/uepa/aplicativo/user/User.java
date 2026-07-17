@@ -34,10 +34,10 @@ public class User implements Notificable{
      * @param photoPath
      * @param mailBox
      */
-    public User(String name, String email, String password,
-         String photoPath, List<Message> mailBox){
+    // criar novos
+    public User(String name, String email, String password, String photoPath){
 
-        this.id = nextId++;
+        this.id = nextId++; // gera id novo
 
 
         this.email = email;
@@ -45,7 +45,7 @@ public class User implements Notificable{
         this.name = name;
         this.photoPath = photoPath;
         setPhoto(photoPath);
-        this.mailBox = mailBox;
+        this.mailBox = new ArrayList<>();
     }
 
     /**
@@ -64,6 +64,7 @@ public class User implements Notificable{
      * @param photoPath
      * @param id
      */
+    // reconstruir
     public User(String name, String email,
          String password, String photoPath,
           List<Message> mailBox, String idString) {
@@ -103,7 +104,7 @@ public class User implements Notificable{
     }
 
     public Image getPhoto() {
-        return photo;
+        return new Image(getClass().getResourceAsStream(this.photoPath));
     }
 
     public String getPhotoPath() {
@@ -188,13 +189,14 @@ public class User implements Notificable{
     public List<Message> getMailBox(){
         return mailBox;
     }
+
     public boolean removeMailBox(Message m) {
         if (m == null) {
             return false;
         }
         return this.mailBox.remove(m);
-
     }
+
     @Override
     public void receiveMessage(Message m) {
         if (m == null) {

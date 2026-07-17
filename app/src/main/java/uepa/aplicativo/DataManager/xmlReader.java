@@ -1,19 +1,23 @@
 package uepa.aplicativo.DataManager;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.text.html.HTML;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
-import uepa.aplicativo.constants.Role;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.Student;
 import uepa.aplicativo.user.User;
+import uepa.aplicativo.constants.Tag;
+import uepa.aplicativo.user.searchEngine;
 
 public class xmlReader {
 
@@ -192,11 +196,17 @@ public class xmlReader {
 
             boolean insideListenerList = false;
             boolean insideStaffList = false;
+            boolean insideTagList = false;
+
             List<String> currentStaffList = null;
             List<String> currentListenerList = null;
+            List<Tag> currentTagList = null;
+
 
             String staffId = null;
             String listenerId = null;
+            Tag parsedTag = null;
+
 
             Extracurricular currentExtra = null;
             String extraName = null;
@@ -237,6 +247,7 @@ public class xmlReader {
                             /* for each user we need to create a mailbox */
                             currentStaffList = new ArrayList<>();
                             currentListenerList = new ArrayList<>();
+                            currentTagList = new ArrayList<>();
                         }
                         else if(currentTag.equals("staffids")){
 
@@ -247,6 +258,9 @@ public class xmlReader {
                         }
                         else if(currentTag.equals("listenersids")){
                             insideListenerList = true;
+                        }
+                        else if (currentTag.equals("tags")) {
+                            insideTagList = true;
                         }
                         break;
 
@@ -262,6 +276,16 @@ public class xmlReader {
                             else if(insideListenerList) {
                                 switch (currentTag) {
                                     case "idlistener" -> listenerId = text;
+                                }
+                            }
+                            else if (insideTagList) {
+                                switch(currentTag) {
+                                    case "tag"-> {
+                                        List<Tag> allTags = Arrays.asList(Tag.values());
+                                   parsedTag = searchEngine.searchByName(allTags, text, Tag::getTagName)
+                                    .orElse(null);
+                                    }
+                        
                                 }
                             }
 
@@ -295,20 +319,36 @@ public class xmlReader {
                             currentListenerList.add(listenerId);
                             listenerId = null;
                         }
+                        else if (tag.equals("tag")) {
+                            if (parsedTag != null) {
+                                currentTagList.add(parsedTag);
+                            }
+                            parsedTag = null;
+                            
+                        }
                         else if(tag.equals("staffids")) {
                             insideStaffList = false;
                         }
                         else if(tag.equals("listenersids")) {
                             insideListenerList = false;
                         }
-
+                        else if (tag.equals("tags")) { 
+                        insideTagList = false;
+                        }
+        
+                        
                         /* we create the user, add user to the list and points every reference to null */
                         else if(tag.equals("extra")) {
-                            currentExtra = new Extracurricular(extraName, extraDescription, extraIsOpenString, extraInstitute, extraLogoPath, extraBannerPath, extraHyperlink, extraFxmlPath, currentStaffList, currentListenerList, extraId);
+                            currentExtra = new Extracurricular(extraName, extraDescription,
+                             extraIsOpenString, extraInstitute, extraLogoPath, extraBannerPath, extraHyperlink, extraFxmlPath, currentStaffList, currentListenerList, extraId);
+                            currentExtra.setTags(currentTagList);
                             extracurricularList.add(currentExtra);
+
+
 
                             currentExtra = null;
                             currentStaffList = null;
+                            currentTagList = null;
                             currentListenerList = null;
                             extraName = null;
                             extraDescription = null;
@@ -330,7 +370,7 @@ public class xmlReader {
             closeReader(reader);
         }
         catch(Exception e) {
-            System.out.println("Failed to load Users");
+            System.out.println("Failed to load Extracurriculars");
             e.printStackTrace();
         }
 

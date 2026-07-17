@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import uepa.aplicativo.DataManager.Data;
+import uepa.aplicativo.controllers.LoginScreen.LoginController;
 import uepa.aplicativo.loaders.FontLoader;
 
 public class SceneManager {
@@ -90,7 +92,7 @@ public class SceneManager {
      * 
      * @author Enzo Farina Mullis
      */
-    public static void initializeFirstScene(Stage primaryStage, String fxmlPath, String pageTitle) {
+    public static void initializeFirstScene(Stage primaryStage, String fxmlPath, String pageTitle, Data data) {
         FontLoader.loadFonts();
 
         try{
@@ -98,6 +100,9 @@ public class SceneManager {
             Parent root = fxmlLoader.load();
             Scene screen = new Scene(root);
             
+            LoginController controller = fxmlLoader.getController();
+            controller.receiveData(data);
+
             root.requestFocus();
 
             primaryStage.setMaximized(true);

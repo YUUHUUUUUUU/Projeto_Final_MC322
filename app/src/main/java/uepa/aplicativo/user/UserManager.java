@@ -1,32 +1,12 @@
 package uepa.aplicativo.user;
 
-import java.io.File;
-import java.lang.reflect.Array;
-import java.security.MessageDigest;
-import java.nio.charset.StandardCharsets;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import java.util.ArrayList;
-
+import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.Exceptions.InvalidEmailException;
 import uepa.aplicativo.Exceptions.InvalidPasswordException;
 
 public class UserManager {
     
     private UserManager() {}
-    private static String XML_FILE = "users.xml";
-
-    // Validation Methods
 
     private static void validateName(String name){
         if(name == null || name.trim().isEmpty()){
@@ -203,47 +183,47 @@ public class UserManager {
         comparePasswords(plainPassword, plainConfirmedPassword);
     }
 
-
-    // Criptography
-
-    private static String generateHash(String email, String plainPassword) {
-        try {
-            String textToHash = email + plainPassword;
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest(textToHash.getBytes(StandardCharsets.UTF_8));
-            
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hashBytes) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-            
-        } catch (Exception e) {
-            throw new RuntimeException("Error processing password encryption.", e);
-        }
-    }
-
-    
-
     // Main methods
 
     public static void signIn(String name, String fullEmail,
-         String plainPassword, String plainConfirmedPassword) throws Exception{
-
+         String plainPassword, String plainConfirmedPassword, Data data) throws Exception{
+        
         // Validation
         validateName(name);
         validateEmail(fullEmail);
         validatePassword(plainPassword, plainConfirmedPassword);
-
-        // Format name and email
-        String cleanName = name.trim();
+        
+        Student student = new Student(fullEmail, name, plainPassword, "/logo/UEPA.png");
+        data.addUser(student);
     }
 
-    public static User login(String fullEmail, String typedPassword) {
-        return null;
+    public static User login(String typedFullEmail, String typedPassword, Data data) throws Exception{
+        for(User u : data.getUserList()) {
+            if(compareLoginEmails(typedFullEmail, u.getEmail()) &&
+                compareLoginPasswords(typedPassword, u.getPassword())) {
+                    return u;
+            }
+        }
+        throw new Exception("Email or password wrong");
+    }
+
+    private static boolean compareLoginEmails(String email1, String email2) throws Exception{
+        if(email1 != null && email2 != null) {
+            if(email1.equals(email2)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean compareLoginPasswords(String password1, String password2) throws Exception{
+        if(password1 != null && password2 == null) {
+            if(password1.equals(password2)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

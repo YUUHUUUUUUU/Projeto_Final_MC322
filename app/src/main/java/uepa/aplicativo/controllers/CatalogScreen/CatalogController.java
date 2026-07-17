@@ -60,7 +60,6 @@ public class CatalogController implements Initializable {
             // maybe on initialize
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
-
             /* we load the card */
             if(!extracurricularList.isEmpty()){
                 for(Extracurricular extra : extracurricularList) {

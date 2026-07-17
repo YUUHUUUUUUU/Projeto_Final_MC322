@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
+import uepa.aplicativo.constants.Tag;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.User;
@@ -96,6 +97,16 @@ public class xmlWriter {
                 writeElement(writer, "fxmlpath", e.getFxmlPath());
                 writeElement(writer, "hyperlink", e.getHyperLink());
                 writeElement(writer, "id", e.getIdString());
+
+                writer.writeStartElement("tags");
+                if (e.getTags() != null) {
+                    for (int i = 0; i < e.getTags().size(); i++) {
+                        writeElement(writer, "tag", 
+                        e.getTags().get(i).getTagName());
+                    }
+
+                }
+                writer.writeEndElement();
 
                 writer.writeStartElement("staffids");
                 for(Integer i : e.getStaffsIds()) {

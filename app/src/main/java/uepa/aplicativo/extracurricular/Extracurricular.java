@@ -1,40 +1,31 @@
 package uepa.aplicativo.extracurricular;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTML;
-
 import javafx.scene.image.Image;
-import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
-import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.User;
-import uepa.aplicativo.constants.*;
-import uepa.aplicativo.interfaces.*;
+import uepa.aplicativo.interfaces.notify;
+import uepa.aplicativo.message.Message;
 
 public class Extracurricular implements notify{
     
     private String name;
     private String description;
+    private boolean openToWork;
     private String institute;
     private String isOpenString;
     private String fxmlPath;
     private String hyperlink;
 
-
-    private boolean openToWork;
-
-    private ArrayList<User> listeners = new ArrayList<>();
+    private List<User> listeners = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
+
 
     private List<Integer> listenersId = new ArrayList<>();
     private List<Integer> staffsId = new ArrayList<>();
 
-    private List<tag> TagsList = new ArrayList<>();
-
-    private PhotoGallery photoGallery;
     private String bannerPath;
     private String logoPath;
 
@@ -57,30 +48,22 @@ public class Extracurricular implements notify{
      * @param staffsIds
      * @param listenersIds
      */
-    public Extracurricular(String name, String description, String isOpenString,  String institute,
+    public Extracurricular(String name, String description, boolean openToWork,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath, 
-          List<String> staffsIds, List<String> listenersIds) {
+          String hyperlink, String fxmlPath) {
         
         id = nextId++;
 
         setName(name);
         setDescription(description);
-        this.isOpenString = isOpenString;
-        setOpenToWork(isOpenString);
+        setOpenToWork(openToWork);
         setInstitute(institute);
-        
         setHyperLink(hyperlink);
-
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
 
         setFxmlPath(fxmlPath);
-    
-        photoGallery = new PhotoGallery(logoPath);
-        
-        setListenerList(listenersIds);
-        setStaffList(staffsIds);
+
     }
 
     /**
@@ -109,7 +92,7 @@ public class Extracurricular implements notify{
      */
     public Extracurricular(String name, String description, String isOpenString,  String institute,
          String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath, 
+          String hyperlink, String fxmlPath, 
           List<String> staffsIds, List<String> listenersIds, String idString) {
 
         /* converts the idString back to int */
@@ -119,19 +102,13 @@ public class Extracurricular implements notify{
         
         setName(name);
         setDescription(description);
-        this.isOpenString = isOpenString;
         setOpenToWork(isOpenString);
         setInstitute(institute);
-        
         setHyperLink(hyperlink);
-
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
-
         setFxmlPath(fxmlPath);
-    
-        photoGallery = new PhotoGallery(logoPath);
-        
+
         setListenerList(listenersIds);
         setStaffList(staffsIds);
     }
@@ -156,10 +133,6 @@ public class Extracurricular implements notify{
         for(String s : listenerIds) {
             this.listenersId.add(Integer.parseInt(s));
         }
-    }
-
-    public List<tag> getTags() {
-        return this.TagsList;
     }
 
     public String getIsOpenString(){
@@ -187,20 +160,16 @@ public class Extracurricular implements notify{
         return this.description;
     }
 
-    public boolean setDescription(String d){
-        this.description=d;
-        return true;
-    }
-
     public boolean getOpenToWork(){
         return openToWork;
     }
 
-    public void setOpenToWork(String open){
-        if(open.equals("true")){
+    public void setOpenToWork(String isOpenString){
+        this.isOpenString = isOpenString;
+        if(isOpenString.equals("true")){
             this.openToWork=true;
         }
-        else if(open.equals("false")){
+        else if(isOpenString.equals("false")){
             this.openToWork=false;
         }
     }
@@ -209,50 +178,40 @@ public class Extracurricular implements notify{
         return institute;
     }
 
-    public void setInstitute(String institute){
-        if (institute==null){
-            System.err.println("Erro!");
-        } else {
-            boolean b=true;
-            for(int i=0;i<institute.length();i++){
-                char c=institute.charAt(i);
-                int t=Character.getNumericValue(c);
-                if ((t>=65 && t<=90) || (t>=97 && t<=122)){
-                    continue;
-                } else {
-                    b=false;
-                    break;
-                }
-            }
-            if (b){
-                this.institute=institute;
-            }
+    public void setDescription(String description) {
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("A descrição não pode estar vazia.");
+        }
+        if (description.length() > 300) {
+            throw new IllegalArgumentException("Descrição muito longa (máximo de 1000 caracteres).");
+        }
+        this.description = description;
+    }
+
+    public void setOpenToWork(boolean openToWork) {
+        this.openToWork = openToWork;
+        if(this.openToWork) {
+            this.isOpenString = "true";
+        }
+        else {
+            this.isOpenString = "false";
         }
     }
 
-    public String getHyperLink(){
-        return hyperlink;
+    public void setInstitute(String institute) {
+        if (institute == null || institute.trim().isEmpty()) {
+            throw new IllegalArgumentException("O instituto não pode ser nulo ou vazio.");
+        }
+        this.institute = institute;
     }
 
-    public void setHyperLink(String hyperlink){
-        this.hyperlink=hyperlink;
+    public void setBannerPath(String bannerPath) {
+        if (bannerPath == null || bannerPath.trim().isEmpty()) {
+            throw new IllegalArgumentException("O caminho do banner não pode ser nulo ou vazio.");
+        }
+        this.bannerPath = bannerPath;
     }
 
-    public Image getLogo() {
-        return photoGallery.getLogo();
-    }
-
-    public void setLogoPath(String logoPath){
-        this.logoPath=logoPath;
-    }
-
-    public String getLogoPath() {
-        return logoPath;
-    }
-
-    public void setBannerPath(String bannerPath){
-        this.bannerPath=bannerPath;
-    }
 
     public String getBannerPath() {
         return bannerPath;
@@ -270,17 +229,9 @@ public class Extracurricular implements notify{
         return this.staffList;
     }
 
-    public PhotoGallery getPhotoGallery() {
-        return this.photoGallery;
-    }
-
-    public void setPhotoGallery(PhotoGallery photoGallery) {
-        this.photoGallery = photoGallery;
-    }
-
     public void addStaff(Staff staff) {
-        if(staff != null){
-            this.staffList.add(staff);
+        if (staff == null) {
+            throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
     }
 
@@ -306,6 +257,62 @@ public class Extracurricular implements notify{
         Message m = new Message(title, text, getName());
         for (int i = 0; i < listeners.size(); i++) {
             listeners.get(i).receiveMessage(m);
+        }
+    }
+
+    public void addListener(User listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
+        }
+        if (this.listeners.contains(listener)) {
+            throw new IllegalArgumentException("Este usuário já está recebendo notificações.");
+        }
+        this.listeners.add(listener);
+    }
+
+    public void removeListener(User listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
+        }
+        if (!this.listeners.contains(listener)) {
+            throw new IllegalArgumentException("O ouvinte não foi encontrado na lista de notificações.");
+        }
+        this.listeners.remove(listener);
+    }
+
+    public void setfxmlPath(String fxml){
+        this.fxmlPath=fxml;
+    }
+
+    public boolean isOpenToWork() {
+        return openToWork;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public String getHyperLink() {
+        return this.hyperlink;
+    }
+
+    public void setLogoPath(String logoPath) {
+        if(logoPath != null) {
+            this.logoPath = logoPath;
+        }
+    }
+
+    public Image getLogo() {
+    return new Image(getClass().getResourceAsStream(this.logoPath));
+    }
+
+    public Image getBanner() {
+        return new Image(getClass().getResourceAsStream(this.bannerPath));
+    }
+
+    public void setHyperLink(String link) {
+        if(link != null) {
+            this.hyperlink = link;
         }
     }
 }
