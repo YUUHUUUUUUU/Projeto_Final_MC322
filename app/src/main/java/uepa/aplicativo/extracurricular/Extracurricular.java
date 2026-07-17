@@ -24,9 +24,14 @@ public class Extracurricular implements notify{
 
     private boolean openToWork;
 
+    // recontruir a partir dos ids
+    // pega a lista total de usuarios 
+    // le o primeiro id da lista de staffs e procura o staff na lista
     private ArrayList<User> listeners = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
 
+
+    //Chega da leitura do xml
     private List<Integer> listenersId = new ArrayList<>();
     private List<Integer> staffsId = new ArrayList<>();
 

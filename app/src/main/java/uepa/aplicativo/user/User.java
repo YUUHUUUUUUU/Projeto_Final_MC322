@@ -34,10 +34,11 @@ public class User implements Notificable{
      * @param photoPath
      * @param mailBox
      */
+    // criar novos
     public User(String name, String email, String password,
          String photoPath, List<Message> mailBox){
 
-        this.id = nextId++;
+        this.id = nextId++; // gera id novo
 
 
         this.email = email;
@@ -64,6 +65,7 @@ public class User implements Notificable{
      * @param photoPath
      * @param id
      */
+    // reconstruir
     public User(String name, String email,
          String password, String photoPath,
           List<Message> mailBox, String idString) {

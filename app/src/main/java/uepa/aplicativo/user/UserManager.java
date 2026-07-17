@@ -203,42 +203,16 @@ public class UserManager {
         comparePasswords(plainPassword, plainConfirmedPassword);
     }
 
-
-    // Criptography
-
-    private static String generateHash(String email, String plainPassword) {
-        try {
-            String textToHash = email + plainPassword;
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest(textToHash.getBytes(StandardCharsets.UTF_8));
-            
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hashBytes) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-            
-        } catch (Exception e) {
-            throw new RuntimeException("Error processing password encryption.", e);
-        }
-    }
-
-    
-
     // Main methods
 
     public static void signIn(String name, String fullEmail,
          String plainPassword, String plainConfirmedPassword) throws Exception{
-
+        
         // Validation
         validateName(name);
         validateEmail(fullEmail);
         validatePassword(plainPassword, plainConfirmedPassword);
-
+        
         // Format name and email
         String cleanName = name.trim();
     }
