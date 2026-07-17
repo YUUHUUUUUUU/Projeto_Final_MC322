@@ -51,10 +51,13 @@ public class Data {
         return loadData();
     }
 
-    public void addExtracurricular(Extracurricular extra) {
+    public Data addExtracurricular(Extracurricular extra, Data data) {
         if(extra != null) {
             extracurricularList.add(extra);
+            writeData(data);
         }
+
+        return loadData();
     }
 
     public static void writeData(Data data) {
@@ -64,7 +67,7 @@ public class Data {
 
     public static Data loadData() {
         Data data = xmlReader.readUsers("/src/main/resources/xml/user.xml");
-        xmlReader.readExtracurriculars("/src/main/resources/xml/extras.xml", data);
+        xmlReader.readExtracurriculars("/src/main/resources/xml/extra.xml", data);
         return data;
     }
 
