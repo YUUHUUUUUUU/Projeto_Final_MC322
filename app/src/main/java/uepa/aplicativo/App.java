@@ -27,9 +27,9 @@ public class App extends Application {
         Data.writeData(data);
 
         IconLoader.tryLoadingIcon(primaryStage);
-        String fxmlString = "/fxml/RegisterScreen/RegisterScreen.fxml";
+        String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";
         //String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
         String pageTitle = "Login Screen";
-        SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle);
+        SceneManager.initializeFirstScene(primaryStage, fxmlString, pageTitle, data);
     }
 }
