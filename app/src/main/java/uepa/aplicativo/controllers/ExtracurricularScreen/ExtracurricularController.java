@@ -53,12 +53,6 @@ public class ExtracurricularController implements RecieveData{
         /* We create our empty catalog list */
         List<HBox> catalogItems = new ArrayList<>();
         try {
-            /* Try loading the EXTRAS data base */
-            // we will probably use a static method for this!
-            // maybe on initialize
-
-            // extracurricular = 
-
             /* we load the card */
             if(!extracurricular.getStaffList().isEmpty()){
                 for(Staff s : extracurricular.getStaffList()) {

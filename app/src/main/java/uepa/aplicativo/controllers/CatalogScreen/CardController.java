@@ -156,7 +156,7 @@ public class CardController implements RecieveData {
 
             ExtracurricularController controller = fxmlLoader.getController();
 
-            controller.receiveData(data);
+            controller.receiveData(data, extracurricular);
 
             Scene screen = new Scene(root);
 

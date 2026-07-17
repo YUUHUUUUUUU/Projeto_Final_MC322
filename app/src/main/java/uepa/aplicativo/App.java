@@ -31,6 +31,8 @@ public class App extends Application {
 
             data.recreateStaffList();
 
+            System.out.println(data.getExtracurricularList().getFirst().getStaffList().getFirst().getEmail());
+
             IconLoader.tryLoadingIcon(primaryStage);
             String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";
             //String fxmlString = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
