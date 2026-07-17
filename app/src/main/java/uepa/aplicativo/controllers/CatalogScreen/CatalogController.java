@@ -15,9 +15,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.loaders.loadedData.LoadedCard;
+import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.interfaces.RecieveData;
 
-public class CatalogController implements Initializable {
+public class CatalogController implements Initializable, RecieveData {
+
+    Data data;
 
     @FXML
     private VBox catalog;
@@ -55,10 +59,9 @@ public class CatalogController implements Initializable {
         /* We create our empty catalog list */
         List<HBox> catalogItems = new ArrayList<>();
         try {
-            /* Try loading the EXTRAS data base */
-            // we will probably use a static method for this!
-            // maybe on initialize
-            List<Extracurricular> extracurricularList = new ArrayList<>();
+
+            /* We get the extras list from database */
+            List<Extracurricular> extracurricularList = data.getExtracurricularList();
 
             /* we load the card */
             if(!extracurricularList.isEmpty()){
@@ -97,5 +100,14 @@ public class CatalogController implements Initializable {
 
     }
 
+    @Override
+    public void receiveData(Data data) {
+        setData(data);
+    }
+
+    @Override
+    public void setData(Data data) {
+        this.data = data;
+    }
 }
 

@@ -14,6 +14,7 @@ public class Data {
     private List<Student> studentList = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
     private List<Extracurricular> extracurricularList = new ArrayList<>();
+    private User loggedUser;
 
     public Data(List<Student> studentList, List<Staff> staffList) {
         this.studentList = studentList;
@@ -25,6 +26,10 @@ public class Data {
         for(Staff s : staffList) {
             userList.add(s);
         }
+    }
+
+    public void setLoggedUser(User u) {
+        this.loggedUser = u;
     }
 
     public void setStudentList(List<Student> studentList) {

@@ -11,9 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import uepa.aplicativo.user.User;
 import uepa.aplicativo.user.UserManager;
 import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.SceneManager.SceneManager;
+import uepa.aplicativo.constants.Role;
+import uepa.aplicativo.controllers.CatalogScreen.CatalogController;
 import uepa.aplicativo.controllers.RegisterScreen.RegisterController;
 import uepa.aplicativo.interfaces.RecieveData;
 
@@ -38,7 +41,13 @@ public class LoginController implements RecieveData{
         try {
             String email = emailField.getText();
             String password = passwordField.getText();
-            UserManager.login(email, password, data);
+            User loggedUser = UserManager.login(email, password, data);
+            data.setLoggedUser(loggedUser);
+
+            if(loggedUser.getRole().equals(Role.STUDENT)) {
+                RedirectToCatallog(event);
+            }
+
         }
         catch (Exception e) {
             System.out.println(e);
@@ -87,4 +96,33 @@ public class LoginController implements RecieveData{
         this.data = data;
     }
 
+    void RedirectToCatallog(ActionEvent event) {
+        try{
+            String fxmlPath = "/fxml/CatalogScreen/Catalog.fxml";
+            String pageTitle = "Register Screen";
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
+            Parent root = fxmlLoader.load();
+            CatalogController controller = fxmlLoader.getController();
+
+            controller.receiveData(data);
+
+            Scene screen = new Scene(root);
+
+            Node source = (Node) event.getSource();
+            Scene currentScene = source.getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            root.requestFocus();
+            stage.setTitle(pageTitle);
+            stage.setScene(screen);
+            stage.setResizable(true);
+            stage.setMaximized(true);
+            stage.show();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        
+    }
 }

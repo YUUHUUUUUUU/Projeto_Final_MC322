@@ -10,12 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.interfaces.RecieveData;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.user.Staff;
 
-public class CardController {
+public class CardController implements RecieveData {
     
+    Data data;
+
     @FXML
     private HBox card;
 
@@ -132,6 +136,14 @@ public class CardController {
         setImage(image);
     }
 
-    
+    @Override
+    public void receiveData(Data data) {
+        setData(data);
+    }
+
+    @Override
+    public void setData(Data data) {
+        this.data = data;
+    }
 
 }
