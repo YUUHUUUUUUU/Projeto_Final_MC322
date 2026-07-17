@@ -37,6 +37,10 @@ public class Data {
     public void setStaffList(List<Staff> staffList) {
         this.staffList = staffList;
     }
+
+    public List<Staff> getStaffList() {
+        return this.staffList;
+    }
     public List<User> getUserList() {
         return userList;
     }
@@ -95,5 +99,26 @@ public class Data {
             }
         }
         return false;
+    }
+
+    public void recreateStaffList() {
+        for(Extracurricular e : this.getExtracurricularList()) {
+            for(Integer id : e.getStaffsIds()) {
+                Staff staff = searchStaff(id);
+                e.getStaffList().add(staff);
+                System.out.println("staff added");
+            }
+        }
+    }
+
+
+    public Staff searchStaff(Integer id) {
+        for(Staff s : this.getStaffList()) {
+            if(s.getId() == id) {
+                return s;
+            }
+        }
+
+        return null;
     }
 }

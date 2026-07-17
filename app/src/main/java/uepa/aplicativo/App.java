@@ -29,7 +29,7 @@ public class App extends Application {
             Data.writeUserData(data);
             Data.writeExtracurricularData(data);
 
-            System.out.println(data.getExtracurricularList().getFirst().getName());
+            data.recreateStaffList();
 
             IconLoader.tryLoadingIcon(primaryStage);
             String fxmlString = "/fxml/LoginScreen/LoginScreen.fxml";

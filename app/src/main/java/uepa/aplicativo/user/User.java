@@ -190,13 +190,6 @@ public class User implements Notificable{
         return mailBox;
     }
 
-    public boolean removeMailBox(Message m) {
-        if (m == null) {
-            return false;
-        }
-        return this.mailBox.remove(m);
-    }
-
     @Override
     public void receiveMessage(Message m) {
         if (m == null) {
