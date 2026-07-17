@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.DataManager.Data;
+import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 

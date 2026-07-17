@@ -79,6 +79,7 @@ public class LoginController implements RecieveData{
             stage.setScene(screen);
             stage.setResizable(true);
             stage.setMaximized(true);
+            SceneManager.setGoBackScene(currentScene);
             stage.show();
         }
         catch(Exception e) {
@@ -126,6 +127,9 @@ public class LoginController implements RecieveData{
             stage.setScene(screen);
             stage.setResizable(true);
             stage.setMaximized(true);
+
+            SceneManager.setGoBackScene(screen);
+
             stage.show();
         }
         catch(Exception e) {

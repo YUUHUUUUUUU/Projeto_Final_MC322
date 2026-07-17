@@ -18,6 +18,7 @@ import uepa.aplicativo.loaders.FontLoader;
 
 public class SceneManager {
 
+    private static Scene previousScene;
     /* We dont want to instantiate  this class, only use its method */
     private SceneManager() {}
 
@@ -132,5 +133,13 @@ public class SceneManager {
         fade.setToValue(0);
         fade.setOnFinished(e -> {errorLabel.setVisible(false);});
         fade.play();
+    }
+
+    public static void setGoBackScene(Scene scene){
+        previousScene = scene;
+    }
+
+    public static Scene getGoBackScene() {
+        return previousScene;
     }
 }

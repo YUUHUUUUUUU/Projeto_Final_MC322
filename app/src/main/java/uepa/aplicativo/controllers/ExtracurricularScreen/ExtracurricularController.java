@@ -154,24 +154,13 @@ public class ExtracurricularController implements RecieveData{
 
     void RedirectToCatalog(ActionEvent event) {
         try{
-            String fxmlPath = "/fxml/CatalogScreen/Catalog.fxml";
-            String pageTitle = "Catalog Screen";
-            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
-            System.out.println("URL carregada: " + fxmlLoader.getLocation());
-            Parent root = fxmlLoader.load();
-
-            CatalogController controller = fxmlLoader.getController();
-
-            controller.receiveData(data);
-
-            Scene screen = new Scene(root);
+            Scene screen = SceneManager.getGoBackScene();
 
             Node source = (Node) event.getSource();
             Scene currentScene = source.getScene();
             Stage stage = (Stage) currentScene.getWindow();
 
-            root.requestFocus();
-            stage.setTitle(pageTitle);
+            stage.setTitle("Catalog Screen");
             stage.setScene(screen);
             stage.setResizable(true);
             stage.setMaximized(true);
