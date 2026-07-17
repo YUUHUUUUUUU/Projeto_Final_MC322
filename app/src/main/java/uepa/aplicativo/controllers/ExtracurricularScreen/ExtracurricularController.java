@@ -84,7 +84,7 @@ public class ExtracurricularController implements Initializable,Editable {
             // extracurricular = 
 
             /* JUST FOR TESTING: we will be adding manually some extras */
-            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "googlextracurricular.com");
+            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "googlextracurricular.com","path");
             Staff professorTeste = new Staff("email", "name", extra1, "/logo/UEPA.png");
             extra1.addStaff(professorTeste);
             Staff professorTeste2 = new Staff("email2", "nome2", extra1, "/logo/UEPA.png");

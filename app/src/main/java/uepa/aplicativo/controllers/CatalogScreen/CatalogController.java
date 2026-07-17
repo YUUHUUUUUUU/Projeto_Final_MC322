@@ -62,8 +62,8 @@ public class CatalogController implements Initializable {
             List<Extracurricular> extracurricularList = new ArrayList<>();
 
             /* JUST FOR TESTING: we will be adding manually some extras */
-            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com");
-            Extracurricular extra2 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com");
+            Extracurricular extra1 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com","path");
+            Extracurricular extra2 = new StudentAssociation("Extra1", "Desc1", true, "IFGW", "/logo/UEPA.png", "/logo/UEPA.png", "google.com","path");
 
             extracurricularList.add(extra1);
             extracurricularList.add(extra2);

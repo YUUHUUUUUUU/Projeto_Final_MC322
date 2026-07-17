@@ -1,201 +1,178 @@
 package uepa.aplicativo.extracurricular;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.image.Image;
-import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
-import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
-import uepa.aplicativo.user.User;
-import uepa.aplicativo.constants.*;
-import uepa.aplicativo.interfaces.*;
+import uepa.aplicativo.interfaces.notify;
+import uepa.aplicativo.interfaces.Notificable;
 
-public abstract class Extracurricular implements notify{
-    
-    //gerais:
+public abstract class Extracurricular {
     private String name;
-    private boolean openToWork;
     private String description;
+    private boolean openToWork;
     private String institute;
-
-    //listas:
-    private ArrayList<User> listeners;
-    private List<Staff> staffList;
-
-    //fotos:
-    private PhotoGallery photoGallery;
     private String bannerPath;
     private String logoPath;
-
-    //xml:
+    private String hyperLink;
     private String fxmlPath;
+    private List<Staff> staffList = new ArrayList<>();
+    private List<Notificable> usersListeners = new ArrayList<>();
 
-    //links:
-    private String hyperlink;
-
-    public Extracurricular(String name, String description, boolean openToWork,  String institute,
-         String logoPath, String bannerPath,
-          String hyperLink, String fxmlPath) {
-        
+    public Extracurricular(String name, String description, boolean openToWork, String institute,
+        String bannerPath, String logoPath, String hyperLink, String fxmlPath) {
         setName(name);
         setDescription(description);
         setOpenToWork(openToWork);
         setInstitute(institute);
-        
-        setHyperLink(hyperlink);
-
         setBannerPath(bannerPath);
         setLogoPath(logoPath);
-
-        setFxmlPath(fxmlPath);
-    
-        listeners = new ArrayList<>();
-        photoGallery = new PhotoGallery(logoPath);
-        staffList = new ArrayList<>();
+        setHyperLink(hyperLink);
+        setfxmlPath(fxmlPath);
     }
 
-    public String getName(){
-        return this.name;
-    }
-
-    public boolean setName(String n){
-        this.name=n;
-        return true;
-    }
-
-    public String getDescription(){
-        return this.description;
-    }
-
-    public boolean setDescription(String d){
-        if (d.length()>1000){
-            
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("O nome não pode ser nulo ou vazio.");
         }
-        this.description=d;
-        return true;
-    }
-
-    public boolean getOpenToWork(){
-        return openToWork;
-    }
-
-    public boolean setOpenToWork(boolean b){
-        this.openToWork=b;
-        return b;
-    }
-
-    public String getInstitute(){
-        return institute;
-    }
-
-    public void setInstitute(String institute){
-        if (institute==null){
-            System.err.println("Erro!");
-        } else {
-            boolean b=true;
-            for(int i=0;i<institute.length();i++){
-                char c=institute.charAt(i);
-                int t=Character.getNumericValue(c);
-                if ((t>=65 && t<=90) || (t>=97 && t<=122)){
-                    continue;
-                } else {
-                    b=false;
-                    break;
-                }
-            }
-            if (b){
-                this.institute=institute;
-            }
+        if (name.length() > 100) {
+            throw new IllegalArgumentException("O nome não pode exceder 100 caracteres.");
         }
+        this.name = name;
     }
 
-    public String getHyperLink(){
-        return hyperlink;
+    public void setDescription(String description) {
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("A descrição não pode estar vazia.");
+        }
+        if (description.length() > 1000) {
+            throw new IllegalArgumentException("Descrição muito longa (máximo de 1000 caracteres).");
+        }
+        this.description = description;
     }
 
-    public void setHyperLink(String hyperlink){
-        this.hyperlink=hyperlink;
+    public void setOpenToWork(boolean openToWork) {
+        this.openToWork = openToWork;
     }
 
-    public Image getLogo() {
-        return photoGallery.getLogo();
+    public void setInstitute(String institute) {
+        if (institute == null || institute.trim().isEmpty()) {
+            throw new IllegalArgumentException("O instituto não pode ser nulo ou vazio.");
+        }
+        this.institute = institute;
     }
 
-    public void setLogoPath(String logoPath){
-        this.logoPath=logoPath;
+    public void setBannerPath(String bannerPath) {
+        if (bannerPath == null || bannerPath.trim().isEmpty()) {
+            throw new IllegalArgumentException("O caminho do banner não pode ser nulo ou vazio.");
+        }
+        this.bannerPath = bannerPath;
     }
 
-    public Image getBanner() {
-        return null;
+    public void setLogoPath(String logoPath) {
+        if (logoPath == null || logoPath.trim().isEmpty()) {
+            throw new IllegalArgumentException("O caminho da logo não pode ser nulo ou vazio.");
+        }
+        this.logoPath = logoPath;
     }
 
-    public void setBannerPath(String bannerPath){
-        this.bannerPath=bannerPath;
-    }
-
-    public String getFxmlPath() {
-        return fxmlPath;
-    }
-
-    public void setFxmlPath(String fxmlPath) {
-        this.fxmlPath = fxmlPath;
-    }
-
-    public List<Staff> getStaffList() {
-        return this.staffList;
-    }
-
-    public PhotoGallery getPhotoGallery() {
-        return this.photoGallery;
-    }
-
-    public void setPhotoGallery(PhotoGallery photoGallery) {
-        this.photoGallery = photoGallery;
+    public void setHyperLink(String hyperLink) {
+        if (hyperLink == null || hyperLink.trim().isEmpty()) {
+            throw new IllegalArgumentException("O link não pode ser nulo ou vazio.");
+        }
+        this.hyperLink = hyperLink;
     }
 
     public void addStaff(Staff staff) {
-        if(staff != null){
-            this.staffList.add(staff);
+        if (staff == null) {
+            throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
-    }
-
-    public List<User> getUsersListeners(){
-        return listeners;
-    }
-
-    public void addtoNotify(User s){
-        listeners.add(s);
-    }
-
-    public void removefromNotify(User s){
-        int t=listeners.size();
-        int pos=0;
-        for (int i=0;i<t;i++){
-            if (listeners.get(i).getID()==s.getID()){
-                pos=i;
-            }
+        if (this.staffList.contains(staff)) {
+            throw new IllegalArgumentException("Este membro já está cadastrado nesta extracurricular.");
         }
-        listeners.remove(pos);
+        this.staffList.add(staff);
     }
 
-    public boolean isFollowedBy(User s){
-        int t= listeners.size();
-        for (int i=0;i<t;i++){
-            if (listeners.get(i).getID()==s.getID()){
-                return true;
-            }
+    public void removeStaff(Staff staff) {O culpado é 100% o Test Runner (a extensão de testes) do VS Code que resolveu fazer greve e não quer listar os testes na interface de jeito nenhum.
+        if (staff == null) {
+            throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
-        return false;
+        if (!this.staffList.contains(staff)) {
+            throw new IllegalArgumentException("O membro não foi encontrado na lista desta extracurricular.");
+        }
+        this.staffList.remove(staff);
     }
 
-    @Override
-    public void notifyListeners(String title, String text) {
-
-        Message m = new Message(title, text, this, null);
-        for (int i = 0; i < listeners.size(); i++) {
-            listeners.get(i).receiveMessage(m);
+    public void addListener(Notificable listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
         }
+        if (this.usersListeners.contains(listener)) {
+            throw new IllegalArgumentException("Este usuário já está recebendo notificações.");
+        }
+        this.usersListeners.add(listener);
+    }
+
+    public void removeListener(Notificable listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("O ouvinte de notificações não pode ser nulo.");
+        }
+        if (!this.usersListeners.contains(listener)) {
+            throw new IllegalArgumentException("O ouvinte não foi encontrado na lista de notificações.");
+        }
+        this.usersListeners.remove(listener);
+    }
+
+    public String getFxmlPath(){
+        return fxmlPath;
+    }
+
+    public void setfxmlPath(String fxml){
+        this.fxmlPath=fxml;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isOpenToWork() {
+        return openToWork;
+    }
+
+    public String getInstitute() {
+        return institute;
+    }
+
+    public String getBannerPath() {
+        return bannerPath;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public String getHyperLink() {
+        return hyperLink;
+    }
+
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
+
+    public List<Notificable> getUsersListeners() {
+        return usersListeners;
+    }
+
+    public Image getLogo() {
+    return new Image(getClass().getResourceAsStream(this.logoPath));
+    }
+
+    public Image getBanner() {
+        return new Image(getClass().getResourceAsStream(this.bannerPath));
     }
 }

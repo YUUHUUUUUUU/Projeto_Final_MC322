@@ -22,7 +22,7 @@ public class User implements Notificable{
     private List<Message> mailBox;
     private int id;
     
-    User(String email, String name, String photoPath){
+    public User(String email, String name, String photoPath){
         this.email = email;
         this.name = name;
         this.photoPath = photoPath;
@@ -31,7 +31,7 @@ public class User implements Notificable{
     }
 
     public Image getPhoto() {
-        return photo;
+        return new Image(getClass().getResourceAsStream(this.photoPath));
     }
 
     public String getPhotoPath() {
