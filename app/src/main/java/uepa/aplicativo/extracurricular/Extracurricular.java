@@ -183,7 +183,7 @@ public class Extracurricular implements notify{
             throw new IllegalArgumentException("A descrição não pode estar vazia.");
         }
         if (description.length() > 300) {
-            throw new IllegalArgumentException("Descrição muito longa (máximo de 1000 caracteres).");
+            throw new IllegalArgumentException("Descrição muito longa (máximo de 300 caracteres).");
         }
         this.description = description;
     }

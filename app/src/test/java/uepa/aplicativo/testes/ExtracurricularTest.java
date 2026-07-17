@@ -1,71 +1,76 @@
-package uepa.aplicativo.testes;
+package uepa.aplicativo.extracurricular;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import uepa.aplicativo.extracurricular.Extracurricular;
 
 public class ExtracurricularTest {
 
-    private Extracurricular extra;
-
-    private class ExtracurricularConcrete extends Extracurricular {
-        public ExtracurricularConcrete(String name, String description, boolean openToWork, String institute, String bannerPath, String logoPath, String hyperLink) {
-            super(name, description, openToWork, institute, bannerPath, logoPath, hyperLink);
-        }
-    }
-
-    @BeforeEach
-    public void setUp() {
-        extra = new ExtracurricularConcrete("Clube de IA", "Estudos em IA", true, "CCNT", "/banner.png", "/logo.png", "http://uepa.br/ia");
-    }
-
     @Test
-    public void testGettersInicializacao() {
-        assertEquals("Clube de IA", extra.getName());
-        assertEquals("Estudos em IA", extra.getDescription());
+    public void createValid() {
+        Extracurricular extra = new Extracurricular(
+            "Centro Acadêmico", 
+            "Descrição válida do CA", 
+            true, 
+            "CCSE", 
+            "/logo.png", 
+            "/banner.png", 
+            "http://link.com", 
+            "/fxml/ca.fxml"
+        );
+
+        assertEquals("Centro Acadêmico", extra.getName());
+        assertEquals("Descrição válida do CA", extra.getDescription());
         assertTrue(extra.isOpenToWork());
-        assertEquals("CCNT", extra.getInstitute());
-        assertEquals("/banner.png", extra.getBannerPath());
+        assertEquals("true", extra.getIsOpenString());
+        assertEquals("CCSE", extra.getInstitute());
         assertEquals("/logo.png", extra.getLogoPath());
-        assertEquals("http://uepa.br/ia", extra.getHyperLink());
+        assertEquals("/banner.png", extra.getBannerPath());
+        assertEquals("http://link.com", extra.getHyperLink());
+        assertEquals("/fxml/ca.fxml", extra.getFxmlPath());
     }
 
     @Test
-    public void testSetName() {
-        extra.setName("Laboratório de Robótica");
-        assertEquals("Laboratório de Robótica", extra.getName());
+    public void descriptionNullOrEmpty() {
+        Extracurricular extra = new Extracurricular("Nome", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+
+        assertThrows(IllegalArgumentException.class, () -> extra.setDescription(""));
+        assertThrows(IllegalArgumentException.class, () -> extra.setDescription("   "));
+        assertThrows(IllegalArgumentException.class, () -> extra.setDescription(null));
     }
 
     @Test
-    public void testSetDescription() {
-        extra.setDescription("Desenvolvimento de protótipos autônomos");
-        assertEquals("Desenvolvimento de protótipos autônomos", extra.getDescription());
+    public void descriptionTooLong() {
+        Extracurricular extra = new Extracurricular("Nome", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+        
+        String longDescription = "a".repeat(301);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> extra.setDescription(longDescription));
+        assertEquals("Descrição muito longa (máximo de 1000 caracteres).", exception.getMessage());
     }
 
     @Test
-    public void testSetOpenToWork() {
-        extra.setOpenToWork(false);
-        assertFalse(extra.isOpenToWork());
+    public void instituteNullOrEmpty() {
+        Extracurricular extra = new Extracurricular("Nome", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+
+        assertThrows(IllegalArgumentException.class, () -> extra.setInstitute(""));
+        assertThrows(IllegalArgumentException.class, () -> extra.setInstitute(null));
     }
 
     @Test
-    public void testSetInstitute() {
-        extra.setInstitute("CCBS");
-        assertEquals("CCBS", extra.getInstitute());
+    public void bannerPathNullOrEmpty() {
+        Extracurricular extra = new Extracurricular("Nome", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+
+        assertThrows(IllegalArgumentException.class, () -> extra.setBannerPath(" "));
     }
 
     @Test
-    public void testSetBannerPathAndLogoPath() {
-        extra.setBannerPath("/imagens/novo_banner.png");
-        extra.setLogoPath("/imagens/nova_logo.png");
-        assertEquals("/imagens/novo_banner.png", extra.getBannerPath());
-        assertEquals("/imagens/nova_logo.png", extra.getLogoPath());
-    }
+    public void updateNextIdIncrement() {
+        Extracurricular extra1 = new Extracurricular("Nome", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+        
+        extra1.updateNextId(50);
 
-    @Test
-    public void testSetHyperLink() {
-        extra.setHyperLink("http://roboticauepa.br");
-        assertEquals("http://roboticauepa.br", extra.getHyperLink());
+        Extracurricular extra2 = new Extracurricular("Nome2", "Desc", true, "Inst", "logo", "banner", "link", "fxml");
+        
+        assertEquals(51, extra2.getId());
     }
 }
