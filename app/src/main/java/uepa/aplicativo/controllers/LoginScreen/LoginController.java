@@ -45,7 +45,7 @@ public class LoginController implements RecieveData{
             data.setLoggedUser(loggedUser);
 
             if(loggedUser.getRole().equals(Role.STUDENT)) {
-                RedirectToCatallog(event);
+                RedirectToCatalog(event);
             }
 
         }
@@ -95,13 +95,15 @@ public class LoginController implements RecieveData{
     public void setData(Data data) {
         this.data = data;
     }
-
-    void RedirectToCatallog(ActionEvent event) {
+    
+    void RedirectToCatalog(ActionEvent event) {
         try{
             String fxmlPath = "/fxml/CatalogScreen/Catalog.fxml";
-            String pageTitle = "Register Screen";
+            String pageTitle = "Catalog Screen";
             FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
+            System.out.println("URL carregada: " + fxmlLoader.getLocation());
             Parent root = fxmlLoader.load();
+
             CatalogController controller = fxmlLoader.getController();
 
             controller.receiveData(data);

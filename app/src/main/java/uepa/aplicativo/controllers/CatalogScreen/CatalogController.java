@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,40 +20,20 @@ import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 
-public class CatalogController implements Initializable, RecieveData {
-
-    Data data;
+public class CatalogController implements RecieveData {
 
     @FXML
     private VBox catalog;
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            /* We load the list of cards */
-            List<HBox> catalogItems = loadCatalog();
-
-            /* We clear and add each item to the catalog */
-            catalog.getChildren().clear();
-
-            for(HBox card : catalogItems) {
-                catalog.getChildren().add(card);
-            }
-            System.out.println("Hello Catalog!");
-        }
-        catch(Exception e) {
-            System.out.println("Failed to load the Catalog");
-            System.out.println("Error: " + e);
-            e.printStackTrace();
-        }
-        
-    }
+    private Button mailBoxButton;
 
     @FXML
-        void mailBoxClicked(ActionEvent event) {
+    void mailBoxClicked(ActionEvent event) {
 
     }
 
+    public Data data;
 
     private List<HBox> loadCatalog() throws Exception{
 
@@ -103,6 +84,23 @@ public class CatalogController implements Initializable, RecieveData {
     @Override
     public void receiveData(Data data) {
         setData(data);
+        try {
+            /* We load the list of cards */
+            List<HBox> catalogItems = loadCatalog();
+
+            /* We clear and add each item to the catalog */
+            catalog.getChildren().clear();
+
+            for(HBox card : catalogItems) {
+                catalog.getChildren().add(card);
+            }
+            System.out.println("Hello Catalog!");
+        }
+        catch(Exception e) {
+            System.out.println("Failed to load the Catalog");
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
     }
 
     @Override
