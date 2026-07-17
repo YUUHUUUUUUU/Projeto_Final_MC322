@@ -94,7 +94,7 @@ public abstract class Extracurricular {
         this.staffList.add(staff);
     }
 
-    public void removeStaff(Staff staff) {O culpado é 100% o Test Runner (a extensão de testes) do VS Code que resolveu fazer greve e não quer listar os testes na interface de jeito nenhum.
+    public void removeStaff(Staff staff){
         if (staff == null) {
             throw new IllegalArgumentException("O membro da equipe não pode ser nulo.");
         }
