@@ -21,6 +21,12 @@ import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 
+/**
+ * Controlador central do painel principal da aplicação (Catalog Screen).
+ * Responsável por gerenciar o container vertical do catálogo, acionar de forma iterativa 
+ * os infladores de cartões dinâmicos e preencher a interface com os projetos disponíveis.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class CatalogController implements RecieveData {
 
     @FXML
@@ -29,6 +35,11 @@ public class CatalogController implements RecieveData {
     @FXML
     private Button mailBoxButton;
 
+    /**
+     * Intercepta o clique do botão da Mailbox.
+     * (Nota de Desenvolvimento: Componente visual de exibição de lista pendente nesta versão).
+     * * @param event Ação gerada pelo clique do botão de caixa postal.
+     */
     @FXML
     void mailBoxClicked(ActionEvent event) {
 
@@ -36,6 +47,13 @@ public class CatalogController implements RecieveData {
 
     public Data data;
 
+    /**
+     * Acessa a coleção de extracurriculares disponível em memória, itera sobre cada item 
+     * disparando o inflador assíncrono CatalogCardLoader, injeta o escopo no CardController correspondente 
+     * e anexa as estruturas HBox prontas em uma lista sequencial utilizável de componentes estruturados.
+     * * @return List contendo as instâncias gráficas estruturadas nó-raiz de HBox de cada cartão gerado.
+     * @throws Exception Se a base de extracurriculares estiver vazia ou se houver erros de I/O estruturais em arquivos FXML.
+     */
     private List<HBox> loadCatalog() throws Exception{
 
         /* We create our empty catalog list */
@@ -82,6 +100,12 @@ public class CatalogController implements RecieveData {
 
     }
 
+    /**
+     * Recebe a central de dados, aciona a rotina interna de montagem assíncrona do catálogo, 
+     * efetua a limpeza completa de resíduos gráficos do contêiner VBox e injeta sequencialmente 
+     * cada um dos cartões (Cards) gerados para exibição em tela na interface com o usuário.
+     * * @param data Hub centralizado de dados instanciado em memória.
+     */
     @Override
     public void receiveData(Data data) {
         setData(data);
@@ -104,14 +128,22 @@ public class CatalogController implements RecieveData {
         }
     }
 
+    /**
+     * Método polimórfico de sincronização que repassa de forma interna a carga de dados global.
+     * * @param data Hub de dados.
+     * @param extracurricular Contexto específico secundário.
+     */
     @Override
     public void receiveData(Data data, Extracurricular extracurricular) {
         receiveData(data);
     }
 
+    /**
+     * Define a propriedade que armazena a instância central do hub unificado de dados em memória.
+     * * @param data Hub unificado de dados.
+     */
     @Override
     public void setData(Data data) {
         this.data = data;
     }
 }
-

@@ -16,89 +16,34 @@ import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.controllers.LoginScreen.LoginController;
 import uepa.aplicativo.loaders.FontLoader;
 
+/**
+ * Utilitário centralizador do roteamento e transição de telas do JavaFX.
+ * Mantém o histórico de navegação para funcionalidades de "voltar" e manipula a
+ * renderização de animações de erro nativas para feedback de interface.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class SceneManager {
 
     private static Scene previousScene;
     private static Scene loginScene;
-    /* We dont want to instantiate  this class, only use its method */
+    
+    /* Construtor privado para impedir instanciacão */
     private SceneManager() {}
 
     /**
-     * Represents the method of switching between scenes
-     * 
-     * <p>
-     * This method is important because we encapsulate the scene switch process,
-     * in other words, he hide the scene switch process from the from the Controllers.
-     * </p>
-     * 
-     * @param event represent some type of action. This event type is widely used to represent
-     *  a variety of things, such as when a javafx.scene.control.Button has been fired, when a
-     *  javafx.animation.KeyFrame has finished, and other such usages.
-     * @param fxmlPath represents the path to the fxml file relative to /app/src/main/resources/
-     * @param pageTitle represents the title that will show on the top of the new page
-     * 
-     * @author Enzo Farina Mullis
-     */
-    public static void switchScene(ActionEvent event, String fxmlPath, String pageTitle) {
-        try{
-            /* We load the fxml */
-            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath)); 
-            /* We load the fxml into a Parent (the base for our scene graph) */
-            Parent root = fxmlLoader.load();
-
-            /* We create the container for the scene graph */
-            Scene screen = new Scene(root);
-            
-            /* Casting is necessary here, because getSource() return is a Object type
-             * and only Node type has the getSource() method
-             */
-            Node source = (Node) event.getSource();
-            /* We get the currentScene that is loaded */ 
-            Scene currentScene = source.getScene();
-            /* And now we have to cast again because getWindow() return a Window type
-             * and we are working generally with Stage
-             */
-            Stage stage = (Stage) currentScene.getWindow();
-
-            /* We made a standard configuration */
-            root.requestFocus();
-            stage.setTitle(pageTitle);
-            stage.setScene(screen);
-            stage.setResizable(true);
-            stage.setMaximized(true);
-            stage.show();
-        }
-        catch (IOException e) {
-            System.out.println(e);
-            e.printStackTrace();
-        }
-        catch (ClassCastException e) {
-            System.out.println(e);
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Represents the method that initiates the first Scene
-     * 
-     * <p>
-     * This method is important because we encapsulates the implementation of the
-     * initiation of the first Scene from main.
-     * </p>
-     * 
-     * @param primaryStage the primary stage for this application, onto which the application scene can be set.
-     *  Applications may create other stages, if needed, but they will not be primary stages.
-     * @param fxmlPath represents the path to the fxml file relative to /app/src/main/resources/
-     * @param pageTitle represents the title that will show on the top of the new page
-     *
-     * 
-     * @author Enzo Farina Mullis
+     * Representa o método inicializador que constrói a primeiríssima tela gráfica do app.
+     * Além de carregar as fontes globais da aplicação (FontLoader), injeta diretamente a 
+     * instância master de dados ('Data') no controlador responsável pelo Login.
+     * * @param primaryStage A janela base do JavaFX providenciada pelo SO.
+     * @param fxmlPath Caminho relativo para o arquivo de layout inicial (.fxml).
+     * @param pageTitle O título a ser exibido na barra superior da janela do sistema.
+     * @param data O objeto contendo as listas e persistências da aplicação.
      */
     public static void initializeFirstScene(Stage primaryStage, String fxmlPath, String pageTitle, Data data) {
-        FontLoader.loadFonts();
-
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath)); 
+        try {
+            FontLoader.loadFonts();
+            
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
             Parent root = fxmlLoader.load();
             Scene screen = new Scene(root);
             
@@ -123,6 +68,12 @@ public class SceneManager {
         }
     }
 
+    /**
+     * Dispara uma animação (FadeTransition) que revela suavemente um texto de erro na tela e,
+     * após um temporizador estipulado (5 segundos), esmaece o alerta de forma autônoma.
+     * * @param errorLabel Componente de texto (Label) vazio embutido previamente no FXML.
+     * @param exception A exceção de negócio ou erro capturado pelo bloco Try-Catch da aplicação.
+     */
     public static void showErrorMessage(Label errorLabel, Exception exception) {
         String message = exception.getMessage();
         errorLabel.setVisible(true);
@@ -136,18 +87,36 @@ public class SceneManager {
         fade.play();
     }
 
+    /**
+     * Armazena estaticamente a referência para a cena anterior antes de uma nova navegação.
+     * Permite que botões de "Voltar" não precisem reconstruir o layout do zero.
+     * * @param scene A cena gráfica recém-saída.
+     */
     public static void setGoBackScene(Scene scene){
         previousScene = scene;
     }
 
+    /**
+     * Armazena permanentemente em memória a renderização base do formulário de login
+     * para reuso imediato ao encerrar sessões ou realizar navegações longas.
+     * * @param scene A cena montada do menu de login.
+     */
     public static void setGoBackLogin(Scene scene) {
         loginScene = scene;
     }
 
+    /**
+     * Retorna a cena guardada referente à tela inicial de credenciais (Login).
+     * @return O objeto Scene do Login.
+     */
     public static Scene goBackToLogin() {
         return loginScene;
     }
 
+    /**
+     * Recupera a última cena renderizada e registrada no histórico de navegação rotineira.
+     * @return O objeto Scene da tela anterior.
+     */
     public static Scene getGoBackScene() {
         return previousScene;
     }

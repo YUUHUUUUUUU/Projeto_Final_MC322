@@ -34,6 +34,12 @@ import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 
+/**
+ * Controlador JavaFX encarregado do gerenciamento da tela focada de detalhes de uma Extracurricular.
+ * Renderiza dinamicamente dados específicos de banners, ementas, links externos e reconstrói 
+ * a lista de coordenadores associados injetando-os em um sub-catálogo visual de cards verticais.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class ExtracurricularController implements RecieveData{
 
     @FXML
@@ -57,11 +63,20 @@ public class ExtracurricularController implements RecieveData{
     @FXML
     private VBox staffCatalog;
 
+    /**
+     * Retorna a interface do usuário de volta para a visualização ampla do Catálogo Geral.
+     * * @param event Ação gerada pelo clique do botão voltar.
+     */
     @FXML
     void goBack(ActionEvent event) {
         RedirectToCatalog(event);
     }
 
+    /**
+     * Dispara um comando nativo do sistema operacional Linux (xdg-open) para abrir a URL 
+     * de inscrição externa configurada para este projeto no navegador padrão do usuário.
+     * * @param event Ação disparada pelo acionamento do elemento Hyperlink na interface.
+     */
     @FXML
     void openLink(ActionEvent event) {
         try {
@@ -79,6 +94,13 @@ public class ExtracurricularController implements RecieveData{
     Data data;
 
 
+    /**
+     * Itera sobre a lista de coordenadores (Staff) pertencentes a esta atividade específica,
+     * aciona o inflador CatalogCardLoader para gerar instâncias de StaffCard de forma dinâmica, 
+     * atualiza os textos de perfil dos membros e agrupa os elementos em uma lista visual de nós HBox.
+     * * @return List contendo as instâncias estruturadas de HBox dos cards inflados.
+     * @throws Exception Se a Staff estiver vazia ou se houver problemas de renderização nos subcomponentes FXML.
+     */
     private List<HBox> loadCatalog() throws Exception{
 
         /* We create our empty catalog list */
@@ -120,6 +142,13 @@ public class ExtracurricularController implements RecieveData{
 
     }
 
+    /**
+     * Sincroniza o contexto do hub Data e captura o objeto de Extracurricular mapeado pelo card.
+     * Efetua a reidratação imediata de todos os nós visuais (título, ementa, logo e imagens) 
+     * e limpa o container VBox injetando as caixas de contêineres horizontais da Staff correspondente.
+     * * @param data Base de dados.
+     * @param extracurricular Instância específica da atividade clicada.
+     */
     @Override
     public void receiveData(Data data, Extracurricular extracurricular)  {
         setData(data);
@@ -150,14 +179,27 @@ public class ExtracurricularController implements RecieveData{
         }
     }
 
+    /**
+     * Assinatura polimórfica de contrato vazia por exigir o escopo complementar da extracurricular.
+     * * @param data Base unificada de dados.
+     */
     @Override
     public void receiveData(Data data) {}
 
+    /**
+     * Injeta a referência unificada do manipulador de coleções.
+     * * @param data Base de dados em memória.
+     */
     @Override
     public void setData(Data data) {
         this.data = data;
     }
 
+    /**
+     * Restaura a cena salva anteriormente no histórico do SceneManager para efetuar 
+     * o retorno limpo de tela rumo ao Catálogo Geral sem reinicializações destrutivas de dados.
+     * * @param event Ação contendo o clique do botão de retorno.
+     */
     void RedirectToCatalog(ActionEvent event) {
         try{
             Scene screen = SceneManager.getGoBackScene();
@@ -179,4 +221,3 @@ public class ExtracurricularController implements RecieveData{
     }
 
 }
-

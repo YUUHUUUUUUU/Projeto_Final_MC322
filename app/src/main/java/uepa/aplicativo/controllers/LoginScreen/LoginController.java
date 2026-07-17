@@ -21,6 +21,11 @@ import uepa.aplicativo.controllers.RegisterScreen.RegisterController;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 
+/**
+ * Controlador de eventos JavaFX acoplado à tela inicial de Login do ecossistema UEPA.
+ * Valida logins de usuários, gerencia falhas em tempo de execução de credenciais e redireciona fluxos.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class LoginController implements RecieveData{
 
     @FXML
@@ -37,6 +42,11 @@ public class LoginController implements RecieveData{
 
     private Data data;
 
+    /**
+     * Processa a submissão de credenciais. Caso o login seja validado, injeta o objeto do usuário 
+     * como usuário logado na sessão ativa e roteia a interface rumo ao Catálogo Geral.
+     * * @param event Ação contendo o botão disparado.
+     */
     @FXML
     void LogIn(ActionEvent event) {
         try {
@@ -56,6 +66,11 @@ public class LoginController implements RecieveData{
         }
     }
 
+    /**
+     * Altera o contexto gráfico da janela redirecionando o estudante para o formulário de cadastros, 
+     * injetando a base Data de forma síncrona através do controlador da nova tela.
+     * * @param event Ação originada do hiperlink/botão de novos cadastros.
+     */
     @FXML
     void RedirectToRegister(ActionEvent event) {
         try{
@@ -88,21 +103,39 @@ public class LoginController implements RecieveData{
         
     }
 
+    /**
+     * Intercepta e sincroniza a instância de dados em memória do escopo gráfico.
+     * * @param data Instância global de dados.
+     */
     @Override
     public void receiveData(Data data) {
         setData(data);
     }
 
+    /**
+     * Método polimórfico de interface que ignora contextos secundários de extracurriculares.
+     * * @param data Hub de dados.
+     * @param extracurricular Contexto ignorado nesta janela.
+     */
     @Override
     public void receiveData(Data data, Extracurricular extracurricular) {
         receiveData(data);
     }
 
+    /**
+     * Define a instância central de tratamento de informações estruturais na memória.
+     * * @param data Hub de dados.
+     */
     @Override
     public void setData(Data data) {
         this.data = data;
     }
     
+    /**
+     * Constrói e renderiza a tela do Catálogo Geral (Catalog.fxml), transmitindo 
+     * as coleções de dados unificadas e salvando o histórico da cena de login para navegação reversa.
+     * * @param event Evento disparado pelo validador positivo de login.
+     */
     void RedirectToCatalog(ActionEvent event) {
         try{
             String fxmlPath = "/fxml/CatalogScreen/Catalog.fxml";

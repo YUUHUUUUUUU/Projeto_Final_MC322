@@ -4,17 +4,20 @@ import java.io.FileNotFoundException;
 
 import javafx.scene.text.Font;
 
+/**
+ * Utilitário responsável pelo gerenciamento tipográfico unificado da interface do sistema.
+ * Efetua a carga e injeção assíncrona das fontes personalizadas da família 'Manrope' 
+ * para garantir consistência de identidade visual independente do sistema operacional hospedeiro.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class FontLoader {
     /* We don't want to instantiate this Object, only use its methods */
     private FontLoader() {}
 
     /**
-     * Represents the actual method of loading fonts, this method is the
-     * back-end code behind of {@link #loadFonts()}
-     * 
-     * @param path represents the path of the font, the path is relative to /app/src/main/resources/
-     * 
-     * @author Enzo Farina Mullis
+     * Executa a tentativa de leitura física e o registro da tipografia customizada via Stream.
+     * Captura de forma resiliente falhas caso o arquivo TrueType (.ttf) mude de subdiretório.
+     * * @param path Localização relativa do asset de fonte dentro do diretório de resources.
      */
     private static void tryLoadingFont(String path){
         try{
@@ -30,13 +33,8 @@ public class FontLoader {
     }
 
     /**
-     * Encapsulation of the font loader
-     * 
-     * <p>
-     * This method encapsulates the method {@link #tryLoadingFont}
-     * </p>
-     * 
-     * @author Enzo Farina Mullis
+     * Encapsulamento central de tipografia da aplicação.
+     * Dispara sequencialmente a injeção gráfica de todas as variações de peso da família de fontes Manrope.
      */
     public static void loadFonts(){
         

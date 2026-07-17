@@ -15,8 +15,20 @@ import uepa.aplicativo.user.Staff;
 import uepa.aplicativo.user.Student;
 import uepa.aplicativo.user.User;
 
+/**
+ * Mecanismo assíncrono utilitário focado na leitura e parsing de arquivos XML locais.
+ * Utiliza a API StAX (Streaming API for XML) com cursores baseados em eventos para reconstruir 
+ * de forma otimizada as entidades de negócio e suas respectivas sublistas históricos (Mailbox).
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class xmlReader {
 
+    /**
+     * Configura e inicializa o leitor de fluxo XMLInputFactory apontando para o caminho absoluto.
+     * * @param xmlPath Caminho relativo baseado no subdiretório do projeto.
+     * @return O leitor de stream XMLStreamReader configurado.
+     * @throws Exception Em caso de erros de I/O ou arquivos XML malformados.
+     */
     private static XMLStreamReader startReader(String xmlPath) throws Exception{
         String absolutePath = System.getProperty("user.dir") + xmlPath;
         System.out.println(absolutePath);
@@ -27,10 +39,22 @@ public class xmlReader {
         return reader;
     }
     
+    /**
+     * Fecha de forma segura o fluxo do leitor liberando recursos de disco da máquina.
+     * * @param reader Instância ativa do XMLStreamReader.
+     * @throws Exception Se houver problemas no fechamento do arquivo.
+     */
     private static void closeReader(XMLStreamReader reader) throws Exception{
         reader.close();
     }
 
+    /**
+     * Efetua o mapeamento completo e a leitura sequencial das contas de usuários salvas em user.xml.
+     * Processa tags de identificação e reidrata coleções aninhadas de mensagens históricas da Mailbox.
+     * * @param xmlPath Caminho para o arquivo XML de destino.
+     * @param data Instância unificada de transporte de memória.
+     * @return A estrutura Data atualizada contendo as coleções reidratadas.
+     */
     public static Data readUsers(String xmlPath, Data data) {
 
         List<User> userList = new ArrayList<>();
@@ -186,8 +210,13 @@ public class xmlReader {
         return data;
     }
 
-
-
+    /**
+     * Efetua o mapeamento completo e a leitura sequencial das extracurriculares em extra.xml.
+     * Reconstrói as listas de chaves estrangeiras de Staff e Listeners acopladas à atividade.
+     * * @param xmlPath Caminho para o arquivo XML contendo as atividades extracurriculares.
+     * @param data Instância global de dados a ser atualizada.
+     * @return O objeto Data contendo a lista de extracurriculares populada.
+     */
     public static Data readExtracurriculars(String xmlPath, Data data) {
         
         List<Extracurricular> extracurricularList = new ArrayList<>();

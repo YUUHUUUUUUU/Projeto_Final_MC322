@@ -15,6 +15,11 @@ import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 import uepa.aplicativo.user.UserManager;
 
+/**
+ * Controlador JavaFX vinculado à tela de registro de novas contas (RegisterScreen).
+ * Implementa a interface RecieveData para compartilhamento e sincronização da base de dados global.
+ * * @author União de Entidades, Projetos e Atividades
+ */
 public class RegisterController implements RecieveData{
 
     @FXML
@@ -37,6 +42,11 @@ public class RegisterController implements RecieveData{
 
     Data data;
 
+    /**
+     * Trata o evento de clique do botão de cadastro. Extrai as strings dos formulários e invoca
+     * as validações lógicas contidas no UserManager. Redireciona para o login caso obtenha sucesso.
+     * * @param event Ação disparada pelo clique do botão.
+     */
     @FXML
     void Register(ActionEvent event) {
         String completeName = completeNameField.getText();
@@ -53,6 +63,10 @@ public class RegisterController implements RecieveData{
         }
     }
 
+    /**
+     * Altera de forma síncrona o contexto gráfico reencaminhando a janela para a tela inicial de Login.
+     * * @param event Evento contendo o nó gráfico ativo para resgatar a janela principal (Stage).
+     */
     void RedirectToLogin(ActionEvent event) {
         try{
             Scene screen = SceneManager.goBackToLogin();
@@ -73,16 +87,29 @@ public class RegisterController implements RecieveData{
         }
     }
 
+    /**
+     * Recebe e configura a instância do hub de dados unificado.
+     * * @param data Central de armazenamento em memória.
+     */
     @Override
     public void receiveData(Data data){
         setData(data);
     }
 
+    /**
+     * Método polimórfico de contrato de dados que ignora o recebimento de contexto extracurricular específico.
+     * * @param data Central de dados.
+     * @param extracurricular Contexto descartado nesta tela.
+     */
     @Override
     public void receiveData(Data data, Extracurricular extracurricular) {
         receiveData(data);
     }
 
+    /**
+     * Injeta e atualiza a propriedade contendo a referência da base de dados global do controlador.
+     * * @param data Central de dados em memória.
+     */
     @Override
     public void setData(Data data) {
         this.data = data;
