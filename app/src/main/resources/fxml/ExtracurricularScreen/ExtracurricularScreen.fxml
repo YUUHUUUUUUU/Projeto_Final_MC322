@@ -70,7 +70,7 @@
                      <children>
                         <StackPane alignment="BOTTOM_LEFT">
                            <children>
-                              <ImageView fitHeight="660.0" fitWidth="1920.0" pickOnBounds="true">
+                              <ImageView fx:id="banner" fitHeight="660.0" fitWidth="1920.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../../templateImages/banner-template.png" />
                                  </image>
