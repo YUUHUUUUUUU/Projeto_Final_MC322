@@ -4,6 +4,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.html.HTML;
+
 import javafx.scene.image.Image;
 import uepa.aplicativo.extracurricular.gallery.PhotoGallery;
 import uepa.aplicativo.message.Message;
@@ -29,6 +31,8 @@ public class Extracurricular implements notify{
 
     private List<Integer> listenersId = new ArrayList<>();
     private List<Integer> staffsId = new ArrayList<>();
+
+    private List<tag> TagsList = new ArrayList<>();
 
     private PhotoGallery photoGallery;
     private String bannerPath;
@@ -152,6 +156,10 @@ public class Extracurricular implements notify{
         for(String s : listenerIds) {
             this.listenersId.add(Integer.parseInt(s));
         }
+    }
+
+    public List<tag> getTags() {
+        return this.TagsList;
     }
 
     public String getIsOpenString(){
