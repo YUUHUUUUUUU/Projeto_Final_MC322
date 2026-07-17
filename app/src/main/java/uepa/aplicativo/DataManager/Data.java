@@ -67,4 +67,19 @@ public class Data {
         xmlReader.readExtracurriculars("/src/main/resources/xml/extras.xml", data);
         return data;
     }
+
+    public boolean verifyUserExistence(User user, Data data) throws Exception {
+        if(data == null) {
+            throw new Exception("Failed to load xml");
+        }
+
+        for(User u : data.getUserList()) {
+            System.out.println(user.getEmail());
+            System.out.println(u.getEmail());
+            if(user.getEmail().equals(u.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

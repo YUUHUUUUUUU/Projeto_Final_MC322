@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><userlist></userlist>
+<?xml version="1.0" encoding="UTF-8"?><userlist><user><name>teste@gmail.com</name><email>NomeTeste</email><password>Senha123A!</password><photoPath>/logo/UEPA.png</photoPath><role>STUDENT</role><id>0</id><mailbox></mailbox></user><user><name>ADMIN</name><email>ADMIN@GMAIL.COM</email><password>ADMIN123!a</password><photoPath>/logo/UEPA.png</photoPath><role>STUDENT</role><id>1</id><mailbox></mailbox></user></userlist>

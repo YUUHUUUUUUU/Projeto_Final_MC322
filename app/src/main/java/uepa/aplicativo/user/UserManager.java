@@ -1,5 +1,7 @@
 package uepa.aplicativo.user;
 
+import java.util.List;
+
 import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.Exceptions.InvalidEmailException;
 import uepa.aplicativo.Exceptions.InvalidPasswordException;
@@ -188,13 +190,21 @@ public class UserManager {
     public static void signIn(String name, String fullEmail,
          String plainPassword, String plainConfirmedPassword, Data data) throws Exception{
         
-        // Validation
-        validateName(name);
+        // Validation (these throws exception)
+        validateName(name); 
         validateEmail(fullEmail);
         validatePassword(plainPassword, plainConfirmedPassword);
         
-        Student student = new Student(fullEmail, name, plainPassword, "/logo/UEPA.png");
-        data.addUser(student);
+        List<User> userList = data.getUserList();
+        Student student = new Student(name, fullEmail, plainPassword, "/logo/UEPA.png");
+
+        /* verify existence */
+        if(data.verifyUserExistence(student, data) == false){
+            data.addUser(student);
+        }
+        else {
+            throw new Exception("This email is already registered");
+        }
     }
 
     public static User login(String typedFullEmail, String typedPassword, Data data) throws Exception{
@@ -218,7 +228,7 @@ public class UserManager {
     }
 
     private static boolean compareLoginPasswords(String password1, String password2) throws Exception{
-        if(password1 != null && password2 == null) {
+        if(password1 != null && password2 != null) {
             if(password1.equals(password2)) {
                 return true;
             }

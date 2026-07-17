@@ -9,13 +9,13 @@ import uepa.aplicativo.message.Message;
 public class Staff extends User implements notify{
     private Extracurricular e;
 
-    public Staff(String email, String name, String password, String photoPath){
-        super(email, name, password, photoPath);
+    public Staff(String name, String email, String password, String photoPath){
+        super(name, email, password, photoPath);
         role = Role.STAFF;
     }
 
-    public Staff(String email, String name, String password, String photoPath, List<Message> mailBox, String idString){
-        super(email, name, password, photoPath, mailBox, idString);
+    public Staff(String name, String email, String password, String photoPath, List<Message> mailBox, String idString){
+        super(name, email, password, photoPath, mailBox, idString);
         role = Role.STAFF;
     }
 
