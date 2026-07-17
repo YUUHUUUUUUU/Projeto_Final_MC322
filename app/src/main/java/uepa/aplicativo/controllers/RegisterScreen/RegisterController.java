@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.SceneManager.SceneManager;
+import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 import uepa.aplicativo.user.UserManager;
 
@@ -51,6 +52,11 @@ public class RegisterController implements RecieveData{
     @Override
     public void receiveData(Data data){
         setData(data);
+    }
+
+    @Override
+    public void receiveData(Data data, Extracurricular extracurricular) {
+        receiveData(data);
     }
 
     @Override

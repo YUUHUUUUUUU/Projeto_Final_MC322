@@ -5,15 +5,21 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import uepa.aplicativo.DataManager.Data;
+import uepa.aplicativo.SceneManager.SceneManager;
+import uepa.aplicativo.controllers.ExtracurricularScreen.ExtracurricularController;
 import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
-import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.user.Staff;
 
 public class CardController implements RecieveData {
@@ -49,8 +55,7 @@ public class CardController implements RecieveData {
 
     @FXML
     void clickedSeeMore(ActionEvent event) {
-        System.out.println("Hello See More Button");
-        System.out.println(extracurricular.getFxmlPath());
+        RedirectToExtra(event);
     }
 
     private Extracurricular extracurricular;
@@ -63,13 +68,9 @@ public class CardController implements RecieveData {
     private void applyData() {
             String name = extracurricular.getName();
             String description = extracurricular.getDescription();
-            String initialEnrollmentDate = "DD/MM/AAAA HH:MM";
-            String finalEnrollmentDate = "DD/MM//AAAA HH:MM";
             Image image = extracurricular.getLogo();
             setName(name);
             setDescription(description);
-            setInitialEnrollmentDate(initialEnrollmentDate);
-            setFinalEnrollmentDate(finalEnrollmentDate);
             setImage(image);
     }
 
@@ -78,12 +79,6 @@ public class CardController implements RecieveData {
     }
     private void setDescription(String description) {
         this.description.setText(description);
-    }
-    private void setInitialEnrollmentDate(String initialEnrollmentDate) {
-        this.initialEnrollmentDate.setText(initialEnrollmentDate);
-    }
-    private void setFinalEnrollmentDate(String finalEnrollmentDate) {
-        this.finalEnrollmentDate.setText(finalEnrollmentDate);
     }
     private void setImage(Image image) {
         this.image.setImage(image);
@@ -142,8 +137,45 @@ public class CardController implements RecieveData {
     }
 
     @Override
+    public void receiveData(Data data, Extracurricular extra){
+        receiveData(data);
+    }
+
+    @Override
     public void setData(Data data) {
         this.data = data;
+    }
+
+    void RedirectToExtra(ActionEvent event) {
+        try{
+            String fxmlPath = "/fxml/ExtracurricularScreen/ExtracurricularScreen.fxml";
+            String pageTitle = extracurricular.getName() + " Screen";
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
+            System.out.println("URL carregada: " + fxmlLoader.getLocation());
+            Parent root = fxmlLoader.load();
+
+            ExtracurricularController controller = fxmlLoader.getController();
+
+            controller.receiveData(data);
+
+            Scene screen = new Scene(root);
+
+            Node source = (Node) event.getSource();
+            Scene currentScene = source.getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            root.requestFocus();
+            stage.setTitle(pageTitle);
+            stage.setScene(screen);
+            stage.setResizable(true);
+            stage.setMaximized(true);
+            stage.show();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        
     }
 
 }

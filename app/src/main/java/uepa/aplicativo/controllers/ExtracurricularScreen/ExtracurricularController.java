@@ -13,14 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import uepa.aplicativo.DataManager.Data;
 import uepa.aplicativo.controllers.CatalogScreen.CardController;
 import uepa.aplicativo.extracurricular.Extracurricular;
+import uepa.aplicativo.interfaces.RecieveData;
 import uepa.aplicativo.loaders.CatalogCardLoader;
 import uepa.aplicativo.loaders.loadedData.LoadedCard;
 import uepa.aplicativo.message.Message;
 import uepa.aplicativo.user.Staff;
 
-public class ExtracurricularController implements Initializable {
+public class ExtracurricularController implements RecieveData{
 
     @FXML
     private Button goBackButton;
@@ -41,35 +43,9 @@ public class ExtracurricularController implements Initializable {
         System.out.println("heyyy");
     }
 
-    @FXML
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            /* We load the extra */
-            // extracurricular =
-            List<HBox> catalogItems = loadCatalog();
-            
-            if(catalogItems == null) {
-                System.out.println("Staff catalog is null");
-            }
-
-            System.out.println("Heyyyy");
-            /* We clear and add each item to the catalog */
-            staffCatalog.getChildren().clear();
-
-            for(HBox card : catalogItems) {
-                staffCatalog.getChildren().add(card);
-            }
-            System.out.println("Hello Staff Catalog!");
-        }
-        catch(Exception e) {
-            System.out.println("Failed to load the Catalog");
-            System.out.println("Error: " + e);
-            e.printStackTrace();
-        }
-        
-    }
 
     Extracurricular extracurricular;
+    Data data;
 
 
     private List<HBox> loadCatalog() throws Exception{
@@ -118,5 +94,41 @@ public class ExtracurricularController implements Initializable {
         return catalogItems;
 
     }
+
+    @Override
+    public void receiveData(Data data, Extracurricular extracurricular)  {
+        setData(data);
+        this.extracurricular = extracurricular;
+        try {
+            List<HBox> catalogItems = loadCatalog();
+            
+            if(catalogItems == null) {
+                System.out.println("Staff catalog is null");
+            }
+
+            /* We clear and add each item to the catalog */
+            staffCatalog.getChildren().clear();
+
+            for(HBox card : catalogItems) {
+                staffCatalog.getChildren().add(card);
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Failed to load the Catalog");
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void receiveData(Data data) {}
+
+    @Override
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+
+
 }
 

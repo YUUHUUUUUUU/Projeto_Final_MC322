@@ -104,6 +104,11 @@ public class CatalogController implements RecieveData {
     }
 
     @Override
+    public void receiveData(Data data, Extracurricular extracurricular) {
+        receiveData(data);
+    }
+
+    @Override
     public void setData(Data data) {
         this.data = data;
     }

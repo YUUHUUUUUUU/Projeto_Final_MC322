@@ -18,6 +18,7 @@ import uepa.aplicativo.SceneManager.SceneManager;
 import uepa.aplicativo.constants.Role;
 import uepa.aplicativo.controllers.CatalogScreen.CatalogController;
 import uepa.aplicativo.controllers.RegisterScreen.RegisterController;
+import uepa.aplicativo.extracurricular.Extracurricular;
 import uepa.aplicativo.interfaces.RecieveData;
 
 public class LoginController implements RecieveData{
@@ -38,21 +39,22 @@ public class LoginController implements RecieveData{
 
     @FXML
     void LogIn(ActionEvent event) {
-        try {
-            String email = emailField.getText();
-            String password = passwordField.getText();
-            User loggedUser = UserManager.login(email, password, data);
-            data.setLoggedUser(loggedUser);
+        RedirectToCatalog(event);
+        //try {
+        //    String email = emailField.getText();
+        //    String password = passwordField.getText();
+        //    User loggedUser = UserManager.login(email, password, data);
+        //    data.setLoggedUser(loggedUser);
 
-            if(loggedUser.getRole().equals(Role.STUDENT)) {
-                RedirectToCatalog(event);
-            }
+        //    if(loggedUser.getRole().equals(Role.STUDENT)) {
+        //        RedirectToCatalog(event);
+        //    }
 
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            SceneManager.showErrorMessage(errorLabel, e);
-        }
+        //}
+        //catch (Exception e) {
+        //    System.out.println(e);
+        //    SceneManager.showErrorMessage(errorLabel, e);
+        //}
     }
 
     @FXML
@@ -89,6 +91,11 @@ public class LoginController implements RecieveData{
     @Override
     public void receiveData(Data data) {
         setData(data);
+    }
+
+    @Override
+    public void receiveData(Data data, Extracurricular extracurricular) {
+        receiveData(data);
     }
 
     @Override
