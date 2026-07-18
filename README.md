@@ -64,3 +64,14 @@ Cobertura de testes unitários utilizando JUnit 5:
 * **Ferramenta de Build:** Gradle
 
 ---
+
+## Como compilar?
+
+Esteja na pasta raiz do projeto;
+
+### Linux/macOS:
+Digite os comandos ./gradlew build (e espere compilar com sucesso) e depois ./gradlew run;
+### Windows:
+Digite os comandos gradlew build seguido de gradlew run;
+
+e.... pronto!!! Vai compilar
