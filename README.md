@@ -1,3 +1,8 @@
+João Gilberti Alves Tavares - 288885
+Rafael Martins Ruas - 204824
+Antônio Victor Amorim Marques - 288660
+Enzo Farina Mullis - 243589
+
 # UEPA - União de Entidades, Projetos e Atividades
 
 Um sistema desktop desenvolvido em **Java** e **JavaFX** para gerenciar, descobrir e notificar atividades extracurriculares dentro do contexto do **UEPA (União de Entidades, Projetos e Atividades)**. O aplicativo adota conceitos sólidos de Programação Orientada a Objetos (POO), arquitetura MVC (Model-View-Controller) e padrões de projeto para conectar estudantes a oportunidades de forma eficiente.
